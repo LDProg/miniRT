@@ -2,7 +2,6 @@
 ################					MAKEFILE					#################
 #################################################################################
 
-MAKEFLAGS += --no-builtin-rules --warn-undefined-variables
 .PHONY:	all clean fclean re deps bonus show_compiling_msg
 NAME :=	miniRT
 
@@ -80,9 +79,9 @@ $(D_OBJ):
 # Step 1.5 : Compilation of libft and mlx
 deps:
 	@echo "\n🏗️  Building dependencies...\n\n📚 Building libft..."
-	$(MAKE_CMD) -C $(D_LIBFT)
+	$(MAKE_CMD) -C $(D_LIBFT) > /dev/null 2>&1
 	@echo "✅ Libft build done.\n\n📚 Building mlx..."
-	$(MAKE_CMD) -C $(D_LIBMLX)
+	$(MAKE_CMD) -C $(D_LIBMLX) > /dev/null 2>&1
 	@echo "✅ MLX build done.\n\n✅ Dependencies build done.\n"
 
 # Step 5 : Cleaning object files
