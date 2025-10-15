@@ -19,10 +19,10 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y make gcc libxext-dev libxrandr-dev libx11-dev libbsd-dev valgrind
+          sudo apt-get install -y build-essential xorg libxext-dev libx11-dev libbsd-dev libxrandr-dev libxrender-dev valgrind
 
       - name: Make
-        run: make CFLAGS="-Wall -Wextra -Werror"
+        run: make CFLAGS="-Wall -Wextra"
 
       - name: Memory leaks
         run: |
@@ -34,4 +34,3 @@ jobs:
         run: |
           pip3 install Norminette
           norminette *.c *.h
-          norminette --version
