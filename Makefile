@@ -79,9 +79,9 @@ $(D_OBJ):
 # Step 1.5 : Compilation of libft and mlx
 deps:
 	@echo "\n🏗️  Building dependencies...\n\n📚 Building libft..."
-	$(MAKE_CMD) -C $(D_LIBFT) > /dev/null 2>&1
+	$(MAKE_CMD) -C $(D_LIBFT)
 	@echo "✅ Libft build done.\n\n📚 Building mlx..."
-	$(MAKE_CMD) -C $(D_LIBMLX) > /dev/null 2>&1
+	$(MAKE_CMD) -C $(D_LIBMLX)
 	@echo "✅ MLX build done.\n\n✅ Dependencies build done.\n"
 
 # Step 5 : Cleaning object files
