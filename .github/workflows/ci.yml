@@ -13,8 +13,8 @@ jobs:
     steps:
       - name: Clone
         uses: actions/checkout@v4
-        with:
-          submodules: recursive
+        # with:
+        #   submodules: recursive
 
       - name: Install dependencies
         run: |

@@ -40,7 +40,7 @@ OBJ :=	$(subst $(D_SRC), $(D_OBJ), $(SRC:.c=.o))
 D_LIBFT :=	libft/
 LIBFT := $(D_LIBFT)libft.a
 
-D_LIBMLX :=	minilibx-linux/
+D_LIBMLX := minilibx-linux/
 MLX := $(D_LIBMLX)libmlx.a
 
 #################################################################################
