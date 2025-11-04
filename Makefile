@@ -10,7 +10,9 @@ NAME :=	miniRT
 #################################################################################
 
 #Files
-LST_EXEC :=	minirt.c
+LST_EXEC :=	minirt.c	\
+			manage_window.c	\
+			parsing.c	\
 
 # LST_RENDERING :=	fractal_init.c fractals_sets.c fractal_render.c
 
