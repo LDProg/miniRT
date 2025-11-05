@@ -6,16 +6,25 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:34:18 by ludebion          #+#    #+#             */
-/*   Updated: 2025/11/04 15:17:07 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/11/05 12:06:36 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+#include <fcntl.h>
 
 int	main(int ac, char **av)
 {
+	int	fd;
+	
 	if (parsing(ac, av))
 		return (1);
+	fd = open(av[1], O_RDONLY);
+	if (check_object(fd))
+	{
+		ft_putstr_fd("The file is not valid", 2);
+		return (1);
+	}
 	printf("Hello RT!\n");
 	return (EXIT_SUCCESS);
 }

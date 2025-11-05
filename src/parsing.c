@@ -6,11 +6,21 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 15:15:53 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/11/04 15:54:19 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/11/05 15:44:33 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "get_next_line_bonus.h"
+
+int	check_object(int fd)
+{
+	// (void)fd;
+	char	*line;
+
+	line = get_next_line(fd);
+	return (0);
+}
 
 int	check_suff(char *s)
 {
