@@ -12,9 +12,9 @@ NAME :=	miniRT
 #Files
 LST_EXEC :=	minirt.c	\
 			manage_window.c	\
-			parsing.c	\
-			check_object.c	\
-			check_params.c	\
+			parsing/parsing.c	\
+			parsing/check_object.c	\
+			parsing/check_params.c	\
 
 # LST_UTILS :=	kill_program.c float_utils.c hooks.c
 
@@ -80,8 +80,12 @@ $(NAME): $(OBJ) $(LIBFT) $(MLX) $(VECT)
 $(D_OBJ)%.o: $(D_SRC)%.c $(INC) Makefile | $(D_OBJ)
 	@$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
 
+# $(D_OBJ):
+# 	@mkdir -p $@/$(D_RENDERING) $@/$(D_UTILS)
+
 $(D_OBJ):
-	@mkdir -p $@/$(D_RENDERING) $@/$(D_UTILS)
+	@mkdir -p $(D_OBJ)
+	@mkdir -p $(D_OBJ)/parsing
 
 # Step 1.5 : Compilation of libft and mlx
 deps:
