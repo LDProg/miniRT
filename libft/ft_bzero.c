@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/07 17:28:17 by ludebion          #+#    #+#             */
-/*   Updated: 2024/11/24 08:11:49 by ludebion         ###   ########.fr       */
+/*   Created: 2024/11/18 07:45:34 by gaducurt          #+#    #+#             */
+/*   Updated: 2024/11/18 11:48:03 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,14 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	ft_memset(s, '\0', n);
+	unsigned char	*str;
+	size_t			i;
+
+	str = s;
+	i = 0;
+	while (i < n)
+	{
+		str[i] = 0;
+		i++;
+	}
 }
-
-// int	main(void)
-// {
-// 	char	str[] = "Hello";
-// 	char	str2[] = "Hello";
-// 	size_t	n;
-
-// 	n = 2;
-// 	ft_bzero(str, n);
-// 	bzero(str2, n);
-// 	printf("str apres bzero : %s\n", str);
-// 	printf("str2 apres bzero : %s\n", str2);
-// }

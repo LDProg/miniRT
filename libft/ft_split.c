@@ -3,110 +3,141 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/18 03:31:13 by ludebion          #+#    #+#             */
-/*   Updated: 2024/11/24 07:43:09 by ludebion         ###   ########.fr       */
+/*   Created: 2024/11/22 06:36:41 by gaducurt          #+#    #+#             */
+/*   Updated: 2025/02/25 11:33:01 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	**free_arr(char **strs, size_t count)
+static int	ft_count_word(const char *s, char c)
 {
-	while (count > 0)
+	int	nb_word;
+	int	i;
+
+	nb_word = 0;
+	i = 0;
+	while (s[i])
 	{
-		count--;
-		free(strs[count]);
+		while (s[i] && s[i] == c)
+			i++;
+		if (s[i] && s[i] != c)
+			nb_word++;
+		while (s[i] && s[i] != c)
+			i++;
 	}
-	free(strs);
+	return (nb_word);
+}
+
+static char	**free_split(char **double_tab, int nb_word)
+{
+	int	i;
+
+	i = 0;
+	while (i < nb_word)
+	{
+		free(double_tab[i]);
+		i++;
+	}
+	free(double_tab);
 	return (NULL);
 }
 
-static size_t	count_words(const char *s, char c)
+static char	**ft_new_str(char **double_tab, const char *s, char c, int nb_word)
 {
-	size_t	i;
-	size_t	count;
-	size_t	in_word;
+	int		i;
+	int		index;
+	int		count;
+	int		j;
 
-	i = 0;
 	count = 0;
-	in_word = 0;
-	while (s[i])
+	i = 0;
+	while (s[i] && count < nb_word)
 	{
-		if (s[i] != c && in_word == 0)
-		{
-			in_word = 1;
-			count++;
-		}
-		else if (s[i] == c)
-			in_word = 0;
-		i++;
+		j = 0;
+		while (s[i] == c && s[i])
+			i++;
+		index = i;
+		while (s[i] != c && s[i])
+			i++;
+		double_tab[count] = malloc((i - index + 1) * sizeof(char));
+		if (double_tab[count] == NULL)
+			return (free_split(double_tab, count));
+		while (index < i)
+			double_tab[count][j++] = s[index++];
+		double_tab[count][j] = '\0';
+		count++;
 	}
-	return (count);
+	return (double_tab);
 }
 
-static size_t	calc_strs_len(const char *str, char c, size_t start)
+static int	check_empty_s(const char *s, char c)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
-	while (str[start + i])
+	while (s[i])
 	{
-		if (str[start + i] == c)
-			return (i);
-		i++;
+		if (s[i] == c)
+			i++;
+		else
+			return (1);
 	}
-	return (i);
+	return (0);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**strs;
-	size_t	i;
-	size_t	j;
+	int		nb_word;
+	char	**double_tab;
 
-	if (!s)
+	if (!(s))
 		return (NULL);
-	strs = ft_calloc((count_words(s, c) + 1), sizeof(char *));
-	if (!strs)
+	if (!check_empty_s(s, c))
 		return (NULL);
-	i = 0;
-	j = 0;
-	while (s[i])
-	{
-		if (calc_strs_len(s, c, i) != 0)
-		{
-			strs[j] = ft_substr(s, i, calc_strs_len(s, c, i));
-			if (!strs[j])
-				return (free_arr(strs, j));
-			i += calc_strs_len(s, c, i);
-			j++;
-		}
-		else
-			i++;
-	}
-	return (strs);
+	nb_word = ft_count_word(s, c);
+	double_tab = malloc((nb_word + 1) * sizeof(char *));
+	if (!(double_tab))
+		return (NULL);
+	double_tab[nb_word] = NULL;
+	double_tab = ft_new_str(double_tab, s, c, nb_word);
+	return (double_tab);
 }
-// int	main(void)
-// {
-// 	char	c;
-// 	int		size;
-// 	int		i;
-// 	char	**strs;
-// 	char	str[] = "  . Aller. .l'OL  ";
 
-// 	c = ' ';
-// 	size = 0;
-// 	i = 0;
-// 	strs = ft_split(NULL, c);
-// 	while (strs[size])
-// 		size++;
-// 	printf("Size strs : [%d]\n", size);
-// 	while (strs[i])
-// 	{
-// 		printf("Ma str [%d] dans strs : \"%s\"\n", i, strs[i]);
-// 		i++;
-// 	}
-// 	return (0);
-// }
+/*
+#include <stdio.h>
+
+int	main()
+{
+	// char	*s = "hello!";
+	// char	c = ' ';
+
+	// char    **str;
+    // int    i;
+
+    // i = 0;
+    // str = ft_split(s, c);
+    // while (str[i] != NULL)
+    // {
+
+    //     printf("%s\n",str[i]);
+    //     i++;
+    // }
+    // i = 0;
+    // while (str[i])
+    //     free(str[i++]);
+    // free(str);
+    // return (0);
+	char **tab;
+
+	tab = ft_split("hello!", ' ');
+	int i = 0;
+	while (tab[i] != NULL)
+	{
+		printf("- '%s'\n", tab[i]);
+		i++;
+	}
+}
+*/

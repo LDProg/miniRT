@@ -3,47 +3,55 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gaducurt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/11 02:05:00 by ludebion          #+#    #+#             */
-/*   Updated: 2024/11/24 08:34:46 by ludebion         ###   ########.fr       */
+/*   Created: 2024/11/19 10:44:30 by gaducurt          #+#    #+#             */
+/*   Updated: 2024/11/19 10:44:31 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+static int	ft_diff(void *d, const void *s, size_t n)
+{
+	if (d < s || d >= s + n)
+		return (0);
+	return (1);
+}
+
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	unsigned char	*cdest;
-	unsigned char	*csrc;
+	unsigned char			*d;
+	const unsigned char		*s;
 
-	if ((!dest && !src) || n == 0)
-		return (dest);
-	cdest = (unsigned char *)dest;
-	csrc = (unsigned char *)src;
-	if (cdest <= csrc)
-		ft_memcpy(dest, src, n);
-	else if (cdest > csrc)
+	d = dest;
+	s = src;
+	if (dest == 0 && src == 0)
+		return (NULL);
+	if (ft_diff(d, s, n) == 0)
+		dest = ft_memcpy(dest, src, n);
+	else
 	{
-		cdest += n - 1;
-		csrc += n - 1;
-		while (n--)
+		while (n > 0)
 		{
-			*cdest-- = *csrc--;
+			n--;
+			d[n] = s[n];
 		}
 	}
 	return (dest);
 }
+/*
+#include <stdio.h>
+#include <string.h>
 
-// int	main(void)
-// {
-// 	char	dest[20] = "Hello";
-// 	char	dest2[20] = "Hello";
-// 	size_t	n;
+int main() {
+    char str1[] = "ABCDEFGHIJ";
+	char str2[] = "ABCDEFGHIJ";
+    
+    memmove(str1 + 1, str1 + 2, 3);
+    ft_memmove(str2 + 1, str2 + 2, 3);
 
-// 	n = 10;
-// 	ft_memmove(dest + 1, dest, n);
-// 	memmove(dest2 + 1, dest2, n);
-// 	printf("str apres ft_memmove : %s\n", dest);
-// 	printf("str2 apres memmove : %s\n", dest2);
-// }
+    printf("Résultat : %s\n", str1);
+    printf("Résultat : %s\n", str2);
+    return 0;
+}*/

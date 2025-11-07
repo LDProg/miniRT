@@ -3,87 +3,77 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gaducurt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/17 09:43:54 by ludebion          #+#    #+#             */
-/*   Updated: 2024/11/18 09:23:29 by ludebion         ###   ########.fr       */
+/*   Created: 2024/11/22 08:43:52 by gaducurt          #+#    #+#             */
+/*   Updated: 2024/11/22 08:43:55 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	calc_nb_len(int n)
+static int	ft_count(int n)
 {
-	int	res;
+	int	i;
 
-	res = 0;
-	if (n == 0)
-		return (1);
+	i = 0;
 	if (n < 0)
+		n = -n;
+	while (n != 0)
 	{
-		res++;
-		n *= -1;
+		n /= 10;
+		i++;
 	}
-	while (n > 0)
+	return (i);
+}
+
+static char	*ft_putdest(size_t count, int n, char *dest, size_t i)
+{
+	while (count-- > i)
 	{
-		res++;
+		dest[count] = (n % 10) + '0';
 		n /= 10;
 	}
-	return (res);
+	return (dest);
 }
 
 char	*ft_itoa(int n)
 {
-	int		nb_len;
-	char	*res;
-	int		n2;
+	char		*dest;
+	size_t		count;
+	int			nb;
+	size_t		i;
 
-	n2 = n;
 	if (n == -2147483648)
 		return (ft_strdup("-2147483648"));
-	nb_len = calc_nb_len(n);
-	res = ft_calloc((nb_len + 1), sizeof(char));
-	if (!res)
+	count = ft_count(n);
+	nb = n;
+	i = 0;
+	if (n < 0 || count == 0)
+		count++;
+	dest = ft_calloc(sizeof(char), count + 1);
+	if (!(dest))
 		return (NULL);
-	if (n < 0)
+	else if (n < 0)
 	{
-		res[0] = '-';
-		n2 = n * -1;
+		n = -n;
+		dest[0] = '-';
+		i++;
 	}
-	while (--nb_len >= 0 && (res[nb_len] != '-'))
-	{
-		res[nb_len] = n2 % 10 + '0';
-		n2 /= 10;
-	}
-	return (res);
+	dest = ft_putdest(count, n, dest, i);
+	return (dest);
 }
+/*
+#include <stdio.h>
 
-// int	main(void)
-// {
-// 	int	n;
-// 	int	n1;
-// 	int	n2;
-// 	int	n3;
-// 	int	n4;
-// 	int	n5;
-// 	int	n6;
-// 	int	n7;
-
-// 	n = 0;
-// 	n1 = -1;
-// 	n2 = 9;
-// 	n3 = 69;
-// 	n4 = -2147483648;
-// 	n5 = -2147483647;
-// 	n6 = 2147483647;
-// 	n7 = -70;
-// 	printf("n = 0 : %s\n", ft_itoa(n));
-// 	printf("n1 = -1 : %s\n", ft_itoa(n1));
-// 	printf("n2 = 9 : %s\n", ft_itoa(n2));
-// 	printf("n3 = 69 : %s\n", ft_itoa(n3));
-// 	printf("n4 = -2147483648 : %s\n", ft_itoa(n4));
-// 	printf("n5 = -2147483647 : %s\n", ft_itoa(n5));
-// 	printf("n6 = 2147483647 : %s\n", ft_itoa(n6));
-// 	printf("n7 = -70 : %s\n", ft_itoa(n7));
-// 	return (0);
-// }
+int	main()
+{
+	printf("n = %s\n", ft_itoa(0));
+	printf("n = %s\n", ft_itoa(42));
+	printf("n = %s\n", ft_itoa(45625));
+	printf("n = %s\n", ft_itoa(-51));
+	printf("n = %s\n", ft_itoa(-1));
+	printf("n = %s\n", ft_itoa(2147483647));
+	printf("n = %s\n", ft_itoa(-2147483648));
+}
+*/

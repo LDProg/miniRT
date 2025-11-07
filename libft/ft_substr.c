@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luca <luca@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: gaducurt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/17 08:40:05 by ludebion          #+#    #+#             */
-/*   Updated: 2025/02/25 00:32:43 by luca             ###   ########.fr       */
+/*   Created: 2024/11/20 14:17:02 by gaducurt          #+#    #+#             */
+/*   Updated: 2024/11/20 14:17:06 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,39 +14,39 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
+	char	*dest;
 	size_t	i;
 	size_t	s_len;
-	size_t	sub_len;
-	char	*sub;
 
-	if (!s)
+	if (!(s))
 		return (NULL);
 	s_len = ft_strlen(s);
+	if (start + len > s_len)
+		len = s_len - start;
 	if (start >= s_len)
-		return (ft_strdup(""));
-	sub_len = s_len - start;
-	if (sub_len > len)
-		sub_len = len;
-	sub = ft_calloc((sub_len + 1), sizeof(char));
-	if (!sub)
+		len = 0;
+	dest = malloc((len + 1) * sizeof(char));
+	if (!(dest))
 		return (NULL);
 	i = 0;
-	while (i < sub_len)
+	while (i < len && *s)
 	{
-		sub[i] = s[start + i];
+		dest[i] = s[start];
+		start++;
 		i++;
 	}
-	return (sub);
+	dest[i] = '\0';
+	return (dest);
 }
+/*
+#include <stdio.h>
 
-// int	main(void)
-// {
-// 	char			s[] = "hello world";
-// 	unsigned int	start;
-// 	size_t			len;
+int	main()
+{
+	char const	*s = "hola";
+	unsigned int	start = 0;
+	size_t	len = 18446744073709551615;
 
-// 	start = 1;
-// 	len = 0;
-// 	printf("Substr : %s\n", ft_substr(s, start, len));
-// 	return (0);
-// }
+	printf("%s\n", ft_substr(s, start, len));
+}
+*/

@@ -3,57 +3,53 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/07 17:28:30 by ludebion          #+#    #+#             */
-/*   Updated: 2024/11/16 18:37:04 by ludebion         ###   ########.fr       */
+/*   Created: 2024/11/18 12:37:28 by gaducurt          #+#    #+#             */
+/*   Updated: 2024/11/18 14:42:26 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <limits.h>
 
 int	ft_atoi(const char *nptr)
 {
-	int	i;
-	int	n;
-	int	sign;
+	int	count;
+	int	inv;
 
-	i = 0;
-	n = 0;
-	sign = 1;
-	while (nptr[i] == 32 || (nptr[i] >= 9 && nptr[i] <= 13))
-		i++;
-	if (nptr[i] == '-' || nptr[i] == '+')
+	count = 0;
+	inv = 1;
+	while (*nptr == ' ' || ((*nptr >= 9 && *nptr <= 13) && *nptr != 0))
+		nptr++;
+	if (*nptr == '-' || *nptr == '+')
 	{
-		if (nptr[i] == '-')
-			sign *= -1;
-		i++;
+		if (*nptr == '-')
+			inv = -inv;
+		nptr++;
 	}
-	while (nptr[i] >= '0' && nptr[i] <= '9')
+	while ((*nptr >= '0' && *nptr <= '9') && *nptr != '\0')
 	{
-		n = n * 10 + (nptr[i] - '0');
-		i++;
+		count = (count * 10) + (*nptr - '0');
+		if ((unsigned long long) count > (unsigned long long)INT_MAX + 1
+			&& inv == -1)
+			return (INT_MIN);
+		else if ((unsigned long long) count > INT_MAX && inv == 1)
+			return (INT_MAX);
+		nptr++;
 	}
-	return (sign * n);
+	return (count * inv);
 }
+/*
+#include <stdio.h>
+#include <stdlib.h>
 
-// int	main(void)
-// {
-// 	char	s1[] = "0";
-// 	char	s2[] = "-69";
-// 	char	s3[] = "+69";
-// 	char	s4[] = "--69";
-// 	char	s5[] = "++69";
-// 	char	s6[] = "-2147483648";
-// 	char	s7[] = "2147483647";
-// 	char	s8[] = "    \t\n\v\f\r69";
-
-// 	printf("Valeur attendue 0 : %d\n", ft_atoi(s1));
-// 	printf("Valeur attendue -69 : %d\n", ft_atoi(s2));
-// 	printf("Valeur attendue 69 : %d\n", ft_atoi(s3));
-// 	printf("Valeur attendue 0 : %d\n", ft_atoi(s4));
-// 	printf("Valeur attendue 0 : %d\n", ft_atoi(s5));
-// 	printf("Valeur attendue -2147483648 : %d\n", ft_atoi(s6));
-// 	printf("Valeur attendue : 2147483647 %d\n", ft_atoi(s7));
-// 	printf("Valeur attendue 69 : %d\n", ft_atoi(s8));
-// }
+int	main(int argc, const char **argv)
+{
+	if (argc == 2)
+	{
+		printf("my atoi = %d\n", (ft_atoi(argv[1])));
+		printf("vrai atoi = %d\n", (atoi(argv[1])));
+	}
+	
+}
+*/

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/11 02:05:00 by ludebion          #+#    #+#             */
-/*   Updated: 2024/11/16 20:00:32 by ludebion         ###   ########.fr       */
+/*   Created: 2024/11/19 06:52:34 by gaducurt          #+#    #+#             */
+/*   Updated: 2024/11/19 10:38:53 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,14 @@
 void	*ft_memset(void *s, int c, size_t n)
 {
 	size_t			i;
-	unsigned char	*cs;
+	unsigned char	*str;
 
-	cs = (unsigned char *)s;
+	str = s;
 	i = 0;
 	while (i < n)
 	{
-		cs[i] = c;
+		str[i] = (unsigned char) c;
 		i++;
 	}
 	return (s);
 }
-
-// int	main(void)
-// {
-// 	char	str[] = "Hello";
-// 	char	str2[] = "Hello";
-// 	int		c;
-// 	size_t	n;
-
-// 	c = 69;
-// 	n = 5;
-// 	ft_memset(str, c, n);
-// 	memset(str2, c, n);
-// 	printf("str apres ft_memset : %s\n", str);
-// 	printf("str2 apres memset : %s\n", str2);
-// }

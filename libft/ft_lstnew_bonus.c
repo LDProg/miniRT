@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gaducurt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/23 19:27:51 by ludebion          #+#    #+#             */
-/*   Updated: 2024/11/23 19:31:06 by ludebion         ###   ########.fr       */
+/*   Created: 2024/11/22 15:29:44 by gaducurt          #+#    #+#             */
+/*   Updated: 2024/11/22 15:29:46 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,12 @@
 
 t_list	*ft_lstnew(void *content)
 {
-	t_list	*new_elem;
+	t_list	*new;
 
-	new_elem = ft_calloc(1, sizeof(t_list));
-	if (!new_elem)
+	new = malloc(sizeof(t_list));
+	if (!new)
 		return (NULL);
-	new_elem->content = content;
-	new_elem->next = NULL;
-	return (new_elem);
+	new->content = content;
+	new->next = NULL;
+	return (new);
 }
-
-// int	main(void)
-// {
-// 	t_list *lst;
-
-// 	lst = ft_lstnew("Hello");
-// 	printf("Nouvel élément : %s\n", (char *)lst->content);
-// }

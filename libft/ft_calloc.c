@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/17 07:59:56 by ludebion          #+#    #+#             */
-/*   Updated: 2024/11/24 08:16:40 by ludebion         ###   ########.fr       */
+/*   Created: 2024/11/18 15:45:08 by gaducurt          #+#    #+#             */
+/*   Updated: 2024/11/18 16:25:49 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,44 +14,42 @@
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
-	void	*s;
+	void	*dest;
 
-	if (nmemb == 0 || size == 0)
+	if (size == 0 || nmemb == 0)
 		return (malloc(0));
-	if ((SIZE_MAX / nmemb) < size)
+	if ((nmemb * size) / size != nmemb)
 		return (NULL);
-	s = malloc(nmemb * size);
-	if (!s)
+	dest = malloc(nmemb * size);
+	if (!dest)
 		return (NULL);
-	ft_bzero(s, nmemb * size);
-	return (s);
+	ft_bzero(dest, nmemb * size);
+	return (dest);
 }
 
-// int	main(void)
-// {
-// 	size_t	nmemb;
-// 	size_t	size;
-// 	size_t	total_size;
-// 	size_t	i;
-// 	int		*s;
-// 	int		*s2;
+/*
+#include <stdio.h>
+#include <assert.h>
 
-// 	nmemb = 4;
-// 	size = 4;
-// 	total_size = nmemb * size;
-// 	i = 0;
-// 	s = ft_calloc(nmemb, size);
-// 	s2 = calloc(nmemb, size);
-// 	while (i < nmemb)
-// 	{
-// 		printf("Value : [%d]\n", s[i]);
-// 		i++;
-// 	}
-// 	i = 0;
-// 	while (i < nmemb)
-// 	{
-// 		printf("Value (vraie) : [%d]\n", s2[i]);
-// 		i++;
-// 	}
-// 	return (0);
-// }
+#define INT_NUMBER 10
+
+int main() {
+    
+    int i;
+    int * pointer = (int *) ft_calloc( INT_NUMBER, sizeof(int) );
+
+    assert( pointer != NULL );
+
+    for ( i=0; i<INT_NUMBER-1; i++ ) {
+        pointer[i] = i;
+    }
+
+    for (i=0; i<INT_NUMBER; i++ ) {
+        printf( "%d ", pointer[i] );
+    }
+    printf( "\n" );
+
+    free( pointer );
+
+    return 0;
+}*/

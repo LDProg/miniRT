@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luca <luca@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: gaducurt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/24 03:58:05 by ludebion          #+#    #+#             */
-/*   Updated: 2024/11/24 20:01:08 by luca             ###   ########.fr       */
+/*   Created: 2024/11/26 10:15:50 by gaducurt          #+#    #+#             */
+/*   Updated: 2024/11/26 10:15:52 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,68 +14,25 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*new_lst;
-	t_list	*new_elem;
-	void	*new_elem_content;
+	t_list	*stock;
+	t_list	*result;
+	t_list	*new;
 
 	if (!lst || !f || !del)
 		return (NULL);
-	new_lst = NULL;
-	while (lst != NULL)
+	stock = NULL;
+	while (lst)
 	{
-		new_elem_content = f(lst->content);
-		new_elem = ft_lstnew(new_elem_content);
-		if (!new_elem)
+		result = f(lst->content);
+		new = ft_lstnew(result);
+		if (!new)
 		{
-			del(new_elem_content);
-			ft_lstclear(&new_lst, del);
+			free(result);
+			ft_lstclear(&stock, del);
 			return (NULL);
 		}
-		ft_lstadd_back(&new_lst, new_elem);
+		ft_lstadd_back(&stock, new);
 		lst = lst->next;
 	}
-	return (new_lst);
+	return (stock);
 }
-
-// void	*f(void *content)
-// {
-// 	char	*str;
-
-// 	str = (char *)(content);
-// 	return (ft_memcpy(ft_strdup(str), "Hey", 5));
-// }
-// void	del(void *content)
-// {
-// 	free(content);
-// }
-
-// int	main(void)
-// {
-// 	t_list	*lst;
-// 	t_list	*new_lst;
-// 	t_list	*lst_first;
-// 	int		count;
-
-// 	lst = ft_calloc(1, sizeof(t_list));
-// 	lst = ft_lstnew("Hello");
-// 	lst->next = ft_lstnew("world");
-// 	lst_first = lst;
-// 	count = 0;
-// 	printf("Liste avant map : \n\n");
-// 	while (lst)
-// 	{
-// 		printf("Mon élément n [%d] : %s\n", count, (char *)lst->content);
-// 		count++;
-// 		lst = lst->next;
-// 	}
-// 	lst = lst_first;
-// 	printf("\nListe après map : \n\n");
-// 	new_lst = ft_lstmap(lst, f, del);
-// 	count = 0;
-// 	while (new_lst)
-// 	{
-// 		printf("Mon élément n [%d] : %s\n", count, (char *)new_lst->content);
-// 		count++;
-// 		new_lst = new_lst->next;
-// 	}
-// }

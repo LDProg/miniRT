@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gaducurt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/17 09:34:49 by ludebion          #+#    #+#             */
-/*   Updated: 2024/11/24 08:04:22 by ludebion         ###   ########.fr       */
+/*   Created: 2024/11/20 17:32:48 by gaducurt          #+#    #+#             */
+/*   Updated: 2024/11/20 17:32:50 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	char_is_in_set(char c, const char *set)
+static int	ft_check(char c, char const *set)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
-	while (set[i])
+	while (set[i] != 0)
 	{
 		if (set[i] == c)
 			return (1);
@@ -26,71 +26,40 @@ static size_t	char_is_in_set(char c, const char *set)
 	return (0);
 }
 
-static size_t	get_start_str(const char *s, const char *set)
-{
-	size_t	i;
-
-	i = 0;
-	while (char_is_in_set(s[i], set))
-		i++;
-	return (i);
-}
-
-static size_t	get_end_str(const char *s, const char *set)
-{
-	size_t	i;
-
-	i = ft_strlen(s) - 1;
-	while (char_is_in_set(s[i], set) && i > 0)
-		i--;
-	return (ft_strlen(s) - i - 1);
-}
-
-static char	*fill_str(const char *s1, char *s, size_t start, size_t end)
-{
-	size_t	i;
-
-	i = 0;
-	while ((start + i) < end)
-	{
-		s[i] = s1[start + i];
-		i++;
-	}
-	return (s);
-}
-
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*s;
-	size_t	start;
-	size_t	end;
-	size_t	total_len;
+	unsigned char	*dest;
+	size_t			end;
+	size_t			start;
+	size_t			i;
 
-	if (!s1 || !set)
+	start = 0;
+	end = ft_strlen(s1);
+	i = 0;
+	while (ft_check(s1[start], set) == 1)
+		start++;
+	while (end > start && ft_check(s1[end - 1], set) == 1)
+		end--;
+	dest = malloc(end - start + 1 * sizeof(char));
+	if (!(dest))
 		return (NULL);
-	start = get_start_str(s1, set);
-	end = get_end_str(s1, set);
-	total_len = ft_strlen(s1) - start - end;
-	if (ft_strlen(s1) == start)
-		total_len = 0;
-	s = ft_calloc((total_len + 1), sizeof(char));
-	if (!s)
-		return (NULL);
-	return (fill_str(s1, s, start, ft_strlen(s1) - end));
+	while (start < end)
+	{
+		dest[i] = s1[start];
+		i++;
+		start++;
+	}
+	dest[i] = '\0';
+	return ((char *) dest);
 }
+/*
+#include <stdio.h>
 
-// int	main(void)
-// {
-// 	char	s1[] = "   zzw  ";
-// 	char	set[] = "zw ";
-// 	char	*sub;
-// 	char	s2[] = "   zzw   Hello zw world  ww zzw z  ";
-// 	char	set2[] = "zw ";
-// 	char	*sub2;
+int	main(void)
+{
+	char const	*s1 = "  \t \t \n   \n\n\n\t";
+	char const	*set = " \n\t";
 
-// 	sub = ft_strtrim(s1, set);
-// 	printf("Nouvelle chaine trimee : %s\n", sub);
-// 	sub2 = ft_strtrim(s2, set2);
-// 	printf("Nouvelle chaine trimee : %s\n", sub2);
-// 	return (0);
-// }
+	printf("%s\n", ft_strtrim(s1, set));
+}
+*/

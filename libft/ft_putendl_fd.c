@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gaducurt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/18 05:02:39 by ludebion          #+#    #+#             */
-/*   Updated: 2024/11/24 07:41:24 by ludebion         ###   ########.fr       */
+/*   Created: 2024/11/22 13:52:00 by gaducurt          #+#    #+#             */
+/*   Updated: 2024/11/22 13:52:01 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,5 @@
 void	ft_putendl_fd(char *s, int fd)
 {
 	ft_putstr_fd(s, fd);
-	write(fd, "\n", 1);
+	ft_putchar_fd('\n', fd);
 }

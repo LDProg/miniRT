@@ -3,41 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/16 17:02:50 by ludebion          #+#    #+#             */
-/*   Updated: 2024/11/16 17:47:37 by ludebion         ###   ########.fr       */
+/*   Created: 2024/11/09 15:47:07 by gaducurt          #+#    #+#             */
+/*   Updated: 2024/11/18 07:38:48 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dest, const char *src, size_t size)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
+	int		srclen;
 	size_t	i;
 
 	i = 0;
-	if (size != 0)
+	srclen = ft_strlen(src);
+	if (size == 0)
+		return (srclen);
+	while (src[i] && i < size -1)
 	{
-		while (src[i] && i < size - 1)
-		{
-			dest[i] = src[i];
-			i++;
-		}
-		dest[i] = '\0';
+		dst[i] = src[i];
+		i++;
 	}
-	return (ft_strlen(src));
+	dst[i] = '\0';
+	return (srclen);
 }
-
-/*int	main(void)
-{
-	char	dest[10];
-	char	src[] = "Hello";
-
-	printf("Ma strlcpy : %d\n", ft_strlcpy(dest, src, 4));
-	printf("La vraie strlcpy : %zu\n", strlcpy(dest, src, 4));
-	printf("Ma strlcpy : %d\n", ft_strlcpy(dest, src, 12));
-	printf("La vraie strlcpy : %zu\n", strlcpy(dest, src, 12));
-	printf("Ma strlcpy : %d\n", ft_strlcpy(dest, src, 0));
-	printf("La vraie strlcpy : %zu\n", strlcpy(dest, src, 0));
-}*/

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/17 06:17:50 by ludebion          #+#    #+#             */
-/*   Updated: 2024/11/18 06:35:09 by ludebion         ###   ########.fr       */
+/*   Created: 2024/11/18 08:34:20 by gaducurt          #+#    #+#             */
+/*   Updated: 2024/11/18 11:40:26 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,30 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	size_t	i;
 	size_t	j;
-	char	*cbig;
 
 	i = 0;
-	cbig = (char *)big;
-	if (ft_strlen(little) == 0)
-		return (cbig);
-	while (big[i] && i < len)
+	if (little[0] == '\0')
+		return ((char *) big);
+	while (i < len && big[i] != 0)
 	{
 		j = 0;
-		while (little[j] == cbig[i + j] && i + j < len)
+		while (big[i + j] == little[j] && i + j < len)
 		{
 			j++;
-			if (j == ft_strlen(little))
-				return (&cbig[i]);
+			if (little[j] == '\0')
+				return ((char *) &big[i]);
 		}
 		i++;
 	}
-	return (NULL);
+	return (0);
 }
+/*
+#include <stdio.h>
+
+int	main()
+{
+	const char	big[] = "Une aiguille dans une botte de foin";
+	const char	little[] = "g";
+
+	printf("found : %s", (ft_strnstr(big, little, 7)));
+}*/

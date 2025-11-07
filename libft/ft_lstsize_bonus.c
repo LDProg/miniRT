@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gaducurt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/23 19:49:56 by ludebion          #+#    #+#             */
-/*   Updated: 2024/11/23 19:52:40 by ludebion         ###   ########.fr       */
+/*   Created: 2024/11/25 10:36:18 by gaducurt          #+#    #+#             */
+/*   Updated: 2024/11/25 10:36:27 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,13 @@ int	ft_lstsize(t_list *lst)
 {
 	int	size;
 
-	size = 0;
-	if (lst)
+	size = 1;
+	if (!lst)
+		return (0);
+	while (lst->next)
 	{
-		while (lst)
-		{
-			size++;
-			lst = lst->next;
-		}
+		lst = lst->next;
+		size++;
 	}
 	return (size);
 }
-
-// int	main(void)
-// {
-// 	t_list	*lst;
-
-// 	lst = ft_lstnew("Hello");
-// 	lst->next = ft_lstnew("world");
-// 	printf("Nombre d'élément : %d\n", ft_lstsize(lst));
-// }

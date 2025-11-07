@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gaducurt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/17 05:51:29 by ludebion          #+#    #+#             */
-/*   Updated: 2024/11/24 08:29:31 by ludebion         ###   ########.fr       */
+/*   Created: 2024/11/20 12:51:04 by gaducurt          #+#    #+#             */
+/*   Updated: 2024/11/20 12:51:08 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,44 +14,35 @@
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
+	const unsigned char	*str1;
+	const unsigned char	*str2;
 	size_t				i;
-	const unsigned char	*cs1;
-	const unsigned char	*cs2;
 
+	str1 = (const unsigned char *)s1;
+	str2 = (const unsigned char *)s2;
 	i = 0;
-	cs1 = (unsigned char *)s1;
-	cs2 = (unsigned char *)s2;
-	while (i < n)
+	if (n == 0)
+		return (0);
+	while (str1[i] == str2[i] && i < n - 1)
 	{
-		if (cs1[i] != cs2[i])
-			return (cs1[i] - cs2[i]);
+		if (i == n)
+			return (0);
 		i++;
 	}
-	return (0);
+	return (str1[i] - str2[i]);
 }
+/*
+#include <stdio.h>
+#include <string.h>
 
-// int	main(void)
-// {
-// 	const char	dest[] = "Hello";
-// 	const char	src[] = "6969";
-// 	const char	dest2[] = "Hello";
-// 	const char	dest3[] = "\0";
-// 	const char	*dest4;
-// size_t		n;
+int	main(void)
+{
+	size_t		n;
+	const char	s1[] = "zyxbcdefgh";
+	const char	s2[] = "abcdefgxyz";
 
-// const char	*src3;
-// const char	src2[] = "6969";
-// const char	*src4 = NULL;
-// dest4 = NULL;
-// n = 2;
-// printf("str apres ft_memcpy : %d\n", ft_memcmp(dest, src, n));
-// printf("str2 apres memcpy : %d\n\n", memcmp(dest, src, n));
-// printf("str3 apres memcpy : %d\n", ft_memcmp(dest2, src3, n));
-// printf("str4 apres memcpy : %d\n\n", ft_memcmp(dest2, src3, n));
-// printf("str3 apres memcpy : %d\n", ft_memcmp(dest2, src, n));
-// printf("str4 apres memcpy : %d\n\n", ft_memcmp(dest2, src, n));
-// printf("str3 apres memcpy : %d\n", ft_memcmp(dest3, src, n));
-// printf("str4 apres memcpy : %d\n\n", ft_memcmp(dest3, src, n));
-// printf("str3 apres memcpy : %d\n", ft_memcmp(dest4, src, n));
-// printf("str4 apres memcpy : %d\n", ft_memcmp(dest4, src, n));
-// }
+	n = 0;
+	printf("%d\n", (ft_memcmp(s1, s2, n)));
+	printf("%d\n", (memcmp(s1, s2, n)));
+}
+*/
