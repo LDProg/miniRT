@@ -15,6 +15,7 @@ LST_EXEC :=	minirt.c	\
 			parsing/parsing.c	\
 			parsing/check_object.c	\
 			parsing/check_params.c	\
+			parsing/multi_split.c	\
 
 # LST_UTILS :=	kill_program.c float_utils.c hooks.c
 

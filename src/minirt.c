@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:34:18 by ludebion          #+#    #+#             */
-/*   Updated: 2025/11/07 14:12:55 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/11/07 18:03:12 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,13 @@ int	main(int ac, char **av)
 	if (parsing(ac, av))
 		return (1);
 	fd = open(av[1], O_RDONLY);
-	if (check_object(fd))
+	vector = malloc((sizeof(t_vector)));
+	if (!vector)
+	{
+		close(fd);
+		return (1);
+	}
+	if (fill_tab(fd, vector))
 	{
 		ft_putstr_fd("The file is not valid", 2);
 		return (1);
