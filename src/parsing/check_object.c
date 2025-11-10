@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 10:01:53 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/11/10 14:28:12 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/11/10 16:40:52 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,19 @@
 #include "get_next_line_bonus.h"
 #include "minirt.h"
 #include "vector.h"
+
+void	db_free(char **db_tab)
+{
+	int	i;
+	
+	i = 0;
+	while (db_tab[i])
+	{
+		free(db_tab[i]);
+		i++;
+	}
+	free(db_tab);
+}
 
 int	check_id(char *s)
 {
@@ -86,6 +99,10 @@ int	fill_tab(int fd, t_vector *vector)
 	{
 		fill_id(&obj, db_tab[0]);
 		fill_obj(&obj, db_tab);
+		db_free(db_tab);
+		db_tab = new_tab(fd);
+		if (db_tab)
+			print_double_tab(db_tab);
 	}
 	return (0);
 }

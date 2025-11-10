@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 18:11:07 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/11/10 14:21:32 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/11/10 16:47:05 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ static int	count_word(char const *s, unsigned char c1, unsigned char c2)
 	count = 0;
 	while (s[i])
 	{
-		while ((s[i] && is_sep(s[i], c1)) || is_sep(s[i], c2))
+		while ((s[i] && is_sep(s[i], c1)) || (s[i] && is_sep(s[i], c2)))
 			i++;
-		if ((s[i] && !is_sep(s[i], c1)) || !is_sep(s[i], c2))
+		if ((s[i] && !is_sep(s[i], c1)) || (s[i] && !is_sep(s[i], c2)))
 			count++;
 		while ((s[i] && !is_sep(s[i], c1)) || (s[i] && !is_sep(s[i], c2)))
 			i++;
