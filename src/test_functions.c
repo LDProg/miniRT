@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 10:03:58 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/11/10 16:45:42 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/11/10 16:56:02 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,4 @@ void	print_double_tab(char **double_tab)
 		ft_putendl_fd(double_tab[i], 1);
 		i++;
 	}
-	
 }

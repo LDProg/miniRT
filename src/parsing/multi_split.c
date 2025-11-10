@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 18:11:07 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/11/10 16:52:05 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/11/10 16:53:59 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static char	**my_strdup(char **tabf, char const *s, int word, char c1, char c2)
 	while (s[i] && j < word)
 	{
 		index = 0;
-		while ((s[i] && is_sep(s[i], c1)) || is_sep(s[i], c2))
+		while ((s[i] && is_sep(s[i], c1)) || (s[i] && is_sep(s[i], c2)))
 			i++;
 		start = i;
 		while ((s[i] && !(is_sep(s[i], c1))) || (s[i] && !(is_sep(s[i], c2))))

@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 10:01:53 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/11/10 16:40:52 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/11/10 16:58:15 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,8 +101,13 @@ int	fill_tab(int fd, t_vector *vector)
 		fill_obj(&obj, db_tab);
 		db_free(db_tab);
 		db_tab = new_tab(fd);
-		if (db_tab)
-			print_double_tab(db_tab);
+		if (!db_tab)
+		{
+			free(db_tab);
+			break;
+		}
+		print_double_tab(db_tab);
 	}
+	ft_free_vector(vector);
 	return (0);
 }
