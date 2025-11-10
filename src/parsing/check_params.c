@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 10:14:46 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/11/10 14:04:21 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/11/10 14:25:03 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,19 +51,20 @@ t_obj	init_obj()
 	return (obj);
 }
 
-int	fill_id(char *s)
+void	fill_id(t_obj *obj, char *s)
 {
 	if (ft_strcmp(s, "A"))
-		return (A);
+		obj->id = A;
 	if (ft_strcmp(s, "C"))
-		return (C);
+		obj->id = C;
 	if (ft_strcmp(s, "L"))
-		return (L);
+		obj->id = L;
 	if (ft_strcmp(s, "pl"))
-		return (PL);
+		obj->id = PL;
 	if (ft_strcmp(s, "sp"))
-		return (SP);
+		obj->id = SP;
 	if (ft_strcmp(s, "cy"))
-		return (CY);
-	return (-1);
+		obj->id = CY;
+	else
+		obj->id = -1;
 }

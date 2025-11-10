@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 10:01:53 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/11/10 14:09:58 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/11/10 14:28:12 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int	fill_tab(int fd, t_vector *vector)
 	print_double_tab(db_tab);
 	while (db_tab)
 	{
-		obj.id = fill_id(db_tab[0]);
+		fill_id(&obj, db_tab[0]);
 		fill_obj(&obj, db_tab);
 	}
 	return (0);
