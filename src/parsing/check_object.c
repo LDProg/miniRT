@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 10:01:53 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/11/10 16:58:15 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/11/10 17:04:26 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,6 @@ char	**new_tab(int fd)
 	char	**double_tab;
 
 	line = get_next_line(fd);
-	if (line)
-		ft_replace(line);
 	double_tab = multi_split(line, ' ', ',');
 	free(line);
 	if (!double_tab)
