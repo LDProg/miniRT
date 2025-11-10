@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 18:11:07 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/11/10 16:47:05 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/11/10 16:52:05 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ char	**multi_split(char const *s, char c1, char c2)
 	char	**tabf;
 	int		word;
 
+	if (!s)
+		return (NULL);
 	word = count_word(s, c1, c2);
 	tabf = malloc(sizeof(char *) * (word + 1));
 	if (!tabf)
