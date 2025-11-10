@@ -16,6 +16,7 @@ LST_EXEC :=	minirt.c	\
 			parsing/check_object.c	\
 			parsing/check_params.c	\
 			parsing/multi_split.c	\
+			test_functions.c	\
 
 # LST_UTILS :=	kill_program.c float_utils.c hooks.c
 
@@ -56,7 +57,7 @@ VECT := $(D_VECT)vector.a
 #################################################################################
 
 CC := cc
-CFLAGS := -Wall -Wextra -Ofast -funroll-loops
+CFLAGS := -Wall -Wextra -Ofast -funroll-loops -g3
 IFLAGS := -I$(D_INC) -I$(D_LIBFT) -I$(D_LIBFT)/gnl -I$(D_LIBMLX) -I$(D_VECT)
 
 RM := rm -rf

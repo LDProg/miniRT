@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:34:18 by ludebion          #+#    #+#             */
-/*   Updated: 2025/11/07 18:03:12 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/11/10 12:04:28 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,12 @@
 int	main(int ac, char **av)
 {
 	t_vector	*vector;
+	// int			nb_line;
 	int			fd;
 	
-	(void)vector;
 	if (parsing(ac, av))
 		return (1);
+	// nb_line = count_line(av[1]);
 	fd = open(av[1], O_RDONLY);
 	vector = malloc((sizeof(t_vector)));
 	if (!vector)

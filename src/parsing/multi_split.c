@@ -6,9 +6,25 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 18:11:07 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/11/07 18:25:16 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/11/10 09:08:25 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stdlib.h>
+
+void	*free_all(char **tabf)
+{
+	int	i;
+
+	i = 0;
+	while (tabf[i])
+	{
+		free(tabf[i]);
+		i++;
+	}
+	free(tabf);
+	return (NULL);
+}
 
 static int	is_sep(char const s, char c)
 {
