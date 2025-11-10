@@ -6,14 +6,14 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 10:01:53 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/11/10 12:37:22 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/11/10 14:09:58 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 #include "libft.h"
 #include "get_next_line_bonus.h"
-#include "struct.h"
+#include "minirt.h"
 #include "vector.h"
 
 int	check_id(char *s)
@@ -21,14 +21,6 @@ int	check_id(char *s)
 	(void)s;
 	return (0);
 }
-
-// int	count_line(char *file)
-// {
-// 	int	fd;
-
-// 	fd = open(file, O_RDONLY);
-	
-// }
 
 void	ft_replace(char *line)
 {
@@ -58,26 +50,42 @@ char	**new_tab(int fd)
 	return (double_tab);
 }
 
+static void	fill_obj(t_obj *obj, char **db_tab)
+{
+	if (obj->id == A)
+		fill_a(obj, db_tab);
+	if (obj->id == C)
+		fill_c(obj, db_tab);
+	if (obj->id == L)
+		fill_l(obj, db_tab);
+	if (obj->id == PL)
+		fill_pl(obj, db_tab);
+	if (obj->id == SP)
+		fill_sp(obj, db_tab);
+	if (obj->id == CY)
+		fill_cy(obj, db_tab);
+}
+
 int	fill_tab(int fd, t_vector *vector)
 {
-	(void)fd;
-	(void)vector;
-	char	**double_tab;
+	char	**db_tab;
 	t_obj	obj;
 
 	ft_init_vector(vector, sizeof(t_obj));
-	double_tab = new_tab(fd);
-	if (!double_tab)
+	db_tab = new_tab(fd);
+	obj = init_obj();
+	if (!db_tab)
 	{
 		close(fd);
-		free(double_tab);
+		free(db_tab);
 		ft_free_vector(vector);
 		return (1);
 	}
-	while (double_tab)
+	print_double_tab(db_tab);
+	while (db_tab)
 	{
-		obj.id = fill_id(double_tab[0]);
+		obj.id = fill_id(db_tab[0]);
+		fill_obj(&obj, db_tab);
 	}
-	print_double_tab(double_tab);
 	return (0);
 }

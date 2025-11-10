@@ -16,6 +16,8 @@ LST_EXEC :=	minirt.c	\
 			parsing/check_object.c	\
 			parsing/check_params.c	\
 			parsing/multi_split.c	\
+			parsing/fill_light.c	\
+			parsing/fill_obj.c	\
 			test_functions.c	\
 
 # LST_UTILS :=	kill_program.c float_utils.c hooks.c
@@ -75,7 +77,7 @@ all:
 # Step 4 : Links edition (Linking)
 $(NAME): $(OBJ) $(LIBFT) $(MLX) $(VECT)
 	@echo "✅ Compilation done.\n\n🔗 Linking $(NAME)..."
-	@$(CC) $(OBJ) $(LIBFT) $(MLX) -L/opt/X11/lib -lXext -lX11 -lm -o $@
+	@$(CC) $(OBJ) $(LIBFT) $(MLX) $(VECT) -L/opt/X11/lib -lXext -lX11 -lm -o $@
 	@echo "✅ Linking done.\n\n🎉 ./$(NAME) ready to run!\n"
 
 # Step 2 & 3 : Compilation + Assembly (Generate all .o)
