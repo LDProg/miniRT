@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 10:01:53 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/11/11 14:01:32 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/11/11 14:55:03 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "get_next_line_bonus.h"
 #include "minirt.h"
 #include "vector.h"
+#include <stdio.h>
 
 void	db_free(char **db_tab)
 {
@@ -91,7 +92,7 @@ int	fill_tab(int fd, t_vector *vector)
 		ft_free_vector(vector);
 		return (1);
 	}
-	print_double_tab(db_tab);
+	// print_double_tab(db_tab);
 	while (db_tab)
 	{
 		obj = init_obj();
@@ -99,6 +100,7 @@ int	fill_tab(int fd, t_vector *vector)
 		fill_id(&obj, db_tab[0]);
 		// printf("obj.id = %d\n", obj.id);
 		fill_obj(&obj, db_tab);
+		print_struct(&obj);
 		db_free(db_tab);
 		db_tab = new_tab(fd);
 		if (!db_tab)
@@ -106,7 +108,7 @@ int	fill_tab(int fd, t_vector *vector)
 			free(db_tab);
 			break;
 		}
-		print_double_tab(db_tab);
+		// print_double_tab(db_tab);
 	}
 	ft_free_vector(vector);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:33:55 by ludebion          #+#    #+#             */
-/*   Updated: 2025/11/11 13:56:10 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/11/11 14:53:54 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,6 @@ void	fill_cy(t_obj *obj, char **db_tab);
 /*----------TESTS----------*/
 
 void	print_double_tab(char **double_tab);
+void	print_struct(t_obj *obj);
 
 #endif
