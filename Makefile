@@ -18,6 +18,7 @@ LST_EXEC :=	minirt.c	\
 			parsing/multi_split.c	\
 			parsing/fill_light.c	\
 			parsing/fill_obj.c	\
+			parsing/ft_atof.c	\
 			test_functions.c	\
 
 # LST_UTILS :=	kill_program.c float_utils.c hooks.c

@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 10:14:46 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/11/10 14:25:03 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/11/11 13:42:46 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,15 +55,15 @@ void	fill_id(t_obj *obj, char *s)
 {
 	if (ft_strcmp(s, "A"))
 		obj->id = A;
-	if (ft_strcmp(s, "C"))
+	else if (ft_strcmp(s, "C"))
 		obj->id = C;
-	if (ft_strcmp(s, "L"))
+	else if (ft_strcmp(s, "L"))
 		obj->id = L;
-	if (ft_strcmp(s, "pl"))
+	else if (ft_strcmp(s, "pl"))
 		obj->id = PL;
-	if (ft_strcmp(s, "sp"))
+	else if (ft_strcmp(s, "sp"))
 		obj->id = SP;
-	if (ft_strcmp(s, "cy"))
+	else if (ft_strcmp(s, "cy"))
 		obj->id = CY;
 	else
 		obj->id = -1;

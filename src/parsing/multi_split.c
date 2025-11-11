@@ -6,11 +6,12 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 18:11:07 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/11/10 16:53:59 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/11/11 09:24:59 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <stdio.h>
 
 void	*free_all(char **tabf)
 {
@@ -45,9 +46,9 @@ static int	count_word(char const *s, unsigned char c1, unsigned char c2)
 	{
 		while ((s[i] && is_sep(s[i], c1)) || (s[i] && is_sep(s[i], c2)))
 			i++;
-		if ((s[i] && !is_sep(s[i], c1)) || (s[i] && !is_sep(s[i], c2)))
+		if ((s[i] && !is_sep(s[i], c1)) && (s[i] && !is_sep(s[i], c2)))
 			count++;
-		while ((s[i] && !is_sep(s[i], c1)) || (s[i] && !is_sep(s[i], c2)))
+		while ((s[i] && !is_sep(s[i], c1)) && (s[i] && !is_sep(s[i], c2)))
 			i++;
 	}
 	return (count);
@@ -68,7 +69,7 @@ static char	**my_strdup(char **tabf, char const *s, int word, char c1, char c2)
 		while ((s[i] && is_sep(s[i], c1)) || (s[i] && is_sep(s[i], c2)))
 			i++;
 		start = i;
-		while ((s[i] && !(is_sep(s[i], c1))) || (s[i] && !(is_sep(s[i], c2))))
+		while ((s[i] && !(is_sep(s[i], c1))) && (s[i] && !(is_sep(s[i], c2))))
 			i++;
 		tabf[j] = malloc(sizeof(char) * (i - start + 1));
 		if (!tabf[j])
@@ -84,17 +85,17 @@ static char	**my_strdup(char **tabf, char const *s, int word, char c1, char c2)
 char	**multi_split(char const *s, char c1, char c2)
 {
 	char	**tabf;
-	int		word;
+	int		nb_word;
 
 	if (!s)
 		return (NULL);
-	word = count_word(s, c1, c2);
-	tabf = malloc(sizeof(char *) * (word + 1));
+	nb_word = count_word(s, c1, c2);
+	tabf = malloc(sizeof(char *) * (nb_word + 1));
 	if (!tabf)
 		return (NULL);
-	tabf = my_strdup(tabf, s, word, c1, c2);
+	tabf = my_strdup(tabf, s, nb_word, c1, c2);
 	if (!tabf)
 		return (NULL);
-	tabf[word] = NULL;
+	tabf[nb_word] = NULL;
 	return (tabf);
 }

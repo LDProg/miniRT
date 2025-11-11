@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 10:01:53 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/11/10 17:04:26 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/11/11 14:01:32 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,14 @@ void	ft_replace(char *line)
 char	**new_tab(int fd)
 {
 	char	*line;
-	char	**double_tab;
+	char	**db_tab;
 
 	line = get_next_line(fd);
-	double_tab = multi_split(line, ' ', ',');
+	db_tab = multi_split(line, '\t', ',');
 	free(line);
-	if (!double_tab)
+	if (!db_tab)
 		return (NULL);
-	return (double_tab);
+	return (db_tab);
 }
 
 static void	fill_obj(t_obj *obj, char **db_tab)
@@ -84,7 +84,6 @@ int	fill_tab(int fd, t_vector *vector)
 
 	ft_init_vector(vector, sizeof(t_obj));
 	db_tab = new_tab(fd);
-	obj = init_obj();
 	if (!db_tab)
 	{
 		close(fd);
@@ -95,7 +94,10 @@ int	fill_tab(int fd, t_vector *vector)
 	print_double_tab(db_tab);
 	while (db_tab)
 	{
+		obj = init_obj();
+		// ft_putendl_fd(db_tab[0], 1);
 		fill_id(&obj, db_tab[0]);
+		// printf("obj.id = %d\n", obj.id);
 		fill_obj(&obj, db_tab);
 		db_free(db_tab);
 		db_tab = new_tab(fd);

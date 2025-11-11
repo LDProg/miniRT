@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:33:55 by ludebion          #+#    #+#             */
-/*   Updated: 2025/11/10 14:25:24 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/11/11 13:56:10 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,13 @@
 
 # define WIDTH 800
 # define HEIGHT 800
+
+# define RESET "\033[1;0m"
+# define RED "\033[1;31m"
+# define GREEN "\033[1;32m"
+# define YELLOW "\033[1;33m"
+# define BLUE "\033[1;34m"
+# define MAGENTA "\033[1;35m"
 
 # include "../libft/libft.h"
 # include "../minilibx-linux/mlx.h"
@@ -34,6 +41,7 @@ int	parsing(int ac, char **av);
 int		fill_tab(int fd, t_vector *vector);
 char	**multi_split(char const *s, char c1, char c2);
 int		ft_strcmp(char *s1, char *s2);
+float	ft_atof(const char *nptr);
 t_obj	init_obj();
 void	fill_id(t_obj *obj, char *s);
 void	fill_a(t_obj *obj, char **db_tab);
