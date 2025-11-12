@@ -6,11 +6,13 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 15:15:53 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/11/07 10:02:53 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/11/12 11:55:50 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/*Check if the filename ending by .rt*/
 
 int	check_suff(char *s)
 {
@@ -24,7 +26,9 @@ int	check_suff(char *s)
 	return (1);
 }
 
-int	parsing(int ac, char **av)
+/*Check if the args are valides*/
+
+int	check_args(int ac, char **av)
 {
 	if (ac != 2)
 	{

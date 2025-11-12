@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 10:03:58 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/11/12 10:38:16 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/11/12 11:48:43 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 #include <stdio.h>
 #include "vector.h"
 #include "minirt.h"
+
+/*Display a char**.*/
 
 void	print_double_tab(char **double_tab)
 {
@@ -28,6 +30,8 @@ void	print_double_tab(char **double_tab)
 		i++;
 	}
 }
+
+/*Display a struct t_obj.*/
 
 void	print_struct(t_obj *obj)
 {
@@ -48,6 +52,8 @@ void	print_struct(t_obj *obj)
 	printf("cy_height = %g\n", obj->cy_height);
 	printf("\n");
 }
+
+/*Display the content of vector>array.*/
 
 void	print_vector(t_vector *vector)
 {

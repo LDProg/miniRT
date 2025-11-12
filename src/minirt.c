@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:34:18 by ludebion          #+#    #+#             */
-/*   Updated: 2025/11/10 13:42:39 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/11/12 11:44:26 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int ac, char **av)
 	t_vector	*vector;
 	int			fd;
 	
-	if (parsing(ac, av))
+	if (check_args(ac, av))
 		return (1);
 	fd = open(av[1], O_RDONLY);
 	vector = malloc((sizeof(t_vector)));

@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 10:14:46 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/11/11 13:42:46 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/11/12 11:54:45 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int	ft_strcmp(char *s1, char *s2)
 	return (0);
 }
 
+/*Initializing the struct t_obj.*/
+
 t_obj	init_obj()
 {
 	t_obj	obj;
@@ -50,6 +52,8 @@ t_obj	init_obj()
 	obj.cy_height = 0;
 	return (obj);
 }
+
+/*The first data indicate the type of the object.*/
 
 void	fill_id(t_obj *obj, char *s)
 {

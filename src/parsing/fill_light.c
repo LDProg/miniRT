@@ -6,12 +6,14 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 13:49:13 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/11/11 14:12:01 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/11/12 11:48:03 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "struct.h"
 #include "minirt.h"
+
+/*Fill the struct if the object is an Ambient lighting.*/
 
 void	fill_a(t_obj *obj, char **db_tab)
 {
@@ -21,6 +23,8 @@ void	fill_a(t_obj *obj, char **db_tab)
 	obj->b = ft_atoi(db_tab[4]);
 	return ;
 }
+
+/*Fill the struct if the object is a Camera.*/
 
 void	fill_c(t_obj *obj, char **db_tab)
 {
@@ -33,6 +37,8 @@ void	fill_c(t_obj *obj, char **db_tab)
 	obj->fov = ft_atoi(db_tab[7]);
 	return ;
 }
+
+/*Fill the struct if the object is a Light.*/
 
 void	fill_l(t_obj *obj, char **db_tab)
 {

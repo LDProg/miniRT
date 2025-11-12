@@ -6,12 +6,14 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 13:49:22 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/11/11 14:16:59 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/11/12 11:47:51 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "struct.h"
 #include "minirt.h"
+
+/*Fill the struct if the object is a Sphere.*/
 
 void	fill_sp(t_obj *obj, char **db_tab)
 {
@@ -24,6 +26,8 @@ void	fill_sp(t_obj *obj, char **db_tab)
 	obj->b = ft_atoi(db_tab[7]);
 	return ;
 }
+
+/*Fill the struct if the object is a Plane.*/
 
 void	fill_pl(t_obj *obj, char **db_tab)
 {
@@ -38,6 +42,8 @@ void	fill_pl(t_obj *obj, char **db_tab)
 	obj->b = ft_atoi(db_tab[9]);
 	return ;
 }
+
+/*Fill the struct if the object is a Cylinder.*/
 
 void	fill_cy(t_obj *obj, char **db_tab)
 {

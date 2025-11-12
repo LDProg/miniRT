@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:33:55 by ludebion          #+#    #+#             */
-/*   Updated: 2025/11/12 09:43:49 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/11/12 11:44:22 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,7 @@
 
 /*----------PARSING----------*/
 
-int	parsing(int ac, char **av);
-// int	check_object(int fd);
+int	    check_args(int ac, char **av);
 int		fill_tab(int fd, t_vector *vector);
 char	**multi_split(char const *s, char c1, char c2);
 int		ft_strcmp(char *s1, char *s2);
