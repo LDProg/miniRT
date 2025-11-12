@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:33:55 by ludebion          #+#    #+#             */
-/*   Updated: 2025/11/12 11:44:22 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/11/12 15:17:16 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 # include <errno.h>
 # include <stdbool.h>
 # include <math.h>
-# include "vector.h"
+# include "vectlib.h"
 # include "struct.h"
 
 /*----------PARSING----------*/
@@ -49,7 +49,6 @@ void	fill_l(t_obj *obj, char **db_tab);
 void	fill_pl(t_obj *obj, char **db_tab);
 void	fill_sp(t_obj *obj, char **db_tab);
 void	fill_cy(t_obj *obj, char **db_tab);
-
 
 /*----------TESTS----------*/
 

@@ -6,28 +6,13 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 10:14:46 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/11/12 11:54:45 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/11/12 17:28:30 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "struct.h"
-
-int	ft_strcmp(char *s1, char *s2)
-{
-	int	i;
-
-	i = 0;
-	while (s1[i] && s2[i])
-	{
-		if (s1[i] != s2[i])
-			return (0);
-		i++;
-	}
-	if (s1[i] - s2[i] == 0)
-		return (1);
-	return (0);
-}
+#include "mylib.h"
 
 /*Initializing the struct t_obj.*/
 

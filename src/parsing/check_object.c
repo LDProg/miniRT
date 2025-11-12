@@ -6,31 +6,17 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 10:01:53 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/11/12 11:58:16 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/11/12 17:35:30 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 #include "libft.h"
+#include "mylib.h"
 #include "get_next_line_bonus.h"
 #include "minirt.h"
-#include "vector.h"
+#include "vectlib.h"
 #include <stdio.h>
-
-/*Free a char**.*/
-
-void	db_free(char **db_tab)
-{
-	int	i;
-	
-	i = 0;
-	while (db_tab[i])
-	{
-		free(db_tab[i]);
-		i++;
-	}
-	free(db_tab);
-}
 
 /*Read the line with gnl and convert it in char**.*/
 

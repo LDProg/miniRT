@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init_vector.c                                   :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/09 16:51:14 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/04/24 18:31:49 by gaducurt         ###   ########.fr       */
+/*   Created: 2025/11/12 14:40:06 by gaducurt          #+#    #+#             */
+/*   Updated: 2025/11/12 14:40:28 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vector.h"
-
-void	ft_init_vector(t_vector *vector, size_t value_size)
+int	ft_strcmp(char *s1, char *s2)
 {
-	vector->capacity = 0;
-	vector->len = 0;
-	vector->array = NULL;
-	vector->size_type = value_size;
+	int	i;
+
+	i = 0;
+	while (s1[i] && s2[i])
+	{
+		if (s1[i] != s2[i])
+			return (0);
+		i++;
+	}
+	if (s1[i] - s2[i] == 0)
+		return (1);
+	return (0);
 }

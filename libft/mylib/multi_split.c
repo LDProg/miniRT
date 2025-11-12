@@ -6,26 +6,13 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 18:11:07 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/11/11 09:24:59 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/11/12 14:45:07 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdio.h>
-
-void	*free_all(char **tabf)
-{
-	int	i;
-
-	i = 0;
-	while (tabf[i])
-	{
-		free(tabf[i]);
-		i++;
-	}
-	free(tabf);
-	return (NULL);
-}
+#include "mylib.h"
 
 static int	is_sep(char const s, char c)
 {
@@ -73,7 +60,7 @@ static char	**my_strdup(char **tabf, char const *s, int word, char c1, char c2)
 			i++;
 		tabf[j] = malloc(sizeof(char) * (i - start + 1));
 		if (!tabf[j])
-			return (free_all(tabf));
+			return (db_free(tabf));
 		while (start < i)
 			tabf[j][index++] = s[start++];
 		tabf[j][index] = '\0';

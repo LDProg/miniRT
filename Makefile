@@ -15,10 +15,8 @@ LST_EXEC :=	minirt.c	\
 			parsing/parsing.c	\
 			parsing/check_object.c	\
 			parsing/check_params.c	\
-			parsing/multi_split.c	\
 			parsing/fill_light.c	\
 			parsing/fill_obj.c	\
-			parsing/ft_atof.c	\
 			test_functions.c	\
 
 # LST_UTILS :=	kill_program.c float_utils.c hooks.c
@@ -52,8 +50,8 @@ LIBFT := $(D_LIBFT)libft.a
 D_LIBMLX := minilibx-linux/
 MLX := $(D_LIBMLX)libmlx.a
 
-D_VECT := vector/
-VECT := $(D_VECT)vector.a
+D_VECT := vectlib/
+VECT := $(D_VECT)vectlib.a
 
 #################################################################################
 ################				BASIC VARIABLES					#################
@@ -61,7 +59,7 @@ VECT := $(D_VECT)vector.a
 
 CC := cc
 CFLAGS := -Wall -Wextra -Ofast -funroll-loops -g3
-IFLAGS := -I$(D_INC) -I$(D_LIBFT) -I$(D_LIBFT)/gnl -I$(D_LIBMLX) -I$(D_VECT)
+IFLAGS := -I$(D_INC) -I$(D_LIBFT) -I$(D_LIBFT)/gnl -I$(D_LIBFT)/mylib -I$(D_LIBMLX) -I$(D_VECT)
 
 RM := rm -rf
 MAKE_CMD := @$(MAKE) --no-print-directory
@@ -71,7 +69,7 @@ MAKE_CMD := @$(MAKE) --no-print-directory
 #################################################################################
 
 # Step 1 : Full compilation
-all:
+all: .print_header
 	@echo "\n🚀 Building $(NAME) :"
 	$(MAKE_CMD) deps show_compiling_msg $(NAME)
 
@@ -96,7 +94,7 @@ $(D_OBJ):
 deps:
 	@echo "\n🏗️  Building dependencies...\n\n📚 Building libft..."
 	$(MAKE_CMD) -C $(D_LIBFT)
-	@echo "✅ Libft build done.\n\n📚 Building vector..."
+	@echo "✅ Libft build done.\n"
 	@echo "\n🏗️  Building dependencies...\n\n📚 Building vector..."
 	$(MAKE_CMD) -C $(D_VECT)
 	@echo "✅ Vector build done.\n\n📚 Building mlx..."
@@ -124,4 +122,30 @@ re: fclean all
 show_compiling_msg:
 	@echo "🛠️  Compiling $(NAME)..."
 
+.print_header:
+	$(call DISPLAY_TITLE)
+
 -include $(DEPS)
+
+########################################################################################################################
+#                                                       COLORS                                                         #
+########################################################################################################################
+
+DEF_COLOR 	= \033[0;39m
+GREEN		= \033[1;92m
+BLUE		= \033[0;94m
+
+########################################################################################################################
+#                                                       DISPLAY                                                        #
+########################################################################################################################
+
+define DISPLAY_TITLE
+						@echo "$(BLUE)  __  __ _____ _   _ _____ _____ _______ "
+						@echo " |  \/  |_   _| \ | |_   _|  __ \__   __|"
+						@echo " | \  / | | | |  \| | | | | |__| | | |   "
+						@echo " | |\/| | | | | .   | | | |  _  /  | |   "
+						@echo " | |  | |_| |_| |\  |_| |_| | \ \  | |   "
+						@echo " |_|  |_|_____|_| \_|_____|_|  \_\ |_|   "
+						@echo "$(GREEN)                   by ludebion & gaducurt$(DEF_COLOR)"
+						@printf "\n"
+endef

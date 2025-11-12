@@ -6,11 +6,11 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 15:37:36 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/05/06 15:23:27 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/11/12 13:30:26 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vector.h"
+#include "vectlib.h"
 
 static void	*ft_memcpy(void *dest, const void *src, size_t n)
 {

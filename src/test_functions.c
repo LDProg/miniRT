@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 10:03:58 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/11/12 11:48:43 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/11/12 13:29:37 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "libft.h"
 #include "struct.h"
 #include <stdio.h>
-#include "vector.h"
+#include "vectlib.h"
 #include "minirt.h"
 
 /*Display a char**.*/

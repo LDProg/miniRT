@@ -6,12 +6,12 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:34:18 by ludebion          #+#    #+#             */
-/*   Updated: 2025/11/12 11:44:26 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/11/12 13:29:15 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-#include "vector.h"
+#include "vectlib.h"
 #include <fcntl.h>
 
 int	main(int ac, char **av)
