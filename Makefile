@@ -10,14 +10,15 @@ NAME :=	miniRT
 #################################################################################
 
 #Files
-LST_EXEC :=	minirt.c	\
-			manage_window.c	\
-			parsing/parsing.c	\
+LST_EXEC :=	minirt.c				\
+			manage_window.c			\
+			parsing/parsing.c		\
 			parsing/check_object.c	\
 			parsing/check_params.c	\
 			parsing/fill_light.c	\
-			parsing/fill_obj.c	\
-			test_functions.c	\
+			parsing/fill_obj.c		\
+			parsing/fill_color.c	\
+			test_functions.c		\
 
 # LST_UTILS :=	kill_program.c float_utils.c hooks.c
 

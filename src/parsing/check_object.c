@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 10:01:53 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/11/12 17:35:30 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/11/21 13:57:29 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ int	fill_tab(int fd, t_vector *vector)
 		}
 		ft_vector_addone(vector, &obj); //Need to protect if the adding fail.
 	}
+	close(fd);
 	ft_vector_addone(vector, &obj); //Need to protect if the adding fail.
 	// print_vector(vector);
 	ft_free_vector(vector);

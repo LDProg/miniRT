@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 10:14:46 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/11/12 17:28:30 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/11/21 13:50:13 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,17 @@ t_obj	init_obj()
 	
 	obj.id = 0;
 	obj.fov = 0;
-	obj.r = 0;
-	obj.g = 0;
-	obj.b = 0;
+	obj.color = 0;
+	// obj.r = 0;
+	// obj.g = 0;
+	// obj.b = 0;
 	obj.lt_ratio = 0;
-	obj.x = 0;
-	obj.y = 0;
-	obj.z = 0;
-	obj.ov_x = 0;
-	obj.ov_y = 0;
-	obj.ov_z = 0;
+	obj.pos.x = 0;
+	obj.pos.y = 0;
+	obj.pos.z = 0;
+	obj.ov_pos.x = 0;
+	obj.ov_pos.y = 0;
+	obj.ov_pos.z = 0;
 	obj.sp_diam = 0;
 	obj.cy_diam = 0;
 	obj.cy_height = 0;

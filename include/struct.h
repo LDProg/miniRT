@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 10:20:18 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/11/12 10:34:42 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/11/19 17:01:27 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,24 +23,36 @@ enum	e_type
 	CY,
 };
 
-typedef struct	s_obj
+typedef struct	s_pos
 {
-	int		id;
-	int		fov;
-	int		r;
-	int		g;
-	int		b;
-	float	lt_ratio;
 	float	x;
 	float	y;
 	float	z;
-	float	ov_x;
-	float	ov_y;
-	float	ov_z;
+	int		w;
+}				t_pos;
+
+typedef struct	s_obj
+{
+	t_pos	pos;
+	t_pos	ov_pos;
+	int		id;
+	int		fov;
+	int		color;
+	// int		r;
+	// int		g;
+	// int		b;
+	float	lt_ratio;
+	// float	x;
+	// float	y;
+	// float	z;
+	// float	ov_x;
+	// float	ov_y;
+	// float	ov_z;
 	float	sp_diam;
 	float	cy_diam;
 	float	cy_height;
 }			t_obj;
+
 
 #endif
 
