@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gaducurt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tieg <tieg@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 08:43:52 by gaducurt          #+#    #+#             */
-/*   Updated: 2024/11/22 08:43:55 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/11/22 14:10:53 by tieg             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,13 @@ char	*ft_itoa(int n)
 {
 	char		*dest;
 	size_t		count;
-	int			nb;
+	// int			nb;
 	size_t		i;
 
 	if (n == -2147483648)
 		return (ft_strdup("-2147483648"));
 	count = ft_count(n);
-	nb = n;
+	// nb = n;
 	i = 0;
 	if (n < 0 || count == 0)
 		count++;
