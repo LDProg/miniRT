@@ -6,6 +6,7 @@ LST_EXEC :=	minirt.c
 #Directories
 D_SRC :=	src/
 D_INC :=	include/
+D_LIB :=	libs/
 D_OBJ :=	.obj/
 
 #Files full path
@@ -16,10 +17,10 @@ OBJ :=	$(subst $(D_SRC), $(D_OBJ), $(SRC:.c=.o))
 DEPSFILES :=	$(subst $(D_SRC), $(D_OBJ), $(SRC:.o=.d))
 
 #Libraries
-D_LIBFT :=	libft/
+D_LIBFT :=	$(D_LIB)libft/
 LIBFT := $(D_LIBFT)libft.a
 
-D_LIBMLX := minilibx-linux/
+D_LIBMLX := $(D_LIB)minilibx-linux/
 MLX := $(D_LIBMLX)libmlx.a
 
 #Variables
