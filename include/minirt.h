@@ -6,11 +6,13 @@
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:33:55 by ludebion          #+#    #+#             */
-/*   Updated: 2025/11/27 03:33:26 by ludebion         ###   ########.fr       */
+/*   Updated: 2025/11/27 10:39:19 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_H
 # define MINIRT_H
+
+# define EPSILON 0.0001
 
 #endif

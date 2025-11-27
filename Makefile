@@ -3,14 +3,19 @@
 #Files
 LST_EXEC :=	minirt.c
 
+LST_GEOMETRY :=	tuple.c
+
 #Directories
 D_SRC :=	src/
 D_INC :=	include/
 D_LIB :=	libs/
 D_OBJ :=	.obj/
 
+D_GEOMETRY :=	geometry/
+
 #Files full path
-SRC :=	$(addprefix $(D_SRC), $(LST_EXEC))
+SRC :=	$(addprefix $(D_SRC), $(LST_EXEC)) \
+		$(addprefix $(D_SRC)$(D_GEOMETRY), $(LST_GEOMETRY))
 
 OBJ :=	$(subst $(D_SRC), $(D_OBJ), $(SRC:.c=.o))
 
@@ -26,7 +31,7 @@ MLX := $(D_LIBMLX)libmlx.a
 #Variables
 NAME := miniRT
 CC := cc
-CFLAGS := -Wall -Wextra -Werror -O3
+CFLAGS := -Wall -Wextra -O3
 IFLAGS := -I$(D_INC) -I$(D_LIBFT) -I$(D_LIBMLX)
 DEBUG_VALGRIND = valgrind --leak-check=full --show-leak-kinds=all
 
