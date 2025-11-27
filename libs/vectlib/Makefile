@@ -17,7 +17,7 @@ OBJ = $(patsubst %.c, $(OBJDIR)/%.o, $(SRC))
 
 all: .print_header $(NAME)
 
-$(NAME): $(OBJ) $(INC) $(LIB)
+$(NAME): $(OBJ) $(LIB)
 	ar rcs $(NAME) $(LIB) $?
 
 $(OBJDIR)/%.o: %.c | $(OBJDIR)

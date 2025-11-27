@@ -1,123 +1,93 @@
-#################################################################################
-################					MAKEFILE					#################
-#################################################################################
-
-.PHONY:	all clean fclean re deps bonus show_compiling_msg
-NAME :=	miniRT
-
-#################################################################################
-################					FILE TREE					#################
-#################################################################################
+.PHONY:	all clean fclean re deps debug show_compiling_msg
 
 #Files
-LST_EXEC :=	minirt.c				\
-			manage_window.c			\
-			parsing/parsing.c		\
-			parsing/check_object.c	\
-			parsing/check_params.c	\
-			parsing/fill_light.c	\
-			parsing/fill_obj.c		\
-			parsing/fill_color.c	\
-			test_functions.c		\
+LST_EXEC :=	minirt.c
 
-# LST_UTILS :=	kill_program.c float_utils.c hooks.c
+#Files
+LST_EXEC :=	minirt.c manage_window.c test_functions.c
 
-LST_INC :=	minirt.h	\
-			struct.h	\
+LST_PARSING :=	check_object.c check_params.c fill_color.c fill_light.c fill_obj.c parsing.c
 
 #Directories
 D_SRC :=	src/
 D_INC :=	include/
-
-# D_RENDERING :=	rendering/
-# D_UTILS :=	utils/
-
+D_LIB :=	libs/
 D_OBJ :=	.obj/
+
+D_PARSING := parsing/
 
 #Files full path
 SRC :=	$(addprefix $(D_SRC), $(LST_EXEC)) \
-		# $(addprefix $(D_SRC)$(D_RENDERING), $(LST_RENDERING)) \
-		# $(addprefix $(D_SRC)$(D_UTILS), $(LST_UTILS))
-
-INC :=	$(addprefix $(D_INC), $(LST_INC))
+		$(addprefix $(D_SRC)$(D_PARSING), $(LST_PARSING))
 
 OBJ :=	$(subst $(D_SRC), $(D_OBJ), $(SRC:.c=.o))
-DEPS :=	$(OBJ:.o=.d)
+
+DEPSFILES :=	$(subst $(D_SRC), $(D_OBJ), $(SRC:.o=.d))
 
 #Libraries
-D_LIBFT :=	libft/
+D_LIBFT :=	$(D_LIB)libft/
 LIBFT := $(D_LIBFT)libft.a
 
-D_LIBMLX := minilibx-linux/
+D_LIBMLX := $(D_LIB)minilibx-linux/
 MLX := $(D_LIBMLX)libmlx.a
 
-D_VECT := vectlib/
+D_VECT := $(D_LIB)vectlib/
 VECT := $(D_VECT)vectlib.a
 
-#################################################################################
-################				BASIC VARIABLES					#################
-#################################################################################
-
+#Variables
+NAME := miniRT
 CC := cc
-CFLAGS := -Wall -Wextra -Ofast -funroll-loops -g3
-IFLAGS := -I$(D_INC) -I$(D_LIBFT) -I$(D_LIBFT)/gnl -I$(D_LIBFT)/mylib -I$(D_LIBMLX) -I$(D_VECT)
+CFLAGS := -Wall -Wextra -O3
+IFLAGS := -I$(D_INC) -I$(D_LIBFT) -I$(D_LIBFT)/gnl -I$(D_LIBFT)/mylib -I$(D_VECT) -I$(D_LIBMLX)
+DEBUG_VALGRIND = valgrind --leak-check=full --show-leak-kinds=all
 
 RM := rm -rf
 MAKE_CMD := @$(MAKE) --no-print-directory
 
-#################################################################################
-################					RULES						#################
-#################################################################################
-
-# Step 1 : Full compilation
+#Compilation
 all: .print_header
 	@echo "\n🚀 Building $(NAME) :"
 	$(MAKE_CMD) deps show_compiling_msg $(NAME)
 
-# Step 4 : Links edition (Linking)
-$(NAME): $(OBJ) $(LIBFT) $(MLX) $(VECT)
+$(NAME): $(OBJ) $(LIBFT) $(VECT) $(MLX)
 	@echo "✅ Compilation done.\n\n🔗 Linking $(NAME)..."
-	@$(CC) $(OBJ) $(LIBFT) $(MLX) $(VECT) -L/opt/X11/lib -lXext -lX11 -lm -o $@
+	@$(CC) $(OBJ) $(LIBFT) $(VECT) $(MLX) -L/opt/X11/lib -lXext -lX11 -lm -o $@
 	@echo "✅ Linking done.\n\n🎉 ./$(NAME) ready to run!\n"
 
-# Step 2 & 3 : Compilation + Assembly (Generate all .o)
-$(D_OBJ)%.o: $(D_SRC)%.c $(INC) Makefile | $(D_OBJ)
-	@$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
-
-# $(D_OBJ):
-# 	@mkdir -p $@/$(D_RENDERING) $@/$(D_UTILS)
+$(D_OBJ)%.o: $(D_SRC)%.c Makefile | $(D_OBJ)
+	@mkdir -p $(dir $@)
+	@$(CC) $(CFLAGS) $(IFLAGS) -MMD -MP -c $< -o $@
 
 $(D_OBJ):
-	@mkdir -p $(D_OBJ)
-	@mkdir -p $(D_OBJ)/parsing
+	@mkdir -p $@
 
-# Step 1.5 : Compilation of libft and mlx
 deps:
 	@echo "\n🏗️  Building dependencies...\n\n📚 Building libft..."
-	$(MAKE_CMD) -C $(D_LIBFT)
-	@echo "✅ Libft build done.\n"
-	@echo "\n🏗️  Building dependencies...\n\n📚 Building vector..."
-	$(MAKE_CMD) -C $(D_VECT)
-	@echo "✅ Vector build done.\n\n📚 Building mlx..."
-	$(MAKE_CMD) -C $(D_LIBMLX)
+	$(MAKE_CMD) -C $(D_LIBFT) > /dev/null 2>&1
+	@echo "✅ Libft build done.\n\n📚 Building vector lib..."
+	$(MAKE_CMD) -C $(D_VECT) > /dev/null 2>&1
+	@echo "✅ Vector lib build done.\n\n📚 Building mlx..."
+	@cp configure_mlx_no_tests $(D_LIBMLX)configure
+	$(MAKE_CMD) -C $(D_LIBMLX) > /dev/null 2>&1
+	@git -C $(D_LIBMLX) checkout configure 2>/dev/null || true
 	@echo "✅ MLX build done.\n\n✅ Dependencies build done.\n"
 
-# Step 5 : Cleaning object files
+debug: all
+	$(DEBUG_VALGRIND) ./$(NAME) $(ARGS)
+
 clean:
 	@echo "\n🧹 Cleaning $(NAME) object files..."
 	@$(RM) $(D_OBJ)
 	@echo "✅ Object files removed.\n"
 
-# Step 6 : Full clean (libft + mlx + executable)
 fclean: clean
-	@echo "🧹 Cleaning libft, minilibx, and $(NAME)..."
+	@echo "🧹 Full clean of $(NAME)..."
 	$(MAKE_CMD) fclean -C $(D_LIBFT) > /dev/null 2>&1
 	$(MAKE_CMD) fclean -C $(D_VECT) > /dev/null 2>&1
 	$(MAKE_CMD) clean -C $(D_LIBMLX) > /dev/null 2>&1
 	@$(RM) $(NAME)
 	@echo "✨ All clean!\n"
 
-# Step 7 : Full recompilation
 re: fclean all
 
 show_compiling_msg:
@@ -125,8 +95,6 @@ show_compiling_msg:
 
 .print_header:
 	$(call DISPLAY_TITLE)
-
--include $(DEPS)
 
 ########################################################################################################################
 #                                                       COLORS                                                         #
