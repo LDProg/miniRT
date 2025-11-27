@@ -1,9 +1,6 @@
 .PHONY:	all clean fclean re deps debug show_compiling_msg
 
 #Files
-LST_EXEC :=	minirt.c
-
-#Files
 LST_EXEC :=	minirt.c manage_window.c test_functions.c
 
 LST_PARSING :=	check_object.c check_params.c fill_color.c fill_light.c fill_obj.c parsing.c

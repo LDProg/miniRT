@@ -29,7 +29,7 @@
 *.dylib
 
 # Executables
-.miniRT
+miniRT
 *.exe
 *.out
 *.app
@@ -38,6 +38,7 @@
 *.hex
 
 # Debug files
+Dockerfile.docker_mlx_env
 *.dSYM/
 *.su
 *.idb

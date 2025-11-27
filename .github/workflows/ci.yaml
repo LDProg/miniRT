@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  prod-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clone
+        uses: actions/checkout@v5
+        with:
+          submodules: recursive
+          token: ${{ secrets.GH_PAT }}
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential libglfw3-dev libglfw3 xorg-dev libx11-dev libbsd-dev valgrind
+
+      - name: Make
+        run: make
+
+      - name: Memory leaks
+        run: |
+          valgrind --leak-check=full ./miniRT scenes/simple.rt 2>&1 | tee valgrind.txt
+          ! grep -q "definitely lost" valgrind.txt
