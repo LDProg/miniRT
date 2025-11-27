@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   fill_light.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 13:49:13 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/11/21 13:59:50 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/11/27 07:12:15 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "struct.h"
-#include "minirt.h"
+#include "libft.h"
+#include "mylib.h"
+#include "parsing/parsing.h"
 
 /*Fill the struct if the object is an Ambient lighting.*/
 

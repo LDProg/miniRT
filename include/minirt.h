@@ -6,7 +6,7 @@
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:33:55 by ludebion          #+#    #+#             */
-/*   Updated: 2025/11/27 06:41:32 by ludebion         ###   ########.fr       */
+/*   Updated: 2025/11/27 07:07:51 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,39 +22,5 @@
 # define YELLOW "\033[1;33m"
 # define BLUE "\033[1;34m"
 # define MAGENTA "\033[1;35m"
-
-# include "../libft/libft.h"
-# include "../minilibx-linux/mlx.h"
-# include <stdlib.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <errno.h>
-# include <stdbool.h>
-# include <math.h>
-# include "vectlib.h"
-# include "struct.h"
-
-/*----------PARSING----------*/
-
-int	    check_args(int ac, char **av);
-int		fill_tab(int fd, t_vector *vector);
-char	**multi_split(char const *s, char c1, char c2);
-int		ft_strcmp(char *s1, char *s2);
-float	ft_atof(const char *nptr);
-t_obj	init_obj();
-void	fill_id(t_obj *obj, char *s);
-void	fill_a(t_obj *obj, char **db_tab);
-void	fill_c(t_obj *obj, char **db_tab);
-void	fill_l(t_obj *obj, char **db_tab);
-void	fill_pl(t_obj *obj, char **db_tab);
-void	fill_sp(t_obj *obj, char **db_tab);
-void	fill_cy(t_obj *obj, char **db_tab);
-int	    fill_color(char *r, char *g, char *b);
-
-/*----------TESTS----------*/
-
-void	print_double_tab(char **double_tab);
-void	print_struct(t_obj *obj);
-void	print_vector(t_vector *vector);
 
 #endif

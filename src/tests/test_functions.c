@@ -3,19 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   test_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 10:03:58 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/11/21 13:51:10 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/11/27 07:16:35 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include "libft.h"
-#include "struct.h"
-#include <stdio.h>
+#include "structures.h"
 #include "vectlib.h"
-#include "minirt.h"
+#include <stdio.h>
 
 /*Display a char**.*/
 
@@ -24,7 +22,7 @@ void	print_double_tab(char **double_tab)
 	int	i;
 
 	i = 0;
-    while (double_tab[i])
+	while (double_tab[i])
 	{
 		ft_putendl_fd(double_tab[i], 1);
 		i++;

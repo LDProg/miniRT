@@ -3,20 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   check_object.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 10:01:53 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/11/21 13:57:29 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/11/27 07:11:14 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "get_next_line_bonus.h"
 #include "libft.h"
 #include "mylib.h"
-#include "get_next_line_bonus.h"
-#include "minirt.h"
-#include "vectlib.h"
-#include <stdio.h>
+#include "parsing/parsing.h"
 
 /*Read the line with gnl and convert it in char**.*/
 
@@ -78,12 +75,12 @@ int	fill_tab(int fd, t_vector *vector)
 		if (!db_tab)
 		{
 			free(db_tab);
-			break;
+			break ;
 		}
-		ft_vector_addone(vector, &obj); //Need to protect if the adding fail.
+		ft_vector_addone(vector, &obj); // Need to protect if the adding fail.
 	}
 	close(fd);
-	ft_vector_addone(vector, &obj); //Need to protect if the adding fail.
+	ft_vector_addone(vector, &obj); // Need to protect if the adding fail.
 	// print_vector(vector);
 	ft_free_vector(vector);
 	return (0);

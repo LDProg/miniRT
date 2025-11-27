@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   fill_obj.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 13:49:22 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/11/21 14:00:09 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/11/27 07:13:16 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "struct.h"
-#include "minirt.h"
+#include "mylib.h"
+#include "parsing/parsing.h"
+#include "structures.h"
 
 /*Fill the struct if the object is a Sphere.*/
 

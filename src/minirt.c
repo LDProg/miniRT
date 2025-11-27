@@ -6,13 +6,15 @@
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:34:18 by ludebion          #+#    #+#             */
-/*   Updated: 2025/11/27 06:40:41 by ludebion         ###   ########.fr       */
+/*   Updated: 2025/11/27 07:15:40 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "libft.h"
+#include "parsing/parsing.h"
 #include "vectlib.h"
 #include <fcntl.h>
+#include <stdio.h>
 
 int	main(int ac, char **av)
 {

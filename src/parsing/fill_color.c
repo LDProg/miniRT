@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   fill_color.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 11:27:41 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/11/21 13:58:00 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/11/27 07:14:18 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "minirt.h"
-#include <stdio.h>
 
 int	fill_color(char *r, char *g, char *b)
 {

@@ -3,23 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   check_params.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 10:14:46 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/11/21 13:50:13 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/11/27 07:13:57 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "struct.h"
 #include "mylib.h"
+#include "structures.h"
 
 /*Initializing the struct t_obj.*/
 
-t_obj	init_obj()
+t_obj	init_obj(void)
 {
 	t_obj	obj;
-	
+
 	obj.id = 0;
 	obj.fov = 0;
 	obj.color = 0;

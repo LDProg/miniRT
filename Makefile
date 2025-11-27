@@ -1,7 +1,9 @@
 .PHONY:	all clean fclean re deps debug show_compiling_msg
 
 #Files
-LST_EXEC :=	minirt.c manage_window.c test_functions.c
+LST_EXEC :=	minirt.c manage_window.c
+
+LST_TEST :=	test_functions.c
 
 LST_PARSING :=	check_object.c check_params.c fill_color.c fill_light.c fill_obj.c parsing.c
 
@@ -12,9 +14,11 @@ D_LIB :=	libs/
 D_OBJ :=	.obj/
 
 D_PARSING := parsing/
+D_TEST :=	tests/
 
 #Files full path
 SRC :=	$(addprefix $(D_SRC), $(LST_EXEC)) \
+		$(addprefix $(D_SRC)$(D_TEST), $(LST_TEST)) \
 		$(addprefix $(D_SRC)$(D_PARSING), $(LST_PARSING))
 
 OBJ :=	$(subst $(D_SRC), $(D_OBJ), $(SRC:.c=.o))
@@ -42,6 +46,8 @@ RM := rm -rf
 MAKE_CMD := @$(MAKE) --no-print-directory
 
 #Compilation
+-include $(DEPSFILES)
+
 all: .print_header
 	@echo "\n🚀 Building $(NAME) :"
 	$(MAKE_CMD) deps show_compiling_msg $(NAME)
