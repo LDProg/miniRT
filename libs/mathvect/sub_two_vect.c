@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sub_points.c                                       :+:      :+:    :+:   */
+/*   sub_tow_vect.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/28 17:22:32 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/11/28 17:23:02 by gaducurt         ###   ########.fr       */
+/*   Created: 2025/11/28 17:38:03 by gaducurt          #+#    #+#             */
+/*   Updated: 2025/11/28 17:40:38 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mathvect.h"
 
-t_tuple	sub_points(t_tuple p1, t_tuple p2)
+t_tuple	sub_two_vect(t_tuple v1, t_tuple v2)
 {
 	t_tuple	res;
-
+	
 	init_tuple(&res);
-	if (p1.w != 1 || p2.w != 1)
+	if (v1.w != 0 || v2.w != 0)
 		return (res);
-	res.x = p1.x - p2.x;
-	res.y = p1.y - p2.y;
-	res.z = p1.z - p2.z;
-	res.w = p1.w - p2.w;
+	res.x = v1.x - v2.x;
+	res.y = v1.y - v2.y;
+	res.z = v1.z - v2.z;
+	res.w = v1.w - v2.w;
 	return (res);
 }
