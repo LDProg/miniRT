@@ -6,19 +6,24 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 15:56:28 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/11/28 16:55:29 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/11/28 17:23:07 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mathvect.h"
 
-t_tuple	add_vect_point(t_tuple vector, t_tuple point)
+t_tuple	add_vect_point(t_tuple v, t_tuple p)
 {
 	t_tuple	res;
-	
-	res.x = vector.x + point.x;
-	res.y = vector.y + point.y;
-	res.z = vector.z + point.z;
-	res.w = vector.w + point.w;
+
+	init_tuple(&res);
+	if (v.w != 0)
+		return (res);
+	if (p.w != 1)
+		return (res);
+	res.x = v.x + p.x;
+	res.y = v.y + p.y;
+	res.z = v.z + p.z;
+	res.w = v.w + p.w;
 	return (res);
 }

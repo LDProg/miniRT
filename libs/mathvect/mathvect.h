@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 15:51:41 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/11/28 16:55:55 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/11/28 17:22:20 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,7 @@ typedef struct s_tuple
 }	t_tuple;
 
 t_tuple	add_vect_point(t_tuple vector, t_tuple point);
+void	init_tuple(t_tuple *t);
+
 
 #endif
