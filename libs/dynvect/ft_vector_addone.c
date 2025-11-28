@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_realloc_vector.c                                :+:      :+:    :+:   */
+/*   ft_vector_addone.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/11 15:37:34 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/11/12 13:30:17 by gaducurt         ###   ########.fr       */
+/*   Created: 2025/04/11 15:37:36 by gaducurt          #+#    #+#             */
+/*   Updated: 2025/11/28 15:49:21 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vectlib.h"
+#include "dynvect.h"
 
 static void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
@@ -31,23 +31,13 @@ static void	*ft_memcpy(void *dest, const void *src, size_t n)
 	return (dest);
 }
 
-int	ft_realloc_vector(t_vector *vector)
+int	ft_vector_addone(t_vector *vector, void *element)
 {
-	void	*new_tab;
-
-	if (vector->capacity == 0)
-		vector->capacity = VECT_SIZE;
-	else
-		vector->capacity *= 2;
-	new_tab = malloc(vector->capacity * vector->size_type);
-	if (!new_tab)
-	{
-		ft_free_vector(vector);
-		return (0);
-	}
-	ft_memcpy(new_tab, vector->array, vector->size_type * vector->len);
-	if (vector->array)
-		free(vector->array);
-	vector->array = new_tab;
+	if (vector->len == vector->capacity)
+		if (!ft_realloc_vector(vector))
+			return (0);
+	ft_memcpy((unsigned char *)vector->array + vector->len
+		* vector->size_type, element, vector->size_type);
+	vector->len++;
 	return (1);
 }

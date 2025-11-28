@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 10:20:18 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/11/27 07:15:51 by ludebion         ###   ########.fr       */
+/*   Updated: 2025/11/28 16:52:44 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTURES_H
 # define STRUCTURES_H
+
+# include "mathvect.h"
 
 enum	e_type
 {
@@ -23,31 +25,22 @@ enum	e_type
 	CY,
 };
 
-typedef struct s_pos
-{
-	float	x;
-	float	y;
-	float	z;
-	int		w;
-}	t_pos;
+// typedef struct s_tuple
+// {
+// 	float	x;
+// 	float	y;
+// 	float	z;
+// 	int		w;
+// }	t_tuple;
 
 typedef struct s_obj
 {
-	t_pos	pos;
-	t_pos	ov_pos;
+	t_tuple	pos;
+	t_tuple	ov_pos;
 	int		id;
 	int		fov;
 	int		color;
-	// int		r;
-	// int		g;
-	// int		b;
 	float	lt_ratio;
-	// float	x;
-	// float	y;
-	// float	z;
-	// float	ov_x;
-	// float	ov_y;
-	// float	ov_z;
 	float	sp_diam;
 	float	cy_diam;
 	float	cy_height;

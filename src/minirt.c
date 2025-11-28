@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:34:18 by ludebion          #+#    #+#             */
-/*   Updated: 2025/11/27 07:15:40 by ludebion         ###   ########.fr       */
+/*   Updated: 2025/11/28 15:47:10 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "parsing/parsing.h"
-#include "vectlib.h"
+#include "dynvect.h"
 #include <fcntl.h>
 #include <stdio.h>
 

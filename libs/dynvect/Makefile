@@ -1,10 +1,10 @@
-NAME = vectlib.a
+NAME = dynvect.a
 
 CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
 
-INC =	vectlib.h			\
+INC =	dynvect.h			\
 
 OBJDIR =	.obj
 

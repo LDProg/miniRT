@@ -1,21 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init_vector.c                                   :+:      :+:    :+:   */
+/*   dynvect.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/09 16:51:14 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/11/12 13:30:09 by gaducurt         ###   ########.fr       */
+/*   Created: 2025/03/21 18:30:01 by gaducurt          #+#    #+#             */
+/*   Updated: 2025/11/28 15:46:06 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vectlib.h"
+#ifndef DYNVECT_H
+# define DYNVECT_H
 
-void	ft_init_vector(t_vector *vector, size_t value_size)
+# include <stdlib.h>
+
+# define VECT_SIZE 4
+
+typedef struct s_vector
 {
-	vector->capacity = 0;
-	vector->len = 0;
-	vector->array = NULL;
-	vector->size_type = value_size;
-}
+	void	**array;
+	size_t	len;
+	size_t	size_type;
+	size_t	capacity;
+}			t_vector;
+
+void	ft_init_vector(t_vector *vector, size_t value_size);
+int		ft_realloc_vector(t_vector *vector);
+int		ft_vector_addone(t_vector *vector, void *element);
+void	ft_free_vector(t_vector *vector);
+
+#endif

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   test_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 10:03:58 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/11/27 07:16:35 by ludebion         ###   ########.fr       */
+/*   Updated: 2025/11/28 15:47:00 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "structures.h"
-#include "vectlib.h"
+#include "dynvect.h"
 #include <stdio.h>
 
 /*Display a char**.*/

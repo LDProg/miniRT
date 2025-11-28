@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 06:44:37 by ludebion          #+#    #+#             */
-/*   Updated: 2025/11/27 07:09:08 by ludebion         ###   ########.fr       */
+/*   Updated: 2025/11/28 15:50:06 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSING_H
 # define PARSING_H
 
-# include "vectlib.h"
+# include "dynvect.h"
 # include "structures.h"
 
 int		check_args(int ac, char **av);

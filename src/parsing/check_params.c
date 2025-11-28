@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_params.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 10:14:46 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/11/27 07:13:57 by ludebion         ###   ########.fr       */
+/*   Updated: 2025/11/28 15:49:35 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,6 @@ t_obj	init_obj(void)
 	obj.id = 0;
 	obj.fov = 0;
 	obj.color = 0;
-	// obj.r = 0;
-	// obj.g = 0;
-	// obj.b = 0;
 	obj.lt_ratio = 0;
 	obj.pos.x = 0;
 	obj.pos.y = 0;

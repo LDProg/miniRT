@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vectlib.h                                          :+:      :+:    :+:   */
+/*   mathvect.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/21 18:30:01 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/11/12 13:27:15 by gaducurt         ###   ########.fr       */
+/*   Created: 2025/11/28 15:51:41 by gaducurt          #+#    #+#             */
+/*   Updated: 2025/11/28 16:55:55 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VECTLIB_H
-# define VECTLIB_H
+#ifndef MATHVECT_H
+# define MATHVECT_H
 
-# include <stdlib.h>
-
-# define VECT_SIZE 4
-
-typedef struct s_vector
+typedef struct s_tuple
 {
-	void	**array;
-	size_t	len;
-	size_t	size_type;
-	size_t	capacity;
-}			t_vector;
+	float	x;
+	float	y;
+	float	z;
+	int		w;
+}	t_tuple;
 
-void	ft_init_vector(t_vector *vector, size_t value_size);
-int		ft_realloc_vector(t_vector *vector);
-int		ft_vector_addone(t_vector *vector, void *element);
-void	ft_free_vector(t_vector *vector);
+t_tuple	add_vect_point(t_tuple vector, t_tuple point);
 
 #endif
