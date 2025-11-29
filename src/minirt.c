@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:34:18 by ludebion          #+#    #+#             */
-/*   Updated: 2025/11/29 15:26:16 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/11/29 15:37:46 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,34 @@
 #include "mathvect.h"
 #include "minirt.h"
 
-t_tuple	fill_vect_test()
+t_tuple	fill_vect_test(float x, float y, float z, float w)
 {
 	t_tuple res;
 
-	res.x = 1.0;
-	res.y = 2.0;
-	res.z = 3.0;
-	res.w = 0;
+	res.x = x;
+	res.y = y;
+	res.z = z;
+	res.w = w;
 	return (res);
+}
+
+void	test_vect()
+{
+	t_tuple		v1;
+	t_tuple		v2;
+	
+	v1 = fill_vect_test(1, 2, 3, 0);
+	v2 = fill_vect_test(2, 3, 4, 0);
+	printf(BLUE"x1 = %g\ny1 = %g\nz1 = %g\nw1 = %d\n\n"RESET, v1.x, v1.y, v1.z, v1.w);
+	printf(BLUE"x2 = %g\ny2 = %g\nz2 = %g\nw2 = %d\n\n"RESET, v2.x, v2.y, v2.z, v2.w);
+	// v = scalar_div(v, -2);
+	printf(GREEN"dot product = %g\n"RESET, dot_product(v1, v2));
+	// printf(GREEN"x = %g\ny = %g\nz = %g\nw = %d\n\n"RESET, v.x, v.y, v.z, v.w);
 }
 
 int	main(int ac, char **av)
 {
 	t_vector	*vector;
-	t_tuple		v;
 	int			fd;
 
 	if (check_args(ac, av))
@@ -49,11 +62,7 @@ int	main(int ac, char **av)
 		ft_putstr_fd("The file is not valid", 2);
 		return (1);
 	}
-	v = fill_vect_test();
-	printf(BLUE"x = %g\ny = %g\nz = %g\nw = %d\n\n"RESET, v.x, v.y, v.z, v.w);
-	// v = scalar_div(v, -2);
-	v = normalize_vect(v);
+	test_vect();
 	printf("Hello RT!\n");
-	printf(GREEN"x = %g\ny = %g\nz = %g\nw = %d\n\n"RESET, v.x, v.y, v.z, v.w);
 	return (EXIT_SUCCESS);
 }
