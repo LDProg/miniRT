@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:34:18 by ludebion          #+#    #+#             */
-/*   Updated: 2025/11/29 13:51:13 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/11/29 14:22:11 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ t_tuple	fill_vect_test()
 {
 	t_tuple res;
 
-	res.x = 1.0;
-	res.y = -3.0;
-	res.z = 8.0;
+	res.x = -1.0;
+	res.y = -2.0;
+	res.z = -3.0;
 	res.w = 0;
 	return (res);
 }
@@ -51,8 +51,9 @@ int	main(int ac, char **av)
 	}
 	v = fill_vect_test();
 	printf(BLUE"x = %g\ny = %g\nz = %g\nw = %d\n\n"RESET, v.x, v.y, v.z, v.w);
-	v = scalar_div(v, -2);
-	printf(GREEN"x = %g\ny = %g\nz = %g\nw = %d\n\n"RESET, v.x, v.y, v.z, v.w);
+	// v = scalar_div(v, -2);
+	// printf(GREEN"x = %g\ny = %g\nz = %g\nw = %d\n\n"RESET, v.x, v.y, v.z, v.w);
+	// printf(GREEN"res = %g\n"RESET, vect_mag(v));
 	printf("Hello RT!\n");
 	return (EXIT_SUCCESS);
 }
