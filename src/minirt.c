@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:34:18 by ludebion          #+#    #+#             */
-/*   Updated: 2025/11/29 12:27:52 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/11/29 13:51:13 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ int	main(int ac, char **av)
 		return (1);
 	}
 	v = fill_vect_test();
-	v = inv_vect(v);
+	printf(BLUE"x = %g\ny = %g\nz = %g\nw = %d\n\n"RESET, v.x, v.y, v.z, v.w);
+	v = scalar_div(v, -2);
 	printf(GREEN"x = %g\ny = %g\nz = %g\nw = %d\n\n"RESET, v.x, v.y, v.z, v.w);
 	printf("Hello RT!\n");
 	return (EXIT_SUCCESS);
