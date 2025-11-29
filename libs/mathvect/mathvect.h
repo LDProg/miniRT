@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 15:51:41 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/11/29 14:08:22 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/11/29 15:24:29 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ t_tuple	inv_tup(t_tuple v);
 t_tuple	scalar_mult(t_tuple v, int	factor);
 t_tuple scalar_div(t_tuple v, int factor);
 float	vect_mag(t_tuple v);
+t_tuple	normalize_vect(t_tuple v);
 
 #endif
