@@ -8,7 +8,7 @@ INC =	mmathvect.h			\
 
 OBJDIR =	.obj
 
-SRC = 	add_vect_point.c init_tuple.c sub_point_vect.c sub_two_points.c sub_two_vect.c
+SRC = 	add_vect_point.c init_tuple.c sub_point_vect.c sub_two_points.c sub_two_vect.c inv_vect.c
 
 OBJ = $(patsubst %.c, $(OBJDIR)/%.o, $(SRC))
 
