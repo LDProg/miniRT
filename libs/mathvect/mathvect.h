@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 15:51:41 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/11/29 15:37:05 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/11/29 15:53:26 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ t_tuple scalar_div(t_tuple v, int factor);
 float	vect_mag(t_tuple v);
 t_tuple	normalize_vect(t_tuple v);
 float	dot_product(t_tuple v1, t_tuple v2);
+t_tuple	cross_product(t_tuple v1, t_tuple v2);
 
 #endif
