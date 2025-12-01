@@ -4,7 +4,7 @@ CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
 
-INC =	mmathvect.h			\
+INC =	mathvect.h			\
 
 OBJDIR =	.obj
 
@@ -16,8 +16,8 @@ OBJ = $(patsubst %.c, $(OBJDIR)/%.o, $(SRC))
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(LIB)
-	ar rcs $(NAME) $(LIB) $?
+$(NAME): $(OBJ)
+	ar rcs $(NAME) $?
 
 $(OBJDIR)/%.o: %.c | $(OBJDIR)
 	mkdir -p $(dir $@)
@@ -26,7 +26,7 @@ $(OBJDIR)/%.o: %.c | $(OBJDIR)
 $(OBJDIR):
 	mkdir -p $(OBJDIR)
 
-%.o : %.c Makefile $(INC) $(LIB)
+%.o : %.c Makefile $(INC)
 	$(CC) $(CFLAGS) -o $@ -c $<
 
 clean:

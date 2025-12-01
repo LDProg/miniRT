@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "mathvect.h": "c",
+        "matrixlib.h": "c"
+    }
+}
