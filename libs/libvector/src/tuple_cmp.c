@@ -6,7 +6,7 @@
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 10:57:06 by ludebion          #+#    #+#             */
-/*   Updated: 2025/12/02 01:42:31 by ludebion         ###   ########.fr       */
+/*   Updated: 2025/12/02 04:34:05 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@ bool	is_point(t_tuple t)
 bool	is_vector(t_tuple t)
 {
 	return (t.w == 0.0);
+}
+
+bool	is_vector_null(t_tuple v)
+{
+	return (fabs(v.x) < EPSILON && fabs(v.y) < EPSILON && fabs(v.z) < EPSILON);
 }
 
 bool	is_floats_equals(double x, double y)
