@@ -6,20 +6,22 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 15:51:41 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/11/29 15:53:26 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/02 14:59:46 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MATHVECT_H
 # define MATHVECT_H
 
-typedef struct s_tuple
+typedef struct	s_tuple
 {
-	float	x;
-	float	y;
-	float	z;
-	int		w;
-}	t_tuple;
+	float		x;
+	float		y;
+	float		z;
+	int			w;
+}				t_tuple;
+
+/*----------VECTOR----------*/
 
 t_tuple	add_vect_point(t_tuple vector, t_tuple point);
 void	init_tuple(t_tuple *t);
@@ -33,5 +35,9 @@ float	vect_mag(t_tuple v);
 t_tuple	normalize_vect(t_tuple v);
 float	dot_product(t_tuple v1, t_tuple v2);
 t_tuple	cross_product(t_tuple v1, t_tuple v2);
+
+/*----------MATRIX----------*/
+
+t_tuple	translate_matrix(t_tuple t, float trx, float try, float trz);
 
 #endif

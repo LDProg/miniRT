@@ -38,14 +38,11 @@ DVECT := $(D_DVECT)dynvect.a
 D_MVECT := $(D_LIB)mathvect/
 MVECT := $(D_MVECT)mathvect.a
 
-D_MATRIX := $(D_LIB)matrixlib/
-MATRIX := $(D_MATRIX)matrixlib.a
-
 #Variables
 NAME := miniRT
 CC := cc
 CFLAGS := -Wall -Wextra -Werror -O3
-IFLAGS := -I$(D_INC) -I$(D_LIBFT) -I$(D_LIBFT)/gnl -I$(D_LIBFT)/mylib -I$(D_DVECT) -I$(D_MVECT) -I$(D_MATRIX) -I$(D_LIBMLX)
+IFLAGS := -I$(D_INC) -I$(D_LIBFT) -I$(D_LIBFT)/gnl -I$(D_LIBFT)/mylib -I$(D_DVECT) -I$(D_MVECT) -I$(D_LIBMLX)
 DEBUG_VALGRIND = valgrind --leak-check=full --show-leak-kinds=all
 
 RM := rm -rf
@@ -58,9 +55,9 @@ all: .print_header
 	@echo "\n🚀 Building $(NAME) :"
 	$(MAKE_CMD) deps show_compiling_msg $(NAME)
 
-$(NAME): $(OBJ) $(LIBFT) $(DVECT) $(MVECT) $(MATRIX) $(MLX)
+$(NAME): $(OBJ) $(LIBFT) $(DVECT) $(MVECT) $(MLX)
 	@echo "✅ Compilation done.\n\n🔗 Linking $(NAME)..."
-	@$(CC) $(OBJ) $(LIBFT) $(DVECT) $(MVECT) $(MATRIX) $(MLX) -L/opt/X11/lib -lXext -lX11 -lm -o $@
+	@$(CC) $(OBJ) $(LIBFT) $(DVECT) $(MVECT) $(MLX) -L/opt/X11/lib -lXext -lX11 -lm -o $@
 	@echo "✅ Linking done.\n\n🎉 ./$(NAME) ready to run!\n"
 
 $(D_OBJ)%.o: $(D_SRC)%.c Makefile | $(D_OBJ)
@@ -77,9 +74,7 @@ deps:
 	$(MAKE_CMD) -C $(D_DVECT) > /dev/null 2>&1
 	@echo "✅ Dynvector lib build done.\n\n📚 Building mathvector lib..."
 	$(MAKE_CMD) -C $(D_MVECT) > /dev/null 2>&1
-	@echo "✅ Mathvector lib build done.\n\n📚 Building matrix lib..."
-	$(MAKE_CMD) -C $(D_MATRIX) > /dev/null 2>&1
-	@echo "✅ Matrix lib build done.\n\n📚 Building mlx..."
+	@echo "✅ Mathvector lib build done.\n\n📚 Building mlx..."
 	@cp configure_mlx_no_tests $(D_LIBMLX)configure
 	$(MAKE_CMD) -C $(D_LIBMLX) > /dev/null 2>&1
 	@git -C $(D_LIBMLX) checkout configure 2>/dev/null || true
