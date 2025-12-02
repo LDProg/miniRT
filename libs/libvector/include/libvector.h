@@ -6,14 +6,14 @@
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 16:40:16 by ludebion          #+#    #+#             */
-/*   Updated: 2025/12/02 04:33:47 by ludebion         ###   ########.fr       */
+/*   Updated: 2025/12/02 06:51:43 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBVECTOR_H
 # define LIBVECTOR_H
 
-# include "structures.h"
+# include "vector_structures.h"
 # include <stdbool.h>
 
 /*Creation*/

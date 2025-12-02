@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tuple.c                                            :+:      :+:    :+:   */
+/*   tuple_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 10:35:39 by ludebion          #+#    #+#             */
-/*   Updated: 2025/11/29 02:41:04 by ludebion         ###   ########.fr       */
+/*   Updated: 2025/12/02 04:50:18 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "structures.h"
+#include "vector_structures.h"
 #include <stdbool.h>
 
 t_tuple	create_tuple(double x, double y, double z, double w)
