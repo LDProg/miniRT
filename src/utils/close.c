@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   structures.h                                       :+:      :+:    :+:   */
+/*   close.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/27 10:19:11 by ludebion          #+#    #+#             */
-/*   Updated: 2025/11/27 10:20:25 by ludebion         ###   ########.fr       */
+/*   Created: 2025/12/02 05:28:12 by ludebion          #+#    #+#             */
+/*   Updated: 2025/12/02 06:48:58 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCTURES_H
-# define STRUCTURES_H
+#include "libft.h"
+#include "render/render.h"
+#include "rt_structures.h"
+#include <stdlib.h>
 
-typedef struct s_tuple
+void	close_program(t_scene *scene, char *message, bool is_format,
+		bool is_error)
 {
-	double	x;
-	double	y;
-	double	z;
-	double	w;
-}	t_tuple;
-
-#endif
+	mlx_clear(scene);
+	if (is_format)
+		ft_putstr_fd("\n\tPlease execute\n\t", STDOUT_FILENO);
+	else
+		ft_putstr_fd(message, STDERR_FILENO);
+	if (is_error)
+		exit(EXIT_FAILURE);
+	exit(EXIT_SUCCESS);
+}

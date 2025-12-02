@@ -3,16 +3,23 @@
 #Files
 LST_EXEC :=	minirt.c
 
+LST_RENDER :=	mlx_hooks.c mlx_init.c mlx_utils.c scene_init.c
+
+LST_UTILS :=	close.c
+
 #Directories
 D_SRC :=	src/
 D_INC :=	include/
 D_LIB :=	libs/
 D_OBJ :=	.obj/
 
-D_GEOMETRY :=	geometry/
+D_RENDER :=	render/
+D_UTILS :=	utils/
 
 #Files full path
-SRC :=	$(addprefix $(D_SRC), $(LST_EXEC))
+SRC :=	$(addprefix $(D_SRC), $(LST_EXEC)) \
+		$(addprefix $(D_SRC)$(D_RENDER), $(LST_RENDER)) \
+		$(addprefix $(D_SRC)$(D_UTILS), $(LST_UTILS))
 
 OBJ :=	$(subst $(D_SRC), $(D_OBJ), $(SRC:.c=.o))
 
