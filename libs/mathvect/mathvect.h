@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 15:51:41 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/12/02 14:59:46 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/03 14:12:49 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,9 @@ t_tuple	cross_product(t_tuple v1, t_tuple v2);
 /*----------MATRIX----------*/
 
 t_tuple	translate_matrix(t_tuple t, float trx, float try, float trz);
+t_tuple	all_rotate_matrix(t_tuple t, float angle_x, float angle_y, float angle_z);
+t_tuple	rotate_x(t_tuple t, float alpha);
+t_tuple	rotate_y(t_tuple t, float alpha);
+t_tuple	rotate_z(t_tuple t, float alpha);
 
 #endif
