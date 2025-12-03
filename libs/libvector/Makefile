@@ -1,7 +1,7 @@
 .PHONY:	all clean fclean re
 
 #Files
-LST_SRC :=	tuple_init.c tuple_cmp.c tuple_ops.c
+LST_SRC :=	tuple_init.c tuple_cmp.c tuple_ops.c vector_ops.c
 
 #Directories
 D_SRC :=	src/
