@@ -6,17 +6,19 @@
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 10:19:11 by ludebion          #+#    #+#             */
-/*   Updated: 2025/12/02 06:12:32 by ludebion         ###   ########.fr       */
+/*   Updated: 2025/12/05 08:22:52 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RT_STRUCTURES_H
 # define RT_STRUCTURES_H
 
-# define WIDTH 400
-# define HEIGHT 400
+# define WIDTH 800
+# define HEIGHT 450
+# define FOV 60
 
 # include <stdbool.h>
+# include "libmath.h"
 
 typedef enum s_keys
 {
@@ -39,12 +41,28 @@ typedef struct s_mlx_img
 	int		size_line;
 }	t_mlx_img;
 
+typedef struct s_ray
+{
+	t_point3	origin;
+	t_vec3		direction;
+}	t_ray;
+
+typedef struct s_camera
+{
+	t_point3	origin;
+	t_vec3		direction;
+	t_vec3		right;
+	t_vec3		up;
+	t_vec3		forward;
+}	t_camera;
+
 typedef struct s_scene
 {
 	void		*mlx_ptr;
 	void		*window_ptr;
 	t_mlx_img	mlx_img;
 	bool		needs_redraw;
+	t_camera	camera;
 }	t_scene;
 
 #endif

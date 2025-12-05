@@ -3,9 +3,17 @@
 #Files
 LST_EXEC :=	minirt.c
 
+LST_CAMERA:=	init_camera.c
+
+LST_RAY :=	ray.c
+
 LST_RENDER :=	mlx_hooks.c mlx_init.c mlx_utils.c scene_init.c
 
 LST_UTILS :=	close.c
+
+LST_INC :=	minirt.h rt_structures.h \
+			scene/camera.h scene/setup.h \
+			utils/rt_utils.h
 
 #Directories
 D_SRC :=	src/
@@ -13,13 +21,17 @@ D_INC :=	include/
 D_LIB :=	libs/
 D_OBJ :=	.obj/
 
+D_CAMERA :=	camera/
 D_RENDER :=	render/
 D_UTILS :=	utils/
 
 #Files full path
 SRC :=	$(addprefix $(D_SRC), $(LST_EXEC)) \
+		$(addprefix $(D_SRC)$(D_CAMERA), $(LST_CAMERA)) \
 		$(addprefix $(D_SRC)$(D_RENDER), $(LST_RENDER)) \
 		$(addprefix $(D_SRC)$(D_UTILS), $(LST_UTILS))
+
+INC :=	$(addprefix $(D_INC), $(LST_INC))
 
 OBJ :=	$(subst $(D_SRC), $(D_OBJ), $(SRC:.c=.o))
 
@@ -29,8 +41,8 @@ DEPSFILES :=	$(subst $(D_SRC), $(D_OBJ), $(SRC:.o=.d))
 D_LIBFT :=	$(D_LIB)libft/
 LIBFT := $(D_LIBFT)libft.a
 
-D_LIBVECTOR := $(D_LIB)libvector/
-LIBVECTOR := $(D_LIBVECTOR)libvector.a
+D_LIBMATH := $(D_LIB)libmath/
+LIBMATH := $(D_LIBMATH)libmath.a
 
 D_LIBMLX := $(D_LIB)minilibx-linux/
 MLX := $(D_LIBMLX)libmlx.a
@@ -39,7 +51,7 @@ MLX := $(D_LIBMLX)libmlx.a
 NAME := miniRT
 CC := cc
 CFLAGS := -Wall -Wextra -O3
-IFLAGS := -I$(D_INC) -I$(D_LIBFT) -I$(D_LIBVECTOR)include/ -I$(D_LIBMLX)
+IFLAGS := -I$(D_INC) -I$(D_LIBFT) -I$(D_LIBMLX) -I$(D_LIBMATH)include/
 DEBUG_VALGRIND = valgrind --leak-check=full --show-leak-kinds=all
 
 RM := rm -rf
@@ -50,12 +62,12 @@ all:
 	@echo "\n🚀 Building $(NAME) :"
 	$(MAKE_CMD) deps show_compiling_msg $(NAME)
 
-$(NAME): $(OBJ) $(LIBFT) $(LIBVECTOR) $(MLX)
+$(NAME): $(OBJ) $(LIBFT) $(LIBMATH) $(MLX)
 	@echo "✅ Compilation done.\n\n🔗 Linking $(NAME)..."
-	@$(CC) $(OBJ) $(LIBFT) $(LIBVECTOR) $(MLX) -L/opt/X11/lib -lXext -lX11 -lm -o $@
+	@$(CC) $(OBJ) $(LIBFT) $(LIBMATH) $(MLX) -L/opt/X11/lib -lXext -lX11 -lm -o $@
 	@echo "✅ Linking done.\n\n🎉 ./$(NAME) ready to run!\n"
 
-$(D_OBJ)%.o: $(D_SRC)%.c Makefile | $(D_OBJ)
+$(D_OBJ)%.o: $(D_SRC)%.c $(INC) Makefile | $(D_OBJ)
 	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) $(IFLAGS) -MMD -MP -c $< -o $@
 
@@ -65,9 +77,9 @@ $(D_OBJ):
 deps:
 	@echo "\n🏗️  Building dependencies...\n\n📚 Building libft..."
 	$(MAKE_CMD) -C $(D_LIBFT) > /dev/null 2>&1
-	@echo "✅ Libft build done.\n\n📚 Building vector lib..."
-	$(MAKE_CMD) -C $(D_LIBVECTOR) > /dev/null 2>&1
-	@echo "✅ Vector lib build done.\n\n📚 Building mlx..."
+	@echo "✅ Libft build done.\n\n📚 Building math lib..."
+	$(MAKE_CMD) -C $(D_LIBMATH) > /dev/null 2>&1
+	@echo "✅ Math lib build done.\n\n📚 Building mlx..."
 	@cp configure_mlx_no_tests $(D_LIBMLX)configure
 	$(MAKE_CMD) -C $(D_LIBMLX) > /dev/null 2>&1
 	@git -C $(D_LIBMLX) checkout configure 2>/dev/null || true
@@ -84,7 +96,7 @@ clean:
 fclean: clean
 	@echo "🧹 Cleaning libft, minilibx, and $(NAME)..."
 	$(MAKE_CMD) fclean -C $(D_LIBFT) > /dev/null 2>&1
-	$(MAKE_CMD) fclean -C $(D_LIBVECTOR) > /dev/null 2>&1
+	$(MAKE_CMD) fclean -C $(D_LIBMATH) > /dev/null 2>&1
 	$(MAKE_CMD) clean -C $(D_LIBMLX) > /dev/null 2>&1
 	@$(RM) $(NAME)
 	@echo "✨ All clean!\n"

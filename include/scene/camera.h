@@ -1,32 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.h                                           :+:      :+:    :+:   */
+/*   camera.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/02 05:20:02 by ludebion          #+#    #+#             */
-/*   Updated: 2025/12/02 06:49:27 by ludebion         ###   ########.fr       */
+/*   Created: 2025/12/02 12:17:19 by ludebion          #+#    #+#             */
+/*   Updated: 2025/12/03 16:58:49 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RENDER_H
-# define RENDER_H
+#ifndef CAMERA_H
+# define CAMERA_H
 
 # include "rt_structures.h"
 
-/*Init*/
-void	scene_init(t_scene *scene);
-void	mlx_full_init(t_scene *scene);
-
-/*Hooks*/
-int		handle_mouse_hook(int button, int x, int y, t_scene *scene);
-int		handle_keypress_hook(int keycode, t_scene *scene);
-int		handle_close_hook(t_scene *scene);
-int		loop_hook(t_scene *scene);
-
-/*Utils*/
-void	my_pixel_put(t_mlx_img *img, int x, int y, int color);
-void	mlx_clear(t_scene *scene);
+t_camera	init_camera(t_scene *scene, t_point3 origin, t_vec3 direction);
 
 #endif

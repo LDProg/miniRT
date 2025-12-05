@@ -6,14 +6,13 @@
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 05:13:59 by ludebion          #+#    #+#             */
-/*   Updated: 2025/12/02 06:57:58 by ludebion         ###   ########.fr       */
+/*   Updated: 2025/12/05 08:23:50 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx.h"
 #include "rt_structures.h"
 #include "utils/rt_utils.h"
-#include <stdlib.h>
 
 int	handle_close_hook(t_scene *scene)
 {

@@ -6,13 +6,13 @@
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 05:13:46 by ludebion          #+#    #+#             */
-/*   Updated: 2025/12/02 06:50:13 by ludebion         ###   ########.fr       */
+/*   Updated: 2025/12/05 04:30:48 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx.h"
-#include "render/render.h"
 #include "rt_structures.h"
+#include "scene/setup.h"
 #include "utils/rt_utils.h"
 
 static void	events_init(t_scene *scene)

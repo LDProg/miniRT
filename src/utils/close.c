@@ -6,13 +6,13 @@
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 05:28:12 by ludebion          #+#    #+#             */
-/*   Updated: 2025/12/02 06:48:58 by ludebion         ###   ########.fr       */
+/*   Updated: 2025/12/05 04:31:09 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "render/render.h"
 #include "rt_structures.h"
+#include "scene/setup.h"
 #include <stdlib.h>
 
 void	close_program(t_scene *scene, char *message, bool is_format,
