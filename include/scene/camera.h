@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   inv_vect.c                                         :+:      :+:    :+:   */
+/*   camera.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/29 12:14:27 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/11/29 12:35:34 by gaducurt         ###   ########.fr       */
+/*   Created: 2025/12/02 12:17:19 by ludebion          #+#    #+#             */
+/*   Updated: 2025/12/03 16:58:49 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mathvect.h"
+#ifndef CAMERA_H
+# define CAMERA_H
 
-t_tuple	inv_tup(t_tuple v)
-{
-	t_tuple	neg_tup;
+# include "rt_structures.h"
 
-	init_tuple(&neg_tup);
-	// if (v.w != 0)
-	// 	return (neg_tup);
-	neg_tup.x -= v.x;
-	neg_tup.y -= v.y;
-	neg_tup.z -= v.z;
-	neg_tup.w -= v.w;
-	return (neg_tup);
-}
+t_camera	init_camera(t_scene *scene, t_point3 origin, t_vec3 direction);
+
+#endif

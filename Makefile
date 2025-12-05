@@ -7,6 +7,18 @@ LST_TEST :=	test_functions.c
 
 LST_PARSING :=	check_object.c check_params.c fill_color.c fill_light.c fill_obj.c parsing.c
 
+LST_CAMERA:=	init_camera.c
+
+LST_RAY :=	ray.c
+
+LST_RENDER :=	mlx_hooks.c mlx_init.c mlx_utils.c scene_init.c
+
+LST_UTILS :=	close.c
+
+LST_INC :=	minirt.h rt_structures.h \
+			scene/camera.h scene/setup.h \
+			utils/rt_utils.h
+
 #Directories
 D_SRC :=	src/
 D_INC :=	include/
@@ -17,9 +29,20 @@ D_PARSING := parsing/
 D_TEST :=	tests/
 
 #Files full path
+D_CAMERA :=	camera/
+D_RENDER :=	render/
+D_UTILS :=	utils/
+
+#Files full path
 SRC :=	$(addprefix $(D_SRC), $(LST_EXEC)) \
+		$(addprefix $(D_SRC)$(D_CAMERA), $(LST_CAMERA)) \
+		$(addprefix $(D_SRC)$(D_RENDER), $(LST_RENDER)) \
+		$(addprefix $(D_SRC)$(D_UTILS), $(LST_UTILS)) \
+		$(addprefix $(D_SRC), $(LST_EXEC)) \
 		$(addprefix $(D_SRC)$(D_TEST), $(LST_TEST)) \
 		$(addprefix $(D_SRC)$(D_PARSING), $(LST_PARSING))
+
+INC :=	$(addprefix $(D_INC), $(LST_INC))
 
 OBJ :=	$(subst $(D_SRC), $(D_OBJ), $(SRC:.c=.o))
 
@@ -28,6 +51,9 @@ DEPSFILES :=	$(subst $(D_SRC), $(D_OBJ), $(SRC:.o=.d))
 #Libraries
 D_LIBFT :=	$(D_LIB)libft/
 LIBFT := $(D_LIBFT)libft.a
+
+D_LIBMATH := $(D_LIB)libmath/
+LIBMATH := $(D_LIBMATH)libmath.a
 
 D_LIBMLX := $(D_LIB)minilibx-linux/
 MLX := $(D_LIBMLX)libmlx.a
@@ -42,7 +68,7 @@ MVECT := $(D_MVECT)mathvect.a
 NAME := miniRT
 CC := cc
 CFLAGS := -Wall -Wextra -Werror -O3
-IFLAGS := -I$(D_INC) -I$(D_LIBFT) -I$(D_LIBFT)/gnl -I$(D_LIBFT)/mylib -I$(D_DVECT) -I$(D_MVECT) -I$(D_LIBMLX)
+IFLAGS := -I$(D_INC) -I$(D_LIBFT) -I$(D_LIBFT)/gnl -I$(D_LIBFT)/mylib -I$(D_DVECT) -I$(D_MVECT) -I$(D_LIBMLX) -I$(D_LIBMATH)include/
 DEBUG_VALGRIND = valgrind --leak-check=full --show-leak-kinds=all
 
 RM := rm -rf
@@ -55,12 +81,12 @@ all: .print_header
 	@echo "\n🚀 Building $(NAME) :"
 	$(MAKE_CMD) deps show_compiling_msg $(NAME)
 
-$(NAME): $(OBJ) $(LIBFT) $(DVECT) $(MVECT) $(MLX)
+$(NAME): $(OBJ) $(LIBFT) $(DVECT) $(MVECT) $(MLX) $(LIBMATH)
 	@echo "✅ Compilation done.\n\n🔗 Linking $(NAME)..."
-	@$(CC) $(OBJ) $(LIBFT) $(DVECT) $(MVECT) $(MLX) -L/opt/X11/lib -lXext -lX11 -lm -o $@
+	@$(CC) $(OBJ) $(LIBFT) $(DVECT) $(MVECT) $(MLX) $(LIBMATH) -L/opt/X11/lib -lXext -lX11 -lm -o $@
 	@echo "✅ Linking done.\n\n🎉 ./$(NAME) ready to run!\n"
 
-$(D_OBJ)%.o: $(D_SRC)%.c Makefile | $(D_OBJ)
+$(D_OBJ)%.o: $(D_SRC)%.c $(INC) Makefile | $(D_OBJ)
 	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) $(IFLAGS) -MMD -MP -c $< -o $@
 
@@ -75,6 +101,9 @@ deps:
 	@echo "✅ Dynvector lib build done.\n\n📚 Building mathvector lib..."
 	$(MAKE_CMD) -C $(D_MVECT) > /dev/null 2>&1
 	@echo "✅ Mathvector lib build done.\n\n📚 Building mlx..."
+	@echo "✅ Libft build done.\n\n📚 Building math lib..."
+	$(MAKE_CMD) -C $(D_LIBMATH) > /dev/null 2>&1
+	@echo "✅ Math lib build done.\n\n📚 Building mlx..."
 	@cp configure_mlx_no_tests $(D_LIBMLX)configure
 	$(MAKE_CMD) -C $(D_LIBMLX) > /dev/null 2>&1
 	@git -C $(D_LIBMLX) checkout configure 2>/dev/null || true
@@ -93,6 +122,7 @@ fclean: clean
 	$(MAKE_CMD) fclean -C $(D_LIBFT) > /dev/null 2>&1
 	$(MAKE_CMD) fclean -C $(D_DVECT) > /dev/null 2>&1
 	$(MAKE_CMD) fclean -C $(D_MVECT) > /dev/null 2>&1
+	$(MAKE_CMD) fclean -C $(D_LIBMATH) > /dev/null 2>&1
 	$(MAKE_CMD) clean -C $(D_LIBMLX) > /dev/null 2>&1
 	@$(RM) $(NAME)
 	@echo "✨ All clean!\n"

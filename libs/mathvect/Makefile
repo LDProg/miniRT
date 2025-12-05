@@ -2,16 +2,16 @@ NAME = mathvect.a
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -I.
 
 INC =	mathvect.h			\
 
 OBJDIR =	.obj
 
-SRC = 	add_vect_point.c init_tuple.c sub_point_vect.c sub_two_points.c \
-		sub_two_vect.c inv_tup.c scalar_mult.c scalar_div.c  vect_mag.c \
-		normalize_vect.c dot_product.c cross_product.c translate_matrix.c \
-		all_rotate_matrix.c rotate_x.c rotate_y.c rotate_z.c
+SRC = 	vector/add_vect_point.c vector/init_tuple.c vector/sub_point_vect.c vector/sub_two_points.c \
+		vector/sub_two_vect.c vector/inv_tup.c vector/scalar_mult.c vector/scalar_div.c  vector/vect_mag.c \
+		vector/normalize_vect.c vector/dot_product.c vector/cross_product.c matrix/translate_matrix.c \
+		matrix/all_rotate_matrix.c matrix/rotate_x.c matrix/rotate_y.c matrix/rotate_z.c matrix/scaling_matrix.c \
 
 OBJ = $(patsubst %.c, $(OBJDIR)/%.o, $(SRC))
 
@@ -26,9 +26,6 @@ $(OBJDIR)/%.o: %.c | $(OBJDIR)
 
 $(OBJDIR):
 	mkdir -p $(OBJDIR)
-
-%.o : %.c Makefile $(INC)
-	$(CC) $(CFLAGS) -o $@ -c $<
 
 clean:
 	rm -rf $(OBJ) $(OBJDIR)

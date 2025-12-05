@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 10:20:18 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/11/28 16:52:44 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/05 14:29:44 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,6 @@ enum	e_type
 	SP,
 	CY,
 };
-
-// typedef struct s_tuple
-// {
-// 	float	x;
-// 	float	y;
-// 	float	z;
-// 	int		w;
-// }	t_tuple;
 
 typedef struct s_obj
 {
