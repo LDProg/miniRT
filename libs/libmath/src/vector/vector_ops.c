@@ -6,11 +6,11 @@
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 14:15:22 by ludebion          #+#    #+#             */
-/*   Updated: 2025/12/02 04:50:25 by ludebion         ###   ########.fr       */
+/*   Updated: 2025/12/05 06:40:44 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libvector.h"
+#include "libmath.h"
 #include <math.h>
 
 double	vector_magnitude(t_tuple v)

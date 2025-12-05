@@ -6,11 +6,11 @@
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 01:20:04 by ludebion          #+#    #+#             */
-/*   Updated: 2025/12/02 04:50:37 by ludebion         ###   ########.fr       */
+/*   Updated: 2025/12/05 06:40:41 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libvector.h"
+#include "libmath.h"
 
 t_tuple	adding_tuple(t_tuple t1, t_tuple t2)
 {

@@ -6,11 +6,11 @@
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 10:57:06 by ludebion          #+#    #+#             */
-/*   Updated: 2025/12/02 04:50:01 by ludebion         ###   ########.fr       */
+/*   Updated: 2025/12/05 06:41:12 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vector_structures.h"
+#include "libmath_structures.h"
 #include <math.h>
 #include <stdbool.h>
 

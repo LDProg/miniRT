@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vector_structures.h                                :+:      :+:    :+:   */
+/*   tuple_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/27 10:19:11 by ludebion          #+#    #+#             */
-/*   Updated: 2025/12/02 04:49:39 by ludebion         ###   ########.fr       */
+/*   Created: 2025/11/27 10:35:39 by ludebion          #+#    #+#             */
+/*   Updated: 2025/12/05 06:41:04 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VECTOR_STRUCTURES_H
-# define VECTOR_STRUCTURES_H
+#include "libmath_structures.h"
+#include <stdbool.h>
 
-# define EPSILON 0.0001
-
-typedef struct s_tuple
+t_tuple	create_tuple(double x, double y, double z, double w)
 {
-	double	x;
-	double	y;
-	double	z;
-	double	w;
-}	t_tuple;
+	t_tuple	t;
 
-#endif
+	t.x = x;
+	t.y = y;
+	t.z = z;
+	t.w = w;
+	return (t);
+}
+
+t_tuple	create_point(double x, double y, double z)
+{
+	return (create_tuple(x, y, z, 1.0));
+}
+
+t_tuple	create_vector(double x, double y, double z)
+{
+	return (create_tuple(x, y, z, 0.0));
+}
