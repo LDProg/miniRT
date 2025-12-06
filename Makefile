@@ -1,7 +1,7 @@
 .PHONY:	all clean fclean re deps debug show_compiling_msg
 
 #Files
-LST_EXEC :=	minirt.c manage_window.c
+LST_EXEC :=	minirt.c
 
 LST_TEST :=	test_functions.c
 
@@ -38,7 +38,6 @@ SRC :=	$(addprefix $(D_SRC), $(LST_EXEC)) \
 		$(addprefix $(D_SRC)$(D_CAMERA), $(LST_CAMERA)) \
 		$(addprefix $(D_SRC)$(D_RENDER), $(LST_RENDER)) \
 		$(addprefix $(D_SRC)$(D_UTILS), $(LST_UTILS)) \
-		$(addprefix $(D_SRC), $(LST_EXEC)) \
 		$(addprefix $(D_SRC)$(D_TEST), $(LST_TEST)) \
 		$(addprefix $(D_SRC)$(D_PARSING), $(LST_PARSING))
 
@@ -61,14 +60,14 @@ MLX := $(D_LIBMLX)libmlx.a
 D_DVECT := $(D_LIB)dynvect/
 DVECT := $(D_DVECT)dynvect.a
 
-D_MVECT := $(D_LIB)mathvect/
-MVECT := $(D_MVECT)mathvect.a
+# D_MVECT := $(D_LIB)mathvect/
+# MVECT := $(D_MVECT)mathvect.a
 
 #Variables
 NAME := miniRT
 CC := cc
 CFLAGS := -Wall -Wextra -O3 # -Werror
-IFLAGS := -I$(D_INC) -I$(D_LIBFT) -I$(D_LIBFT)/gnl -I$(D_LIBFT)/mylib -I$(D_DVECT) -I$(D_MVECT) -I$(D_LIBMLX) -I$(D_LIBMATH)include/
+IFLAGS := -I$(D_INC) -I$(D_LIBFT) -I$(D_LIBFT)/gnl -I$(D_LIBFT)/mylib -I$(D_DVECT) -I$(D_LIBMLX) -I$(D_LIBMATH)include/ #-I$(D_MVECT)
 DEBUG_VALGRIND = valgrind --leak-check=full --show-leak-kinds=all
 
 RM := rm -rf
@@ -98,10 +97,7 @@ deps:
 	$(MAKE_CMD) -C $(D_LIBFT) > /dev/null 2>&1
 	@echo "✅ Libft build done.\n\n📚 Building dynvector lib..."
 	$(MAKE_CMD) -C $(D_DVECT) > /dev/null 2>&1
-	@echo "✅ Dynvector lib build done.\n\n📚 Building mathvector lib..."
-	$(MAKE_CMD) -C $(D_MVECT) > /dev/null 2>&1
-	@echo "✅ Mathvector lib build done.\n\n📚 Building mlx..."
-	@echo "✅ Libft build done.\n\n📚 Building math lib..."
+	@echo "✅ Dynvector lib build done.\n\n📚 Building math lib..."
 	$(MAKE_CMD) -C $(D_LIBMATH) > /dev/null 2>&1
 	@echo "✅ Math lib build done.\n\n📚 Building mlx..."
 	@cp configure_mlx_no_tests $(D_LIBMLX)configure
@@ -121,7 +117,6 @@ fclean: clean
 	@echo "🧹 Full clean of $(NAME)..."
 	$(MAKE_CMD) fclean -C $(D_LIBFT) > /dev/null 2>&1
 	$(MAKE_CMD) fclean -C $(D_DVECT) > /dev/null 2>&1
-	$(MAKE_CMD) fclean -C $(D_MVECT) > /dev/null 2>&1
 	$(MAKE_CMD) fclean -C $(D_LIBMATH) > /dev/null 2>&1
 	$(MAKE_CMD) clean -C $(D_LIBMLX) > /dev/null 2>&1
 	@$(RM) $(NAME)

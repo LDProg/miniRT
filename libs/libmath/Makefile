@@ -5,7 +5,12 @@ LST_SRC_MATRICE :=	matrice_init.c matrice_ops.c matrice_trsf.c
 
 LST_SRC_VECTOR :=	tuple_cmp.c tuple_init.c tuple_ops.c vector_ops.c
 
-LST_INC :=	libmath.h libmath_structures.h
+LST_SRC_MATRIX_G := all_rotate_matrix.c rotate_x.c rotate_y.c rotate_z.c scaling_matrix.c translate_matrix.c
+
+LST_SRC_VECTOR_G := add_vect_point.c cross_product.c dot_product.c init_tuple.c inv_tup.c normalize_vect.c \
+					scalar_div.c scalar_mult.c sub_point_vect.c sub_two_points.c sub_two_vect.c vect_mag.c
+
+LST_INC :=	libmath.h libmath_structures.h mathvect.h
 
 #Directories
 D_SRC :=	src/
@@ -14,10 +19,14 @@ D_OBJ :=	.obj/
 
 D_MATRICE := matrice/
 D_VECTOR := vector/
+D_MATRIX_G := matrix_gaducurt/
+D_VECTOR_G := vector_gaducurt/
 
 #Files full path
 SRC :=	$(addprefix $(D_SRC)$(D_MATRICE), $(LST_SRC_MATRICE)) \
-		$(addprefix $(D_SRC)$(D_VECTOR), $(LST_SRC_VECTOR))
+		$(addprefix $(D_SRC)$(D_VECTOR), $(LST_SRC_VECTOR)) \
+		$(addprefix $(D_SRC)$(D_MATRIX_G), $(LST_SRC_MATRIX_G)) \
+		$(addprefix $(D_SRC)$(D_VECTOR_G), $(LST_SRC_VECTOR_G))
 
 INC :=	$(addprefix $(D_INC), $(LST_INC))
 
