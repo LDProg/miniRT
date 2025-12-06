@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:34:18 by ludebion          #+#    #+#             */
-/*   Updated: 2025/12/06 13:50:39 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/06 13:52:29 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ t_tuple	fill_vect_test(float x, float y, float z, float w)
 
 int	main(int ac, char **av)
 {
+	t_scene		scene;
 	t_vector	*vector;
 	int			fd;
 
