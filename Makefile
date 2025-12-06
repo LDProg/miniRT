@@ -67,7 +67,7 @@ MVECT := $(D_MVECT)mathvect.a
 #Variables
 NAME := miniRT
 CC := cc
-CFLAGS := -Wall -Wextra -Werror -O3
+CFLAGS := -Wall -Wextra -O3 # -Werror
 IFLAGS := -I$(D_INC) -I$(D_LIBFT) -I$(D_LIBFT)/gnl -I$(D_LIBFT)/mylib -I$(D_DVECT) -I$(D_MVECT) -I$(D_LIBMLX) -I$(D_LIBMATH)include/
 DEBUG_VALGRIND = valgrind --leak-check=full --show-leak-kinds=all
 
