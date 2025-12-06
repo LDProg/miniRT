@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:34:18 by ludebion          #+#    #+#             */
-/*   Updated: 2025/12/06 13:52:29 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/06 14:04:18 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,16 @@
 #include "mathvect.h"
 #include "minirt.h"
 
-t_tuple	fill_vect_test(float x, float y, float z, float w)
-{
-	t_tuple res;
+// t_tuple	fill_vect_test(float x, float y, float z, float w)
+// {
+// 	t_tuple res;
 
-	res.x = x;
-	res.y = y;
-	res.z = z;
-	res.w = w;
-	return (res);
-}
+// 	res.x = x;
+// 	res.y = y;
+// 	res.z = z;
+// 	res.w = w;
+// 	return (res);
+// }
 
 // void	test_vect()
 // {

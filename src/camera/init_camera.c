@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_camera.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 12:12:16 by ludebion          #+#    #+#             */
-/*   Updated: 2025/12/05 08:24:20 by ludebion         ###   ########.fr       */
+/*   Updated: 2025/12/06 14:03:09 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 #include <math.h>
 #include <stdint.h>
 
-static t_ray	pixels_coordinates_to_ray(t_camera camera, uint32_t x,
-		uint32_t y)
-{
-	t_ray	ray;
-	double	scale;
-	t_vec3	v;
+// static t_ray	pixels_coordinates_to_ray(t_camera camera, uint32_t x,
+// 		uint32_t y)
+// {
+// 	t_ray	ray;
+// 	double	scale;
+// 	t_vec3	v;
 
-	scale = tan((FOV * 0.5) * (M_PI / 180.0));
-	v = create_vector(x - WIDTH / 2, HEIGHT / 2 - y, -(HEIGHT / 2) / scale);
-	ray.origin = camera.origin;
-	ray.direction = vector_normalize(v);
-	return (ray);
-}
+// 	scale = tan((FOV * 0.5) * (M_PI / 180.0));
+// 	v = create_vector(x - WIDTH / 2, HEIGHT / 2 - y, -(HEIGHT / 2) / scale);
+// 	ray.origin = camera.origin;
+// 	ray.direction = vector_normalize(v);
+// 	return (ray);
+// }
 
 static t_ray	get_ray(t_camera camera, uint32_t x, uint32_t y)
 {
