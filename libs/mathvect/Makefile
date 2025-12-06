@@ -2,9 +2,10 @@ NAME = mathvect.a
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -I.
+CFLAGS = -Wall -Wextra -Werror -I. -I../libmath/include
 
 INC =	mathvect.h			\
+		# ../libmath/include/libmath_structures.h \
 
 OBJDIR =	.obj
 
