@@ -6,15 +6,15 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:33:55 by ludebion          #+#    #+#             */
-/*   Updated: 2025/12/05 14:29:54 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/06 13:47:18 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_H
 # define MINIRT_H
 
-# define WIDTH 800
-# define HEIGHT 800
+// # define WIDTH 800
+// # define HEIGHT 800
 
 # define RESET "\033[1;0m"
 # define RED "\033[1;31m"

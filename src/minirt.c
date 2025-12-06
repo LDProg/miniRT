@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:34:18 by ludebion          #+#    #+#             */
-/*   Updated: 2025/12/05 14:30:38 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/06 13:50:39 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,15 @@ t_tuple	fill_vect_test(float x, float y, float z, float w)
 	return (res);
 }
 
-void	test_vect()
-{
-	t_tuple	v1;
+// void	test_vect()
+// {
+// 	t_tuple	v1;
 	
-	v1 = fill_vect_test(1, 2, 3, 0);
-	printf(BLUE"x1 = %g\ny1 = %g\nz1 = %g\nw1 = %d\n\n"RESET, v1.x, v1.y, v1.z, v1.w);
-	v1 = all_rotate_matrix(v1, 30, 15, 60);
-	printf(GREEN"x1 = %g\ny1 = %g\nz1 = %g\nw1 = %d\n\n"RESET, v1.x, v1.y, v1.z, v1.w);
-}
+// 	v1 = fill_vect_test(1, 2, 3, 0);
+// 	printf(BLUE"x1 = %g\ny1 = %g\nz1 = %g\nw1 = %d\n\n"RESET, v1.x, v1.y, v1.z, v1.w);
+// 	v1 = all_rotate_matrix(v1, 30, 15, 60);
+// 	printf(GREEN"x1 = %g\ny1 = %g\nz1 = %g\nw1 = %d\n\n"RESET, v1.x, v1.y, v1.z, v1.w);
+// }
 
 int	main(int ac, char **av)
 {
