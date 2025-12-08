@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_structures.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 10:19:11 by ludebion          #+#    #+#             */
-/*   Updated: 2025/12/05 08:22:52 by ludebion         ###   ########.fr       */
+/*   Updated: 2025/12/08 16:51:32 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,11 @@ typedef struct s_scene
 	bool		needs_redraw;
 	t_camera	camera;
 }	t_scene;
+
+typedef struct	s_inter
+{
+	int		count;
+	double	*inter;
+}				t_inter;
 
 #endif
