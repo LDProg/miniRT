@@ -8,7 +8,8 @@ LST_SRC_VECTOR :=	tuple_cmp.c tuple_init.c tuple_ops.c vector_ops.c
 LST_SRC_MATRIX_G := all_rotate_matrix.c rotate_x.c rotate_y.c rotate_z.c scaling_matrix.c translate_matrix.c
 
 LST_SRC_VECTOR_G := add_vect_point.c cross_product.c dot_product.c init_tuple.c inv_tup.c normalize_vect.c \
-					scalar_div.c scalar_mult.c sub_point_vect.c sub_two_points.c sub_two_vect.c vect_mag.c
+					scalar_div.c scalar_mult.c sub_point_vect.c sub_two_points.c sub_two_vect.c vect_mag.c \
+					position.c 
 
 LST_INC :=	libmath.h libmath_structures.h mathvect.h
 

@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:34:18 by ludebion          #+#    #+#             */
-/*   Updated: 2025/12/06 14:46:51 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/08 13:18:30 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,37 +22,20 @@
 #include "mathvect.h"
 #include "minirt.h"
 
-// t_tuple	fill_vect_test(float x, float y, float z, float w)
-// {
-// 	t_tuple res;
 
-// 	res.x = x;
-// 	res.y = y;
-// 	res.z = z;
-// 	res.w = w;
-// 	return (res);
-// }
-
-// void	test_vect()
-// {
-// 	t_tuple	v1;
-	
-// 	v1 = fill_vect_test(1, 2, 3, 0);
-// 	printf(BLUE"x1 = %g\ny1 = %g\nz1 = %g\nw1 = %d\n\n"RESET, v1.x, v1.y, v1.z, v1.w);
-// 	v1 = all_rotate_matrix(v1, 30, 15, 60);
-// 	printf(GREEN"x1 = %g\ny1 = %g\nz1 = %g\nw1 = %d\n\n"RESET, v1.x, v1.y, v1.z, v1.w);
-// }
 
 int	main(int ac, char **av)
 {
 	t_scene		scene;
-	t_vector	*vector;
+	t_dynvec	*vector;
+	t_point3	point;
+	t_ray		ray;
 	int			fd;
 
 	if (check_args(ac, av))
 		return (1);
 	fd = open(av[1], O_RDONLY);
-	vector = malloc((sizeof(t_vector)));
+	vector = malloc((sizeof(t_dynvec)));
 	if (!vector)
 	{
 		close(fd);
@@ -64,6 +47,9 @@ int	main(int ac, char **av)
 		return (1);
 	}
 	// test_vect();
+	ray = init_ray();
+	point = position(ray.origin, ray.direction, 0);
+	print_tuple(point);
 	printf("Hello RT!\n");
 	scene_init(&scene);
 	init_camera(&scene, create_point(0, 0, 15), create_vector(0, 0, -1));

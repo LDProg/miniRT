@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 15:37:36 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/11/28 15:49:21 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/08 13:16:48 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	*ft_memcpy(void *dest, const void *src, size_t n)
 	return (dest);
 }
 
-int	ft_vector_addone(t_vector *vector, void *element)
+int	ft_vector_addone(t_dynvec *vector, void *element)
 {
 	if (vector->len == vector->capacity)
 		if (!ft_realloc_vector(vector))

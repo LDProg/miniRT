@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 14:32:41 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/12/06 13:43:10 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/08 10:52:04 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 #include <math.h>
 #include <stdio.h>
 
-t_tuple	all_rotate_matrix(t_tuple t, float alpha_x, float alpha_y, float alpha_z)
+t_tuple	all_rotate_matrix(t_tuple t, double alpha_x, double alpha_y,
+	double alpha_z)
 {
 	t_tuple	res;
 

@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 11:49:42 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/12/06 13:43:38 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/08 10:52:56 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ Translation matrix = 	{{1, 0, 0, trx},
 						 {0, 0, 0, 1}}
 */
 
-t_tuple	translate_matrix(t_tuple t, float trx, float try, float trz)
+t_tuple	translate_matrix(t_tuple t, double trx, double try, double trz)
 {
 	t_tuple	res;
 	

@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 14:07:41 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/12/06 13:43:33 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/08 10:52:38 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ Rotation matrix along the z-axis = 	{{cos(teta),  -sin(teta), 0},
 						 			 {0, 		  0, 		  1}}
 */
 
-t_tuple	rotate_z(t_tuple t, float alpha)
+t_tuple	rotate_z(t_tuple t, double alpha)
 {
 	t_tuple	res;
-	float	rad_alpha;
+	double	rad_alpha;
 
 	rad_alpha = (M_PI / 180) * alpha;
 	init_tuple(&res);

@@ -6,12 +6,14 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 10:03:58 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/11/28 15:47:00 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/08 13:41:13 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "minirt.h"
 #include "structures.h"
+#include "rt_structures.h"
 #include "dynvect.h"
 #include <stdio.h>
 
@@ -36,9 +38,6 @@ void	print_struct(t_obj *obj)
 	printf("id = %d\n", obj->id);
 	printf("fov = %d\n", obj->fov);
 	printf("r = %d\n", obj->color);
-	// printf("r = %d\n", obj->r);
-	// printf("g = %d\n", obj->g);
-	// printf("b = %d\n", obj->b);
 	printf("lt_ratio = %g\n", obj->lt_ratio);
 	printf("x = %g\n", obj->pos.x);
 	printf("y = %g\n", obj->pos.y);
@@ -54,7 +53,7 @@ void	print_struct(t_obj *obj)
 
 /*Display the content of vector>array.*/
 
-void	print_vector(t_vector *vector)
+void	print_vector(t_dynvec *vector)
 {
 	t_obj	*p;
 	size_t	i;
@@ -66,4 +65,45 @@ void	print_vector(t_vector *vector)
 		print_struct(p);
 		i++;
 	}
+}
+
+t_tuple	fill_vect_test(double x, double y, double z, double w)
+{
+	t_tuple res;
+
+	res.x = x;
+	res.y = y;
+	res.z = z;
+	res.w = w;
+	return (res);
+}
+
+void	test_vect()
+{
+	t_tuple	v1;
+	
+	v1 = fill_vect_test(1, 2, 3, 0);
+	printf(BLUE"x1 = %g\ny1 = %g\nz1 = %g\nw1 = %g\n\n"RESET, v1.x, v1.y, v1.z, v1.w);
+	v1 = all_rotate_matrix(v1, 30, 15, 60);
+	printf(GREEN"x1 = %g\ny1 = %g\nz1 = %g\nw1 = %g\n\n"RESET, v1.x, v1.y, v1.z, v1.w);
+}
+
+t_ray	init_ray()
+{
+	t_ray	ray;
+
+	ray.origin.x = 2;
+	ray.origin.y = 3;
+	ray.origin.z = 4;
+	ray.origin.w = 1;
+	ray.direction.x = 1;
+	ray.direction.x = 0;
+	ray.direction.x = 0;
+	ray.direction.x = 0;
+	return (ray);
+}
+
+void	print_tuple(t_tuple tuple)
+{
+	printf(GREEN"tuple.x = %g\ntuple.y = %g\ntuple.z = %g\ntuple.w = %g\n"RESET, tuple.x, tuple.y, tuple.z, tuple.w );
 }

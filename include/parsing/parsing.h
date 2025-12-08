@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 06:44:37 by ludebion          #+#    #+#             */
-/*   Updated: 2025/11/28 15:50:06 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/08 13:17:58 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "structures.h"
 
 int		check_args(int ac, char **av);
-int		fill_tab(int fd, t_vector *vector);
+int		fill_tab(int fd, t_dynvec *vector);
 char	**multi_split(char const *s, char c1, char c2);
 int		ft_strcmp(char *s1, char *s2);
 float	ft_atof(const char *nptr);

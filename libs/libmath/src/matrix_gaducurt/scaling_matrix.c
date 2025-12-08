@@ -6,13 +6,13 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 14:32:34 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/12/06 13:43:35 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/08 10:52:47 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mathvect.h"
 
-t_tuple	scaling_matrix(t_tuple t, float sx, float sy, float sz)
+t_tuple	scaling_matrix(t_tuple t, double sx, double sy, double sz)
 {
 	t_tuple res;
 

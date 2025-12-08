@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 10:20:18 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/12/05 14:29:44 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/08 11:02:35 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ typedef struct s_obj
 	int		id;
 	int		fov;
 	int		color;
-	float	lt_ratio;
-	float	sp_diam;
-	float	cy_diam;
-	float	cy_height;
+	double	lt_ratio;
+	double	sp_diam;
+	double	cy_diam;
+	double	cy_height;
 }	t_obj;
 
 

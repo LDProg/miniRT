@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:33:55 by ludebion          #+#    #+#             */
-/*   Updated: 2025/12/06 13:47:18 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/08 13:18:57 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,20 @@
 # define YELLOW "\033[1;33m"
 # define BLUE "\033[1;34m"
 # define MAGENTA "\033[1;35m"
+
+#include "structures.h"
+#include "rt_structures.h"
+#include "dynvect.h"
+
+/*----------RAY----------*/
+
+/*----------TEST----------*/
+void	print_double_tab(char **double_tab);
+void	print_struct(t_obj *obj);
+void	print_vector(t_dynvec *vector);
+t_tuple	fill_vect_test(double x, double y, double z, double w);
+void	test_vect();
+t_ray	init_ray();
+void	print_tuple(t_tuple tuple);
 
 #endif

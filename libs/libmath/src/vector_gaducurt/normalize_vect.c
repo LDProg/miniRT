@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 14:25:26 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/12/06 13:43:50 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/08 10:53:17 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_tuple	normalize_vect(t_tuple v)
 {
 	t_tuple	res;
-	float	mag;
+	double	mag;
 
 	init_tuple(&res);
 	mag = vect_mag(v);

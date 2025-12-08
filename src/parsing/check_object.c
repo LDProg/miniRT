@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_object.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 10:01:53 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/11/27 07:11:14 by ludebion         ###   ########.fr       */
+/*   Updated: 2025/12/08 13:19:11 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void	fill_obj(t_obj *obj, char **db_tab)
 /*Each line is stocked in a struct t_obj. Then, the struct is stocked in
 the vector array.*/
 
-int	fill_tab(int fd, t_vector *vector)
+int	fill_tab(int fd, t_dynvec *vector)
 {
 	char	**db_tab;
 	t_obj	obj;
