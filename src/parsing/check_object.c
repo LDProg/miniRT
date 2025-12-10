@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 10:01:53 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/12/08 13:19:11 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/10 10:56:45 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,17 @@ static char	**new_tab(int fd)
 
 static void	fill_obj(t_obj *obj, char **db_tab)
 {
-	if (obj->id == A)
+	if (obj->type == A)
 		fill_a(obj, db_tab);
-	if (obj->id == C)
+	if (obj->type == C)
 		fill_c(obj, db_tab);
-	if (obj->id == L)
+	if (obj->type == L)
 		fill_l(obj, db_tab);
-	if (obj->id == PL)
+	if (obj->type == PL)
 		fill_pl(obj, db_tab);
-	if (obj->id == SP)
+	if (obj->type == SP)
 		fill_sp(obj, db_tab);
-	if (obj->id == CY)
+	if (obj->type == CY)
 		fill_cy(obj, db_tab);
 }
 
@@ -68,7 +68,7 @@ int	fill_tab(int fd, t_dynvec *vector)
 	while (db_tab)
 	{
 		obj = init_obj();
-		fill_id(&obj, db_tab[0]);
+		fill_type(&obj, db_tab[0]);
 		fill_obj(&obj, db_tab);
 		db_free(db_tab);
 		db_tab = new_tab(fd);

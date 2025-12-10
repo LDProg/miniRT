@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:34:18 by ludebion          #+#    #+#             */
-/*   Updated: 2025/12/08 13:18:30 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/10 11:36:35 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,11 @@ int	main(int ac, char **av)
 		return (1);
 	}
 	// test_vect();
-	ray = init_ray();
-	point = position(ray.origin, ray.direction, 0);
-	print_tuple(point);
+	// ray = init_ray();
+	// point = position(ray.origin, ray.direction, 0);
+	// print_tuple(point);
+	// launch_ray();
+	
 	printf("Hello RT!\n");
 	scene_init(&scene);
 	init_camera(&scene, create_point(0, 0, 15), create_vector(0, 0, -1));

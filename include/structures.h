@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 10:20:18 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/12/08 11:02:35 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/10 10:54:06 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_obj
 {
 	t_tuple	pos;
 	t_tuple	ov_pos;
-	int		id;
+	int		type;
 	int		fov;
 	int		color;
 	double	lt_ratio;

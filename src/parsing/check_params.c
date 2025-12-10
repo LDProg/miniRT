@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 10:14:46 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/11/28 15:49:35 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/10 10:57:12 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_obj	init_obj(void)
 {
 	t_obj	obj;
 
-	obj.id = 0;
+	obj.type = 0;
 	obj.fov = 0;
 	obj.color = 0;
 	obj.lt_ratio = 0;
@@ -37,20 +37,20 @@ t_obj	init_obj(void)
 
 /*The first data indicate the type of the object.*/
 
-void	fill_id(t_obj *obj, char *s)
+void	fill_type(t_obj *obj, char *s)
 {
 	if (ft_strcmp(s, "A"))
-		obj->id = A;
+		obj->type = A;
 	else if (ft_strcmp(s, "C"))
-		obj->id = C;
+		obj->type = C;
 	else if (ft_strcmp(s, "L"))
-		obj->id = L;
+		obj->type = L;
 	else if (ft_strcmp(s, "pl"))
-		obj->id = PL;
+		obj->type = PL;
 	else if (ft_strcmp(s, "sp"))
-		obj->id = SP;
+		obj->type = SP;
 	else if (ft_strcmp(s, "cy"))
-		obj->id = CY;
+		obj->type = CY;
 	else
-		obj->id = -1;
+		obj->type = -1;
 }

@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 10:03:58 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/12/08 13:41:13 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/10 10:57:39 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	print_double_tab(char **double_tab)
 
 void	print_struct(t_obj *obj)
 {
-	printf("id = %d\n", obj->id);
+	printf("type = %d\n", obj->type);
 	printf("fov = %d\n", obj->fov);
 	printf("r = %d\n", obj->color);
 	printf("lt_ratio = %g\n", obj->lt_ratio);
