@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:33:55 by ludebion          #+#    #+#             */
-/*   Updated: 2025/12/08 13:18:57 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/11 13:00:44 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,13 @@
 
 /*----------RAY----------*/
 
+/*----------INTERSECT----------*/
+t_inter	intersect_sphere(t_obj *sphere, t_ray ray);
+
 /*----------TEST----------*/
-void	print_double_tab(char **double_tab);
-void	print_struct(t_obj *obj);
-void	print_vector(t_dynvec *vector);
+// void	print_double_tab(char **double_tab);
+// void	print_struct(t_obj *obj);
+// void	print_vector(t_dynvec *vector);
 t_tuple	fill_vect_test(double x, double y, double z, double w);
 void	test_vect();
 t_ray	init_ray();

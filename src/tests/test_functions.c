@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 10:03:58 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/12/10 10:57:39 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/11 12:18:37 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	print_struct(t_obj *obj)
 	printf("\n");
 }
 
-/*Display the content of vector>array.*/
+/*Display the content of vector->array.*/
 
 void	print_vector(t_dynvec *vector)
 {

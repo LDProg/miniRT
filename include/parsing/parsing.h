@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 06:44:37 by ludebion          #+#    #+#             */
-/*   Updated: 2025/12/10 10:54:26 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/11 11:05:43 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int		check_args(int ac, char **av);
 int		fill_tab(int fd, t_dynvec *vector);
 char	**multi_split(char const *s, char c1, char c2);
 int		ft_strcmp(char *s1, char *s2);
-float	ft_atof(const char *nptr);
 t_obj	init_obj(void);
 void	fill_type(t_obj *obj, char *s);
 void	fill_a(t_obj *obj, char **db_tab);

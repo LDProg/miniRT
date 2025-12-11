@@ -1,15 +1,15 @@
 .PHONY:	all clean fclean re deps debug show_compiling_msg
 
 #Files
-LST_EXEC :=	minirt.c
+LST_EXEC :=		minirt.c
 
-LST_TEST :=	test_functions.c
+LST_TEST :=		test_functions.c
 
 LST_PARSING :=	check_object.c check_params.c fill_color.c fill_light.c fill_obj.c parsing.c
 
 LST_CAMERA:=	init_camera.c
 
-LST_RAY :=	ray.c
+LST_INTER :=	intersect_sphere.c
 
 LST_RENDER :=	mlx_hooks.c mlx_init.c mlx_utils.c scene_init.c
 
@@ -32,6 +32,7 @@ D_TEST :=	tests/
 D_CAMERA :=	camera/
 D_RENDER :=	render/
 D_UTILS :=	utils/
+D_INTER := intersect/
 
 #Files full path
 SRC :=	$(addprefix $(D_SRC), $(LST_EXEC)) \
@@ -39,7 +40,8 @@ SRC :=	$(addprefix $(D_SRC), $(LST_EXEC)) \
 		$(addprefix $(D_SRC)$(D_RENDER), $(LST_RENDER)) \
 		$(addprefix $(D_SRC)$(D_UTILS), $(LST_UTILS)) \
 		$(addprefix $(D_SRC)$(D_TEST), $(LST_TEST)) \
-		$(addprefix $(D_SRC)$(D_PARSING), $(LST_PARSING))
+		$(addprefix $(D_SRC)$(D_PARSING), $(LST_PARSING)) \
+		$(addprefix $(D_SRC)$(D_INTER), $(LST_INTER))
 
 INC :=	$(addprefix $(D_INC), $(LST_INC))
 
@@ -60,14 +62,11 @@ MLX := $(D_LIBMLX)libmlx.a
 D_DVECT := $(D_LIB)dynvect/
 DVECT := $(D_DVECT)dynvect.a
 
-# D_MVECT := $(D_LIB)mathvect/
-# MVECT := $(D_MVECT)mathvect.a
-
 #Variables
 NAME := miniRT
 CC := cc
 CFLAGS := -Wall -Wextra -O3 # -Werror
-IFLAGS := -I$(D_INC) -I$(D_LIBFT) -I$(D_LIBFT)/gnl -I$(D_LIBFT)/mylib -I$(D_DVECT) -I$(D_LIBMLX) -I$(D_LIBMATH)include/ #-I$(D_MVECT)
+IFLAGS := -I$(D_INC) -I$(D_LIBFT) -I$(D_LIBFT)/gnl -I$(D_LIBFT)/mylib -I$(D_DVECT) -I$(D_LIBMLX) -I$(D_LIBMATH)include/
 DEBUG_VALGRIND = valgrind --leak-check=full --show-leak-kinds=all
 
 RM := rm -rf
