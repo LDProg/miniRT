@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 10:19:11 by ludebion          #+#    #+#             */
-/*   Updated: 2025/12/11 16:04:07 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/12 16:02:58 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_ray
 {
 	t_point3	origin;
 	t_vec3		direction;
+	double		t;
 	int			pix_color;
 }	t_ray;
 

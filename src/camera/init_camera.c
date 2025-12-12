@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 12:12:16 by ludebion          #+#    #+#             */
-/*   Updated: 2025/12/06 14:14:30 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/12 17:22:04 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,11 @@ static void	project_rays(t_camera camera)
 		y++;
 	}
 }
+
+// t_point3 get_point(t_ray ray)
+// {
+// 	float t;
+// }
 
 t_camera	init_camera(t_scene *scene, t_point3 origin, t_vec3 direction)
 {

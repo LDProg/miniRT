@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 10:03:58 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/12/12 14:45:46 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/12 17:55:35 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,14 +92,14 @@ t_ray	init_ray()
 {
 	t_ray	ray;
 
-	ray.origin.x = 2;
-	ray.origin.y = 3;
-	ray.origin.z = 4;
+	ray.origin.x = 0;
+	ray.origin.y = 0;
+	ray.origin.z = 0;
 	ray.origin.w = 1;
-	ray.direction.x = 1;
 	ray.direction.x = 0;
-	ray.direction.x = 0;
-	ray.direction.x = 0;
+	ray.direction.y = 0;
+	ray.direction.z = 20;
+	ray.direction.w = 0;
 	return (ray);
 }
 

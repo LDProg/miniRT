@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:34:18 by ludebion          #+#    #+#             */
-/*   Updated: 2025/12/12 14:51:53 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/12 17:51:42 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 #include "mathvect.h"
 #include "tests/tests.h"
 #include "minirt.h"
+#include <math.h>
 
 int	main(int ac, char **av)
 {
@@ -47,13 +48,17 @@ int	main(int ac, char **av)
 		return (1);
 	}
 	ray = init_ray();
+	printf("ray.origin.x = %g\nray.origin.y = %g\nray.origin.z = %g\n\n", ray.origin.x, ray.origin.y, ray.origin.z);
+	printf("ray.direction.x = %g\nray.direction.y = %g\nray.direction.z = %g\n\n", ray.direction.x, ray.direction.y, ray.direction.z);
 	// print_vector(vector);
 	p = (t_obj *)((unsigned char *)vector->array + 3 * vector->size_type);
-	print_struct(p);
+	// print_struct(p);
 	inter = intersect_plan(p, ray);
 	printf(RED"x = %g\ny = %g\nz = %g\n\n"RESET, inter.pos.x, inter.pos.y, inter.pos.z);
 	p = (t_obj *)((unsigned char *)vector->array + 4 * vector->size_type);
-	print_struct(p);
+	printf("ray.origin.x = %g\nray.origin.y = %g\nray.origin.z = %g\n\n", ray.origin.x, ray.origin.y, ray.origin.z);
+	printf("ray.direction.x = %g\nray.direction.y = %g\nray.direction.z = %g\n\n", ray.direction.x, ray.direction.y, ray.direction.z);
+	// print_struct(p);
 	inter = intersect_sphere(p, ray);
 	printf(RED"x = %g\ny = %g\nz = %g\n\n"RESET, inter.pos.x, inter.pos.y, inter.pos.z);
 	printf("Hello RT!\n");

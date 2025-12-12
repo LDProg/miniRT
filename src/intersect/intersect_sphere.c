@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 14:16:16 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/12/12 13:34:15 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/12 17:53:50 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ double	find_t(double a, double b, double delta)
 
 	if (delta < 0)
 		return (-1);
+	printf(BLUE"delta = %g\n"RESET, delta);
+	printf(GREEN"t = %g\n"RESET, -b / (2 * a));
 	if (delta == 0)
 		return (-b / (2 * a));
 	t1 = (-b + sqrtf(delta)) / (2 * a);
@@ -71,12 +73,20 @@ t_inter	intersect_sphere(t_obj *sphere, t_ray ray)
 	if (sphere->type == SP)
 	{
 		a = pow(ray.direction.x, 2) + pow(ray.direction.y, 2) + pow(ray.direction.z, 2);
+		// printf(BLUE"a = %g\n"RESET, a);
 		b = 2 * (ray.direction.x * (ray.origin.x - sphere->pos.x) + ray.direction.y * (ray.origin.y - sphere->pos.y) + ray.direction.z * (ray.origin.z - sphere->pos.z));
-		c = (pow(ray.origin.x - sphere->pos.x, 2) + pow(ray.origin.z - sphere->pos.y, 2) + pow(ray.origin.z - sphere->pos.z, 2)) - pow(sphere->sp_diam / 2, 2);
+		// printf(BLUE"b = %g\n"RESET, b);
+		printf(GREEN"ray.origin.x = %g\nsphere->pos.x = %g\nray.origin.y = %g\nsphere->pos.y = %g\nray.origin.z = %g\nsphere->pos.z = %g\n\n"RESET, ray.origin.x, sphere->pos.x, ray.origin.y, sphere->pos.y, ray.origin.z, sphere->pos.z);
+		c = (pow(ray.origin.x - sphere->pos.x, 2) + pow(ray.origin.y - sphere->pos.y, 2) + pow(ray.origin.z - sphere->pos.z, 2)) - pow(sphere->sp_diam / 2, 2);
+		// printf(BLUE"c = %g\n"RESET, c);
 		delta = pow(b, 2) - (4 * a * c);
+		// printf(BLUE"delta = %g\n"RESET, delta);
 		t = find_t(a, b, delta);
+		// printf(BLUE"sphere.t = %g\n"RESET, t);
 		inter.pos = scalar_mult(ray.direction, t);
+		// printf(BLUE"inter.pos.x = %g\ninter.pos.y = %g\ninter.pos.z = %g\n\n"RESET, inter.pos.x, inter.pos.y, inter.pos.z);
 		inter.pos = add_vect_point(ray.direction, ray.origin);
+		// printf(BLUE"inter.pos.x = %g\ninter.pos.y = %g\ninter.pos.z = %g\n\n"RESET, inter.pos.x, inter.pos.y, inter.pos.z);
 		return (inter);
 	}
 	return (inter);
