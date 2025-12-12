@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:34:18 by ludebion          #+#    #+#             */
-/*   Updated: 2025/12/11 16:53:32 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/12 14:51:53 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ int	main(int ac, char **av)
 		close(fd);
 		return (1);
 	}
-	// vector = fill_tab(fd, vector);
-	// if (!vector)
 	if (fill_tab(fd, vector))
 	{
 		ft_putstr_fd("The file is not valid", 2);
@@ -51,6 +49,10 @@ int	main(int ac, char **av)
 	ray = init_ray();
 	// print_vector(vector);
 	p = (t_obj *)((unsigned char *)vector->array + 3 * vector->size_type);
+	print_struct(p);
+	inter = intersect_plan(p, ray);
+	printf(RED"x = %g\ny = %g\nz = %g\n\n"RESET, inter.pos.x, inter.pos.y, inter.pos.z);
+	p = (t_obj *)((unsigned char *)vector->array + 4 * vector->size_type);
 	print_struct(p);
 	inter = intersect_sphere(p, ray);
 	printf(RED"x = %g\ny = %g\nz = %g\n\n"RESET, inter.pos.x, inter.pos.y, inter.pos.z);

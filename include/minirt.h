@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:33:55 by ludebion          #+#    #+#             */
-/*   Updated: 2025/12/11 13:00:44 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/12 13:44:04 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 
 /*----------INTERSECT----------*/
 t_inter	intersect_sphere(t_obj *sphere, t_ray ray);
+t_inter	intersect_plan(t_obj *plan, t_ray ray);
 
 /*----------TEST----------*/
 // void	print_double_tab(char **double_tab);

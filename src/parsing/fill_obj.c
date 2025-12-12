@@ -6,10 +6,11 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 13:49:22 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/12/11 11:39:22 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/12 14:45:36 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include "mylib.h"
 #include "parsing/parsing.h"
 #include "structures.h"
@@ -35,10 +36,10 @@ void	fill_pl(t_obj *obj, char **db_tab)
 	obj->pos.y = ft_atof(db_tab[2]);
 	obj->pos.z = ft_atof(db_tab[3]);
 	obj->pos.w = 0;
-	obj->ov_pos.x = ft_atof(db_tab[4]);
-	obj->ov_pos.y = ft_atof(db_tab[5]);
-	obj->ov_pos.z = ft_atof(db_tab[6]);
-	obj->ov_pos.w = 0;
+	obj->norm_v.x = ft_atof(db_tab[4]);
+	obj->norm_v.y = ft_atof(db_tab[5]);
+	obj->norm_v.z = ft_atof(db_tab[6]);
+	obj->norm_v.w = 0;
 	obj->color = fill_color(db_tab[7], db_tab[8], db_tab[9]);
 	return ;
 }
@@ -51,10 +52,10 @@ void	fill_cy(t_obj *obj, char **db_tab)
 	obj->pos.y = ft_atof(db_tab[2]);
 	obj->pos.z = ft_atof(db_tab[3]);
 	obj->pos.w = 0;
-	obj->ov_pos.x = ft_atof(db_tab[4]);
-	obj->ov_pos.y = ft_atof(db_tab[5]);
-	obj->ov_pos.z = ft_atof(db_tab[6]);
-	obj->ov_pos.w = 0;
+	obj->norm_v.x = ft_atof(db_tab[4]);
+	obj->norm_v.y = ft_atof(db_tab[5]);
+	obj->norm_v.z = ft_atof(db_tab[6]);
+	obj->norm_v.w = 0;
 	obj->cy_diam = ft_atof(db_tab[7]);
 	obj->cy_height = ft_atof(db_tab[8]);
 	obj->color = fill_color(db_tab[9], db_tab[10], db_tab[11]);

@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 13:49:13 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/12/11 11:41:07 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/12 14:44:29 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ void	fill_c(t_obj *obj, char **db_tab)
 	obj->pos.y = ft_atof(db_tab[2]);
 	obj->pos.z = ft_atof(db_tab[3]);
 	obj->pos.w = 0;
-	obj->ov_pos.x = ft_atof(db_tab[4]);
-	obj->ov_pos.y = ft_atof(db_tab[5]);
-	obj->ov_pos.z = ft_atof(db_tab[6]);
-	obj->ov_pos.w = 0;
+	obj->norm_v.x = ft_atof(db_tab[4]);
+	obj->norm_v.y = ft_atof(db_tab[5]);
+	obj->norm_v.z = ft_atof(db_tab[6]);
+	obj->norm_v.w = 0;
 	obj->fov = ft_atoi(db_tab[7]);
 	return ;
 }

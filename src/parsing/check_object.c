@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 10:01:53 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/12/11 16:43:46 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/12 14:46:05 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "libft.h"
 #include "mylib.h"
 #include "parsing/parsing.h"
+#include "tests/tests.h"
 
 /*Read the line with gnl and convert it in char**.*/
 
@@ -81,7 +82,6 @@ int	fill_tab(int fd, t_dynvec *vector)
 	}
 	close(fd);
 	ft_vector_addone(vector, &obj); // Need to protect if the adding fail.
-	// print_vector(vector);
 	// ft_free_vector(vector);
 	return (0);
 }

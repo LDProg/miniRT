@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 14:16:16 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/12/11 16:52:55 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/12 13:34:15 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,10 @@ t_inter	intersect_sphere(t_obj *sphere, t_ray ray)
 	double	delta;
 	double	t;
 
+	inter.pos.x = 0;
+	inter.pos.y = 0;
+	inter.pos.z = 0;
+	inter.pos.w = 0;
 	if (sphere->type == SP)
 	{
 		a = pow(ray.direction.x, 2) + pow(ray.direction.y, 2) + pow(ray.direction.z, 2);
@@ -71,11 +75,9 @@ t_inter	intersect_sphere(t_obj *sphere, t_ray ray)
 		c = (pow(ray.origin.x - sphere->pos.x, 2) + pow(ray.origin.z - sphere->pos.y, 2) + pow(ray.origin.z - sphere->pos.z, 2)) - pow(sphere->sp_diam / 2, 2);
 		delta = pow(b, 2) - (4 * a * c);
 		t = find_t(a, b, delta);
-		// if (t == -1)
-		// 	return (NULL);
 		inter.pos = scalar_mult(ray.direction, t);
 		inter.pos = add_vect_point(ray.direction, ray.origin);
-		// inter.color = 0;
 		return (inter);
 	}
+	return (inter);
 }
