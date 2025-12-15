@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 12:12:16 by ludebion          #+#    #+#             */
-/*   Updated: 2025/12/15 15:21:49 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/15 16:49:41 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,6 @@ static void	project_rays(t_camera camera, t_dynvec *tab_vec, t_mlx_img *mlx_img)
 		}
 		y++;
 	}
-	printf("coucou\n");
 	display_scene(pix_tab, mlx_img);
 	free(pix_tab);
 }

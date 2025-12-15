@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 14:16:16 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/12/15 16:43:33 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/15 16:52:21 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,6 @@ double	find_t(double a, double b, double delta)
 
 	if (delta < 0)
 		return (-1);
-	// printf(BLUE"delta = %g\n"RESET, delta);
-	// printf(GREEN"t = %g\n"RESET, -b / (2 * a));
 	if (delta == 0)
 		return (-b / (2 * a));
 	t1 = (-b + sqrtf(delta)) / (2 * a);
@@ -68,7 +66,6 @@ void	intersect_sphere(t_obj *sphere, t_ray *ray)
 
 	if (sphere->type == SP)
 	{
-		// a = pow(ray->direction.x, 2) + pow(ray->direction.y, 2) + pow(ray->direction.z, 2);
 		a = dot_product(ray->direction, ray->direction);
 		b = 2 * (ray->direction.x * (ray->origin.x - sphere->pos.x) + ray->direction.y * (ray->origin.y - sphere->pos.y) + ray->direction.z * (ray->origin.z - sphere->pos.z));
 		c = (pow(ray->origin.x - sphere->pos.x, 2) + pow(ray->origin.y - sphere->pos.y, 2) + pow(ray->origin.z - sphere->pos.z, 2)) - pow(sphere->sp_diam / 2, 2);
@@ -92,7 +89,5 @@ void	intersect_sphere(t_obj *sphere, t_ray *ray)
 			}
 			ray->nb_inter++;
 		}
-		// else
-		// 	ray->pix_color = 0;
 	}
 }
