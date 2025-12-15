@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 14:16:16 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/12/15 16:52:21 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/15 17:04:10 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ double	find_t(double a, double b, double delta)
 
 void	intersect_sphere(t_obj *sphere, t_ray *ray)
 {
-	t_point3	pos;
 	double		a;
 	double		b;
 	double		c;
@@ -77,15 +76,15 @@ void	intersect_sphere(t_obj *sphere, t_ray *ray)
 			{
 				ray->pix_color = sphere->color;
 				ray->t = t;
-				pos = scalar_mult(ray->direction, ray->t);
-				pos = add_vect_point(ray->direction, ray->origin);
+				ray->pos_inter = scalar_mult(ray->direction, ray->t);
+				ray->pos_inter = add_vect_point(ray->direction, ray->origin);
 			}
 			else if (ray->nb_inter > 0 && t < ray->t)
 			{
 				ray->pix_color = sphere->color;
 				ray->t = t;
-				pos = scalar_mult(ray->direction, ray->t);
-				pos = add_vect_point(ray->direction, ray->origin);
+				ray->pos_inter = scalar_mult(ray->direction, ray->t);
+				ray->pos_inter = add_vect_point(ray->direction, ray->origin);
 			}
 			ray->nb_inter++;
 		}
