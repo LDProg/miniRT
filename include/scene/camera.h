@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   camera.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 12:17:19 by ludebion          #+#    #+#             */
-/*   Updated: 2025/12/03 16:58:49 by ludebion         ###   ########.fr       */
+/*   Updated: 2025/12/15 12:51:25 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 
 # include "rt_structures.h"
 
-t_camera	init_camera(t_scene *scene, t_point3 origin, t_vec3 direction);
+t_camera	init_camera(t_scene *scene, t_point3 origin, t_vec3 direction, t_dynvec *tab_vec);
 
 #endif

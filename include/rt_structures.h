@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 10:19:11 by ludebion          #+#    #+#             */
-/*   Updated: 2025/12/12 16:02:58 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/15 16:19:23 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct s_ray
 	t_point3	origin;
 	t_vec3		direction;
 	double		t;
+	int			nb_inter;
 	int			pix_color;
 }	t_ray;
 
@@ -67,10 +68,12 @@ typedef struct s_scene
 	t_camera	camera;
 }	t_scene;
 
-typedef struct	s_inter
+typedef struct	s_pixel
 {
-	t_point3	pos;
-	// int			color;
-}				t_inter;
+	int	x;
+	int	y;
+	int	color;
+}				t_pixel;
+
 
 #endif
