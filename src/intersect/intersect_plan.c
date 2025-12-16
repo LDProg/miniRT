@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 10:27:57 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/12/15 17:09:46 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/16 13:47:28 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,20 +29,22 @@ void	intersect_plan(t_obj *plan, t_ray *ray)
 	z = ray->origin.z - plan->pos.z;
 	d = -(norm.x + norm.y + norm.z);
 	t = -((norm.x * x + norm.y * y + norm.z * z + d) / (norm.x * ray->direction.x + norm.y * ray->direction.y + norm.z * ray->direction.z));
-	if (ray->nb_inter == 0)
+	if (t > 0)
 	{
-		ray->pix_color = plan->color;
-		ray->t = t;
-		ray->pos_inter = scalar_mult(ray->direction, ray->t);
-		ray->pos_inter = add_vect_point(ray->direction, ray->origin);
+		if (ray->nb_inter == 0)
+		{
+			ray->pix_color = plan->color;
+			ray->t = t;
+			ray->pos_inter = scalar_mult(ray->direction, ray->t);
+			ray->pos_inter = add_vect_point(ray->direction, ray->origin);
+		}
+		else if (ray->nb_inter > 0 && t < ray->t)
+		{
+			ray->pix_color = plan->color;
+			ray->t = t;
+			ray->pos_inter = scalar_mult(ray->direction, ray->t);
+			ray->pos_inter = add_vect_point(ray->direction, ray->origin);
+		}
+		ray->nb_inter++;
 	}
-	else if (ray->nb_inter < 0 && t < ray->t)
-	{
-		ray->pix_color = plan->color;
-		ray->t = t;
-		ray->pos_inter = scalar_mult(ray->direction, ray->t);
-		ray->pos_inter = add_vect_point(ray->direction, ray->origin);
-	}
-		// printf("t = %g = -((%g * %g + %g * %g + %g * %g + %g) / (%g * %g + %g * %g + %g * %g))\n", ray->t, norm.x, x, norm.y, y, norm.z, z, d, norm.x, ray->direction.x, norm.y, ray->direction.y, norm.z, ray->direction.z);
-		// printf(BLUE"plan.t = %g\n"RESET, ray->t);
 }

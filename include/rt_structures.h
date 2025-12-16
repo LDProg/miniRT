@@ -6,15 +6,15 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 10:19:11 by ludebion          #+#    #+#             */
-/*   Updated: 2025/12/15 17:02:09 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/16 11:27:26 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RT_STRUCTURES_H
 # define RT_STRUCTURES_H
 
-# define WIDTH 800
-# define HEIGHT 450
+# define WIDTH 1920
+# define HEIGHT 1080
 # define FOV 60
 
 # include <stdbool.h>
