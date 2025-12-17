@@ -6,13 +6,31 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 10:09:52 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/12/16 11:08:22 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/17 16:36:29 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+#include <stdio.h>
 
-int	find_intersect(t_ray *ray, t_dynvec *tab_vec)
+t_obj	*get_light(t_dynvec *tab_vec)
+{
+	t_obj	*obj;
+	size_t	i;
+
+	i = 0;
+	while (i <= tab_vec->len)
+	{
+		obj = (t_obj *)((unsigned char *)tab_vec->array + i * tab_vec->size_type);
+		if (obj->type == L)
+			break;
+		i++;
+	}
+	// printf(RED"obj->type = %d\n"RESET, obj->type);
+	return (obj);
+}
+
+int	find_intersect(t_ray *ray, t_dynvec *tab_vec, t_obj *light)
 {
 	t_obj	*obj;
 	size_t	i;
@@ -24,7 +42,10 @@ int	find_intersect(t_ray *ray, t_dynvec *tab_vec)
 	{
 		obj = (t_obj *)((unsigned char *)tab_vec->array + i * tab_vec->size_type);
 		if (obj->type == SP)
-			intersect_sphere(obj, ray);
+		{
+			intersect_sphere(obj, ray, light);
+			
+		}
 		else if (obj->type == PL)
 			intersect_plan(obj, ray);
 		// else if (obj.type = CY)

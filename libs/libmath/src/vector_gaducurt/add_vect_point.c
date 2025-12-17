@@ -6,16 +6,16 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 15:56:28 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/12/08 13:41:59 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/17 14:27:23 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mathvect.h"
 #include <stdio.h>
 
-t_tuple	add_vect_point(t_tuple v, t_tuple p)
+t_point3	add_vect_point(t_vec3 v, t_point3 p)
 {
-	t_tuple	res;
+	t_point3	res;
 
 	init_tuple(&res);
 	if (v.w != 0)

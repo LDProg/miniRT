@@ -6,15 +6,15 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 17:38:03 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/12/06 13:44:00 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/17 13:33:18 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mathvect.h"
 
-t_tuple	sub_two_vect(t_tuple v1, t_tuple v2)
+t_vec3	sub_two_vect(t_vec3 v1, t_vec3 v2)
 {
-	t_tuple	res;
+	t_vec3	res;
 	
 	init_tuple(&res);
 	if (v1.w != 0 || v2.w != 0)

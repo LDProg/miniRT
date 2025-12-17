@@ -6,13 +6,13 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 15:29:12 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/12/08 10:53:10 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/17 13:37:53 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mathvect.h"
 
-double	dot_product(t_tuple v1, t_tuple v2)
+double	dot_product(t_vec3 v1, t_vec3 v2)
 {
 	double	res;
 

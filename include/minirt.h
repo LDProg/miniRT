@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:33:55 by ludebion          #+#    #+#             */
-/*   Updated: 2025/12/15 13:25:23 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/17 16:35:31 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,11 @@
 /*----------RAY----------*/
 
 /*----------INTERSECT----------*/
-void	intersect_sphere(t_obj *sphere, t_ray *ray);
+void	intersect_sphere(t_obj *sphere, t_ray *ray, t_obj *light);
 void	intersect_plan(t_obj *plan, t_ray *ray);
-int	    find_intersect(t_ray *ray, t_dynvec *tab);
+int	    find_intersect(t_ray *ray, t_dynvec *tab, t_obj *light);
+int	    diffuse_lt(t_ray *ray, t_obj *obj, t_obj *light);
+t_obj	*get_light(t_dynvec *tab_vec);
 
 /*----------TEST----------*/
 // void	print_double_tab(char **double_tab);

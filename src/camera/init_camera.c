@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 12:12:16 by ludebion          #+#    #+#             */
-/*   Updated: 2025/12/15 16:49:41 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/17 16:54:12 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,11 +85,13 @@ static void	project_rays(t_camera camera, t_dynvec *tab_vec, t_mlx_img *mlx_img)
 	uint32_t	x;
 	uint32_t	y;
 	t_ray		ray;
+	t_obj		*light;
 	t_pixel		*pix_tab;
 	int			i;
 
 	y = 0;
 	i = 0;
+	light = get_light(tab_vec);
 	pix_tab = malloc((HEIGHT * WIDTH) * sizeof(t_pixel));
 	while (y < HEIGHT)
 	{
@@ -97,7 +99,7 @@ static void	project_rays(t_camera camera, t_dynvec *tab_vec, t_mlx_img *mlx_img)
 		while (x < WIDTH)
 		{
 			ray = get_ray(camera, x, y);
-			find_intersect(&ray, tab_vec);
+			find_intersect(&ray, tab_vec, light);
 			// my_pixel_put(&scene->mlx_img, x, y, color);
 			pix_tab[i].x = x;
 			pix_tab[i].y = y;
@@ -110,11 +112,6 @@ static void	project_rays(t_camera camera, t_dynvec *tab_vec, t_mlx_img *mlx_img)
 	display_scene(pix_tab, mlx_img);
 	free(pix_tab);
 }
-
-// t_point3 get_point(t_ray ray)
-// {
-// 	float t;
-// }
 
 t_camera	init_camera(t_scene *scene, t_point3 origin, t_vec3 direction, t_dynvec *tab_vec)
 {

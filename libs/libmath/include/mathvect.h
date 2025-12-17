@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 15:51:41 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/12/08 13:11:01 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/17 13:38:50 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,18 @@
 
 /*----------VECTOR----------*/
 
-t_tuple		add_vect_point(t_tuple vector, t_tuple point);
+t_point3	add_vect_point(t_vec3 v, t_point3 p);
 void		init_tuple(t_tuple *t);
-t_tuple		sub_two_vect(t_tuple v1, t_tuple v2);
-t_tuple		sub_point_vect(t_tuple p, t_tuple v);
-t_tuple		sub_two_points(t_tuple p1, t_tuple p2);
+t_vec3  	sub_two_vect(t_vec3 v1, t_vec3 v2);
+t_point3	sub_point_vect(t_point3 p, t_vec3 v);
+t_vec3  	sub_two_points(t_point3 p1, t_point3 p2);
 t_tuple		inv_tup(t_tuple v);
 t_tuple		scalar_mult(t_tuple v, double	factor);
-t_tuple		 scalar_div(t_tuple v, double factor);
-double		vect_mag(t_tuple v);
-t_tuple		normalize_vect(t_tuple v);
-double		dot_product(t_tuple v1, t_tuple v2);
-t_tuple 	cross_product(t_tuple v1, t_tuple v2);
+t_tuple		scalar_div(t_tuple v, double factor);
+double	    vect_mag(t_vec3 v);
+t_vec3	    normalize_vect(t_vec3 v);
+double  	dot_product(t_vec3 v1, t_vec3 v2);
+t_vec3  	cross_product(t_vec3 v1, t_vec3 v2);
 t_point3	position(t_point3 ray_origin, t_vec3 ray_dir, double t);
 
 /*----------MATRIX----------*/
