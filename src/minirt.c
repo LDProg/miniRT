@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:34:18 by ludebion          #+#    #+#             */
-/*   Updated: 2025/12/17 15:40:08 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/18 18:02:12 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int	main(int ac, char **av)
 	t_vec3		dir_cam;
 	// t_ray		ray;
 	t_obj		*p;
-	t_obj		*light;
 	int			fd;
 
 	if (check_args(ac, av))

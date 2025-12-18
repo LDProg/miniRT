@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 13:49:13 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/12/17 14:38:09 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/18 17:59:59 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,10 @@
 void	fill_a(t_obj *obj, char **db_tab)
 {
 	obj->lt_ratio = ft_atof(db_tab[1]);
-	obj->color = fill_color(db_tab[2], db_tab[3], db_tab[4]);
+	obj->color.rgb = fill_color(db_tab[2], db_tab[3], db_tab[4]);
+	obj->color.r = ft_atof(db_tab[2]);
+	obj->color.g = ft_atof(db_tab[3]);
+	obj->color.b = ft_atof(db_tab[4]);
 	return ;
 }
 
@@ -51,6 +54,9 @@ void	fill_l(t_obj *obj, char **db_tab)
 	obj->pos.z = ft_atof(db_tab[3]);
 	obj->pos.w = 1;
 	obj->lt_ratio = ft_atof(db_tab[4]);
-	obj->color = fill_color(db_tab[5], db_tab[6], db_tab[7]);
+	obj->color.rgb = fill_color(db_tab[5], db_tab[6], db_tab[7]);
+	obj->color.r = ft_atof(db_tab[5]);
+	obj->color.g = ft_atof(db_tab[6]);
+	obj->color.b = ft_atof(db_tab[7]);
 	return ;
 }

@@ -9,7 +9,7 @@ LST_PARSING :=	check_object.c check_params.c fill_color.c fill_light.c fill_obj.
 
 LST_CAMERA:=	init_camera.c
 
-LST_INTER :=	intersect_sphere.c intersect_plan.c find_intersect.c
+LST_INTER :=	intersect_sphere.c intersect_plan.c find_intersect.c compute_color.c
 
 LST_RENDER :=	mlx_hooks.c mlx_init.c mlx_utils.c scene_init.c
 

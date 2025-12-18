@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 10:14:46 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/12/12 10:28:28 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/18 17:53:41 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ t_obj	init_obj(void)
 
 	obj.type = 0;
 	obj.fov = 0;
-	obj.color = 0;
+	obj.color.r = 0;
+	obj.color.g = 0;
+	obj.color.b = 0;
 	obj.lt_ratio = 0;
 	obj.pos.x = 0;
 	obj.pos.y = 0;

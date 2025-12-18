@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 14:16:16 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/12/17 17:48:56 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/18 20:16:19 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,23 +65,6 @@ double	get_angle(t_vec3 l,t_vec3 n)
 	return (angle);
 }
 
-int	new_color(int light, int obj)
-{
-	int	rl;
-	int	gl;
-	int	bl;
-	// int	ro;
-	// int	go;
-	// int	bo;
-	(void)obj;
-
-	bl = light >> 8;
-	gl = light >> 16;
-	rl = light >> 24;
-	printf("rl = %d\ngl = %d\nbl = %d\n\n", rl, gl, bl);
-	return (0);
-}
-
 /*
 Diffuse color = ratio * max(l.n, 0) * src_color * obj_color
 */
@@ -102,14 +85,14 @@ int	diffuse_lt(t_ray *ray, t_obj *obj, t_obj *light)
 	}
 	if (obj->type == PL)
 		normal = obj->norm_v;
+	printf("ray->pos_inter.x = %g\nray->pos_inter.y = %g\nray->pos_inter.z = %g\n\n", ray->pos_inter.x, ray->pos_inter.y, ray->pos_inter.z);
 	vec_light = sub_two_points(light->pos, ray->pos_inter);
 	vec_light = normalize_vect(vec_light);
 	angle = get_angle(vec_light, normal);
-	// printf("angle = %g\n", angle);
-	// l_diffuse = light->lt_ratio * angle * light->color * obj->color;
-	ray->pix_color = light->lt_ratio * angle * obj->color;
-	// new_color(light->color, obj->color);
-	// ray->pix_color = l_diffuse + obj->color;
+	printf("vec_light.x = %g\nvec_light.y = %g\nvec_light.z = %g\n", vec_light.x, vec_light.y, vec_light.z);
+	printf("normal.x = %g\nnormal.y = %g\nnormal.z = %g\n", normal.x, normal.y, normal.z);
+	printf("angle = %g\n", angle);
+	ray->pix_color = compute_color(light->lt_ratio * angle, light->color, obj->color);
 	return (ray->pix_color);
 }
 
@@ -132,7 +115,7 @@ void	intersect_sphere(t_obj *sphere, t_ray *ray, t_obj *light)
 			t = find_t(a, b, delta);
 			if (ray->nb_inter == 0)
 			{
-				ray->pix_color = sphere->color;
+				ray->pix_color = sphere->color.rgb;
 				ray->t = t;
 				ray->pos_inter = scalar_mult(ray->direction, ray->t);
 				ray->pos_inter = add_vect_point(ray->direction, ray->origin);
@@ -140,10 +123,11 @@ void	intersect_sphere(t_obj *sphere, t_ray *ray, t_obj *light)
 			}
 			else if (ray->nb_inter > 0 && t < ray->t)
 			{
-				ray->pix_color = sphere->color;
+				ray->pix_color = sphere->color.rgb;
 				ray->t = t;
 				ray->pos_inter = scalar_mult(ray->direction, ray->t);
 				ray->pos_inter = add_vect_point(ray->direction, ray->origin);
+				ray->pos_inter = add_vect_point(ray->origin, scalar_mult(ray->direction, ray->t));
 				ray->pix_color = diffuse_lt(ray, sphere, light);
 			}
 			ray->nb_inter++;

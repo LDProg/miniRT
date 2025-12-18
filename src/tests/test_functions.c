@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 10:03:58 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/12/12 17:55:35 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/18 18:02:43 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	print_struct(t_obj *obj)
 {
 	printf("type = %d\n", obj->type);
 	printf("fov = %d\n", obj->fov);
-	printf("r = %d\n", obj->color);
+	printf("r = %d\n", obj->color.rgb);
 	printf("lt_ratio = %g\n", obj->lt_ratio);
 	printf("x = %g\n", obj->pos.x);
 	printf("y = %g\n", obj->pos.y);
