@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 14:16:16 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/12/19 11:59:31 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/19 15:28:56 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ double	find_t(double a, double b, double delta)
 	return (t2);
 }
 
-double	get_angle(t_vec3 l,t_vec3 n)
+double	get_angle(t_vec3 l, t_vec3 n)
 {
 	double	angle;
 
@@ -74,26 +74,28 @@ int	diffuse_lt(t_ray *ray, t_obj *obj, t_obj *light)
 	t_vec3	normal;
 	t_vec3	vec_light;
 	double	angle;
-	// int		l_diffuse;
 
 	if (obj->type == SP)
 	{
 		normal = sub_two_points(ray->pos_inter, obj->pos);
-		// printf(RED"normal.x = %g\nnormal.y = %g\nnormal.z = %g\n\n"RESET, normal.x, normal.y, normal.z);
 		normal = normalize_vect(normal);
-		// printf("normal.x = %g\nnormal.y = %g\nnormal.z = %g\n\n", normal.x, normal.y, normal.z);
 	}
 	if (obj->type == PL)
 		normal = obj->norm_v;
-	// printf("ray->pos_inter.x = %g\nray->pos_inter.y = %g\nray->pos_inter.z = %g\n\n", ray->pos_inter.x, ray->pos_inter.y, ray->pos_inter.z);
 	vec_light = sub_two_points(light->pos, ray->pos_inter);
 	vec_light = normalize_vect(vec_light);
 	angle = get_angle(vec_light, normal);
-	// printf("vec_light.x = %g\nvec_light.y = %g\nvec_light.z = %g\n", vec_light.x, vec_light.y, vec_light.z);
-	// printf("normal.x = %g\nnormal.y = %g\nnormal.z = %g\n", normal.x, normal.y, normal.z);
-	// printf("angle = %g\n", angle);
-	ray->pix_color = compute_color(light->lt_ratio * angle, light->color, obj->color);
+	ray->pix_color = compute_color(light->lt_ratio * angle, light->color,
+			obj->color);
 	return (ray->pix_color);
+}
+
+void	handle_ray(double t, t_ray *ray, t_obj *obj, t_obj *light)
+{
+	ray->t = t;
+	ray->pos_inter = scalar_mult(ray->direction, ray->t);
+	ray->pos_inter = add_vect_point(ray->pos_inter, ray->origin);
+	ray->pix_color = diffuse_lt(ray, obj, light);
 }
 
 void	intersect_sphere(t_obj *sphere, t_ray *ray, t_obj *light)
@@ -104,32 +106,22 @@ void	intersect_sphere(t_obj *sphere, t_ray *ray, t_obj *light)
 	double		t;
 	double		delta;
 
-	if (sphere->type == SP)
+	a = dot_product(ray->direction, ray->direction);
+	b = 2 * (ray->direction.x * (ray->origin.x - sphere->pos.x)
+			+ ray->direction.y * (ray->origin.y - sphere->pos.y)
+			+ ray->direction.z * (ray->origin.z - sphere->pos.z));
+	c = (pow(ray->origin.x - sphere->pos.x, 2)
+			+ pow(ray->origin.y - sphere->pos.y, 2)
+			+ pow(ray->origin.z - sphere->pos.z, 2))
+		- pow(sphere->sp_diam / 2, 2);
+	delta = pow(b, 2) - (4 * a * c);
+	if (delta >= 0)
 	{
-		a = dot_product(ray->direction, ray->direction);
-		b = 2 * (ray->direction.x * (ray->origin.x - sphere->pos.x) + ray->direction.y * (ray->origin.y - sphere->pos.y) + ray->direction.z * (ray->origin.z - sphere->pos.z));
-		c = (pow(ray->origin.x - sphere->pos.x, 2) + pow(ray->origin.y - sphere->pos.y, 2) + pow(ray->origin.z - sphere->pos.z, 2)) - pow(sphere->sp_diam / 2, 2);
-		delta = pow(b, 2) - (4 * a * c);
-		if (delta >= 0)
-		{
-			t = find_t(a, b, delta);
-			if (ray->nb_inter == 0)
-			{
-				ray->pix_color = sphere->color.rgb;
-				ray->t = t;
-				ray->pos_inter = scalar_mult(ray->direction, ray->t);
-				ray->pos_inter = add_vect_point(ray->pos_inter, ray->origin);
-				ray->pix_color = diffuse_lt(ray, sphere, light);
-			}
-			else if (ray->nb_inter > 0 && t < ray->t)
-			{
-				ray->pix_color = sphere->color.rgb;
-				ray->t = t;
-				ray->pos_inter = scalar_mult(ray->direction, ray->t);
-				ray->pos_inter = add_vect_point(ray->pos_inter, ray->origin);
-				ray->pix_color = diffuse_lt(ray, sphere, light);
-			}
-			ray->nb_inter++;
-		}
+		t = find_t(a, b, delta);
+		if (ray->nb_inter == 0)
+			handle_ray(t, ray, sphere, light);
+		else if (ray->nb_inter > 0 && t < ray->t)
+			handle_ray(t, ray, sphere, light);
+		ray->nb_inter++;
 	}
 }

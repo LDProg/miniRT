@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 10:09:52 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/12/17 16:36:29 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/19 15:25:19 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ t_obj	*get_light(t_dynvec *tab_vec)
 			break;
 		i++;
 	}
-	// printf(RED"obj->type = %d\n"RESET, obj->type);
 	return (obj);
 }
 
@@ -42,10 +41,7 @@ int	find_intersect(t_ray *ray, t_dynvec *tab_vec, t_obj *light)
 	{
 		obj = (t_obj *)((unsigned char *)tab_vec->array + i * tab_vec->size_type);
 		if (obj->type == SP)
-		{
 			intersect_sphere(obj, ray, light);
-			
-		}
 		else if (obj->type == PL)
 			intersect_plan(obj, ray);
 		// else if (obj.type = CY)

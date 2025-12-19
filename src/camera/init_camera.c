@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 12:12:16 by ludebion          #+#    #+#             */
-/*   Updated: 2025/12/17 16:54:12 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/19 14:47:13 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,7 @@ static t_ray	get_ray(t_camera camera, uint32_t x, uint32_t y)
 	cam_x = (2 * ((x + 0.5) / WIDTH) - 1) * aspect_ratio * scale;
 	cam_y = (1 - 2 * ((y + 0.5) / HEIGHT)) * scale;
 	ray.origin = camera.origin;
-	// printf("ray.origin.x = %g\nray.origin.y = %g\nray.origin.z = %g\n", ray.origin.x, ray.origin.y, ray.origin.z);
 	ray.direction = vector_normalize(create_vector(cam_x, cam_y, -1));
-	// printf("ray.direction.x = %g\nray.direction.y = %g\nray.direction.z = %g\n", ray.direction.x, ray.direction.y, ray.direction.z);
 	return (ray);
 }
 
@@ -100,7 +98,6 @@ static void	project_rays(t_camera camera, t_dynvec *tab_vec, t_mlx_img *mlx_img)
 		{
 			ray = get_ray(camera, x, y);
 			find_intersect(&ray, tab_vec, light);
-			// my_pixel_put(&scene->mlx_img, x, y, color);
 			pix_tab[i].x = x;
 			pix_tab[i].y = y;
 			pix_tab[i].color = ray.pix_color;

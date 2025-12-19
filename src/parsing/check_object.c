@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 10:01:53 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/12/12 14:46:05 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/19 14:09:50 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,9 @@ int	fill_tab(int fd, t_dynvec *vector)
 		obj = init_obj();
 		fill_type(&obj, db_tab[0]);
 		fill_obj(&obj, db_tab);
+		if (obj.type == C || obj.type == PL)
+			if (vect_mag(obj.norm_v) != 1)
+				return (1);
 		db_free(db_tab);
 		db_tab = new_tab(fd);
 		if (!db_tab)
