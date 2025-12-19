@@ -6,7 +6,7 @@
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 10:19:11 by ludebion          #+#    #+#             */
-/*   Updated: 2025/12/05 08:22:52 by ludebion         ###   ########.fr       */
+/*   Updated: 2025/12/18 20:11:30 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ typedef struct s_ray
 typedef struct s_camera
 {
 	t_point3	origin;
-	t_vec3		direction;
 	t_vec3		right;
 	t_vec3		up;
 	t_vec3		forward;
