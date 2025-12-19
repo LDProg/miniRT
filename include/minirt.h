@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:33:55 by ludebion          #+#    #+#             */
-/*   Updated: 2025/12/19 15:24:54 by gaducurt         ###   ########.fr       */
+/*   Updated: 2025/12/19 15:30:42 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,6 @@ int 	compute_color(double coef, t_color l_color, t_color o_color);
 void	handle_ray(double t, t_ray *ray, t_obj *obj, t_obj *light);
 
 /*----------TEST----------*/
-// void	print_double_tab(char **double_tab);
-// void	print_struct(t_obj *obj);
-// void	print_vector(t_dynvec *vector);
 t_tuple	fill_vect_test(double x, double y, double z, double w);
 void	test_vect();
 t_ray	init_ray();
