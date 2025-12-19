@@ -6,7 +6,7 @@
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/05 06:22:06 by ludebion          #+#    #+#             */
-/*   Updated: 2025/12/05 06:48:33 by ludebion         ###   ########.fr       */
+/*   Updated: 2025/12/19 00:51:26 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,43 +14,21 @@
 
 t_mat4	mat4_identity(void)
 {
-	t_mat4	m;
-	int		i;
-	int		j;
-
-	i = 0;
-	while (i < 4)
-	{
-		j = 0;
-		while (j < 4)
-		{
-			if (i == j)
-				m.m[i][j] = 1.0;
-			else
-				m.m[i][j] = 0.0;
-			j++;
-		}
-		i++;
-	}
-	return (m);
+	return ((t_mat4){{1, 0, 0, 0}, {0, 1, 0, 0}, {0, 0, 1, 0}, {0, 0, 0, 1}});
 }
 
 t_mat4	mat4_zero(void)
 {
-	t_mat4	m;
-	int		i;
-	int		j;
+	return ((t_mat4){{0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}});
+}
 
-	i = 0;
-	while (i < 4)
-	{
-		j = 0;
-		while (j < 4)
-		{
-			m.m[i][j] = 0.0;
-			j++;
-		}
-		i++;
-	}
+t_mat4	mat4_new(t_tuple x, t_tuple y, t_tuple z, t_tuple t)
+{
+	t_mat4	m;
+
+	m.x = x;
+	m.y = y;
+	m.z = z;
+	m.t = t;
 	return (m);
 }

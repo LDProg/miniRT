@@ -6,7 +6,7 @@
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 16:40:16 by ludebion          #+#    #+#             */
-/*   Updated: 2025/12/05 06:43:54 by ludebion         ###   ########.fr       */
+/*   Updated: 2025/12/19 01:20:51 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,21 @@
 # include "libmath_structures.h"
 # include <stdbool.h>
 
+// Debug
+void	mat4_print(t_mat4 m, char *name);
+void	mat4_print_basis(t_mat4 m, char *name);
+
 // Matrice Creation
 t_mat4	mat4_identity(void);
 t_mat4	mat4_zero(void);
+t_mat4	mat4_new(t_tuple x, t_tuple y, t_tuple z, t_tuple t);
 
 // Matrice Operations
+t_tuple	mat4_mul_point(t_mat4 m, t_tuple p);
+t_tuple	mat4_mul_vector(t_mat4 m, t_tuple v);
 t_mat4	mat4_mul(t_mat4 a, t_mat4 b);
-t_vec3	mat4_mul_vec3(t_mat4 m, t_vec3 v);
 t_mat4	mat4_transpose(t_mat4 m);
+double	mat3_det(t_mat3 m);
 
 // Matrice Transformations
 t_mat4	mat4_translation(double x, double y, double z);
@@ -52,9 +59,9 @@ t_tuple	tuple_div_scalar(t_tuple t, double s);
 t_tuple	tuple_mul_comp(t_tuple t1, t_tuple t2);
 
 // Vector operations
-double	vector_magnitude(t_tuple v);
-t_tuple	vector_normalize(t_tuple v);
-double	vector_dot(t_tuple v1, t_tuple v2);
-t_tuple	vector_cross(t_tuple v1, t_tuple v2);
+double	vector_magnitude(t_vec3 v);
+t_vec3	vector_normalize(t_vec3 v);
+double	vector_dot(t_vec3 v, t_vec3 w);
+t_vec3	vector_cross(t_vec3 v, t_vec3 w);
 
 #endif
