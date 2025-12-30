@@ -3,16 +3,17 @@
 #Files
 LST_EXEC :=	minirt.c
 
-LST_CAMERA:=	init_camera.c
+LST_MLX_WINDOW :=	mlx_hooks.c mlx_init.c mlx_utils.c
 
-LST_RAY :=	ray.c
+LST_PARSING:=	create_obj.c
 
-LST_RENDER :=	mlx_hooks.c mlx_init.c mlx_utils.c scene_init.c
+LST_RENDER:=	camera.c intersect.c raytrace.c
 
 LST_UTILS :=	close.c
 
 LST_INC :=	minirt.h rt_structures.h \
-			scene/camera.h scene/setup.h \
+			parsing/parsing.h \
+			scene/mlx_window.h scene/render.h \
 			utils/rt_utils.h
 
 #Directories
@@ -21,13 +22,15 @@ D_INC :=	include/
 D_LIB :=	libs/
 D_OBJ :=	.obj/
 
-D_CAMERA :=	camera/
+D_MLX_WINDOW :=	mlx_window/
+D_PARSING :=	parsing/
 D_RENDER :=	render/
 D_UTILS :=	utils/
 
 #Files full path
 SRC :=	$(addprefix $(D_SRC), $(LST_EXEC)) \
-		$(addprefix $(D_SRC)$(D_CAMERA), $(LST_CAMERA)) \
+		$(addprefix $(D_SRC)$(D_MLX_WINDOW), $(LST_MLX_WINDOW)) \
+		$(addprefix $(D_SRC)$(D_PARSING), $(LST_PARSING)) \
 		$(addprefix $(D_SRC)$(D_RENDER), $(LST_RENDER)) \
 		$(addprefix $(D_SRC)$(D_UTILS), $(LST_UTILS))
 

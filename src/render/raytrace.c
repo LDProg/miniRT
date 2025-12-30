@@ -1,19 +1,63 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_camera.c                                      :+:      :+:    :+:   */
+/*   raytrace.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/02 12:12:16 by ludebion          #+#    #+#             */
-/*   Updated: 2025/12/29 02:19:18 by ludebion         ###   ########.fr       */
+/*   Created: 2025/12/29 02:32:43 by ludebion          #+#    #+#             */
+/*   Updated: 2025/12/30 13:18:32 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt_structures.h"
+#include "scene/mlx_window.h"
+#include "scene/render.h"
 #include <math.h>
-#include <stdint.h>
-#include <stdio.h>
+
+static uint32_t	graduate_background(double y)
+{
+	double	a;
+	double	r;
+	double	g;
+	double	b;
+
+	a = 0.5 * y + 1;
+	if (a < 0)
+		a = 0;
+	if (a > 1)
+		a = 1;
+	r = (1 - a) * 255.0 + a * 127.995;
+	g = (1 - a) * 255.0 + a * 179.1993;
+	b = (1 - a) * 255.0 + a * 255.999;
+	return (get_color(r, g, b));
+}
+
+// static uint32_t	shading(t_hit *hit)
+// {
+// 	return (0);
+// }
+
+static bool	intersect_scene_objects(t_obj **objs, t_ray ray, t_hit *hit)
+{
+	uint32_t	i;
+	bool		has_hit;
+	t_hit		tmp_hit;
+
+	i = 0;
+	has_hit = false;
+	while (objs[i])
+	{
+		if (hit_object(ray, objs[i], hit))
+		{
+			if (!has_hit || hit->t > tmp_hit.t)
+				hit->t = tmp_hit.t;
+			has_hit = true;
+		}
+		i++;
+	}
+	return (has_hit);
+}
 
 static t_ray	generate_ray(t_camera camera, uint32_t x, uint32_t y)
 {
@@ -32,14 +76,16 @@ static t_ray	generate_ray(t_camera camera, uint32_t x, uint32_t y)
 	ray.direction = adding_tuple(ray.direction, tuple_mul_scalar(camera.up,
 				cam_y));
 	ray.direction = adding_tuple(ray.direction, camera.forward);
-	ray.direction = vector_normalize(ray.direction);
+	ray.direction = vec3_normalize(ray.direction);
 	return (ray);
 }
 
-static void	project_rays(t_camera camera)
+void	raytrace(t_camera camera, t_obj **objs, t_mlx_img *img)
 {
 	uint32_t	x;
 	uint32_t	y;
+	t_hit		hit;
+	uint32_t	color;
 	t_ray		ray;
 
 	y = 0;
@@ -49,32 +95,16 @@ static void	project_rays(t_camera camera)
 		while (x < WIDTH)
 		{
 			ray = generate_ray(camera, x, y);
+			if (intersect_scene_objects(objs, ray, &hit))
+			{
+				// color = shading(&hit);
+				color = hit.color.rgb;
+			}
+			else
+				color = graduate_background(ray.direction.y);
+			my_pixel_put(img, x, y, color);
 			x++;
 		}
 		y++;
 	}
-}
-
-static t_camera	create_camera_basis(t_point3 origin, t_vec3 forward)
-{
-	t_camera	camera;
-	t_vec3		world_up;
-
-	camera.origin = origin;
-	camera.forward = vector_normalize(forward);
-	world_up = create_vector(0, 1, 0);
-	if (fabs(camera.forward.y) > 0.999)
-		world_up = create_vector(0, 0, 1);
-	camera.right = vector_normalize(vector_cross(world_up, camera.forward));
-	camera.up = vector_normalize(vector_cross(camera.forward, camera.right));
-	return (camera);
-}
-
-t_camera	init_camera(t_point3 origin, t_vec3 forward)
-{
-	t_camera	camera;
-
-	camera = create_camera_basis(origin, forward);
-	project_rays(camera);
-	return (camera);
 }

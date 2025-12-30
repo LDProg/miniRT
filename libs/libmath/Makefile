@@ -1,9 +1,9 @@
 .PHONY:	all clean fclean re
 
 #Files
-LST_SRC_MATRICE :=	matrice_init.c matrice_ops.c matrice_trsf.c
+LST_SRC_MATRICE :=	mat4_init.c mat4_ops.c mat4_trsf.c print_mat.c
 
-LST_SRC_VECTOR :=	tuple_cmp.c tuple_init.c tuple_ops.c vector_ops.c
+LST_SRC_VEC3 :=	tuple_cmp.c tuple_init.c tuple_ops.c vec3_ops.c
 
 LST_INC :=	libmath.h libmath_structures.h
 
@@ -12,12 +12,12 @@ D_SRC :=	src/
 D_INC :=	include/
 D_OBJ :=	.obj/
 
-D_MATRICE := matrice/
-D_VECTOR := vector/
+D_MAT4 := mat4/
+D_VEC3 := vec3/
 
 #Files full path
-SRC :=	$(addprefix $(D_SRC)$(D_MATRICE), $(LST_SRC_MATRICE)) \
-		$(addprefix $(D_SRC)$(D_VECTOR), $(LST_SRC_VECTOR))
+SRC :=	$(addprefix $(D_SRC)$(D_MAT4), $(LST_SRC_MAT4)) \
+		$(addprefix $(D_SRC)$(D_VEC3), $(LST_SRC_VEC3))
 
 INC :=	$(addprefix $(D_INC), $(LST_INC))
 

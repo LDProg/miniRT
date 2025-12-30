@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   camera.h                                           :+:      :+:    :+:   */
+/*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/02 12:17:19 by ludebion          #+#    #+#             */
-/*   Updated: 2025/12/03 16:58:49 by ludebion         ###   ########.fr       */
+/*   Created: 2025/12/30 10:52:51 by ludebion          #+#    #+#             */
+/*   Updated: 2025/12/30 11:02:16 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAMERA_H
-# define CAMERA_H
+#ifndef PARSING_H
+# define PARSING_H
 
 # include "rt_structures.h"
 
-t_camera	init_camera(t_scene *scene, t_point3 origin, t_vec3 direction);
+t_obj	*create_sphere(t_point3 center, double radius, uint32_t rgb);
 
 #endif

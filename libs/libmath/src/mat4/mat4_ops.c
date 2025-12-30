@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   matrice_ops.c                                      :+:      :+:    :+:   */
+/*   mat4_ops.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/05 06:23:41 by ludebion          #+#    #+#             */
-/*   Updated: 2025/12/19 00:49:41 by ludebion         ###   ########.fr       */
+/*   Updated: 2025/12/30 03:40:13 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,4 @@ t_mat4	mat4_transpose(t_mat4 m)
 	result.t.z = m.z.w;
 	result.t.w = m.t.w;
 	return (result);
-}
-
-double	mat3_det(t_mat3 m)
-{
-	return (m.x.x * (m.y.y * m.z.z - m.y.z * m.z.y) - m.y.x * (m.x.y * m.z.z
-			- m.x.z * m.z.y) + m.z.x * (m.x.y * m.y.z - m.x.z * m.y.y));
 }

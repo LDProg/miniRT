@@ -6,7 +6,7 @@
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 10:19:11 by ludebion          #+#    #+#             */
-/*   Updated: 2025/12/18 20:11:30 by ludebion         ###   ########.fr       */
+/*   Updated: 2025/12/30 05:14:48 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@
 # define WIDTH 800
 # define HEIGHT 450
 # define FOV 60
+# define BACKGROUND_COLOR 0x0000FF
 
-# include <stdbool.h>
 # include "libmath.h"
+# include <stdbool.h>
+# include <stdint.h>
 
 typedef enum s_keys
 {
@@ -32,6 +34,19 @@ typedef enum s_keys
 	MOUSE_DOWN,
 }	t_keys;
 
+typedef enum e_obj_type
+{
+	T_SPHERE,
+	T_PLANE,
+	T_CYLINDER
+}	t_obj_type;
+
+typedef struct s_color
+{
+	double		ratio;
+	uint32_t	rgb;
+}	t_color;
+
 typedef struct s_mlx_img
 {
 	void	*img_ptr;
@@ -40,6 +55,49 @@ typedef struct s_mlx_img
 	int		endian;
 	int		size_line;
 }	t_mlx_img;
+
+typedef struct s_light
+{
+	t_point3	center;
+	t_color		color;
+}	t_light;
+
+typedef struct s_sphere
+{
+	t_point3	center;
+	double		radius;
+	t_color		color;
+}	t_sphere;
+
+typedef struct s_plane
+{
+	t_point3	point;
+	t_vec3		normal;
+	t_color		color;
+}	t_plane;
+
+typedef struct s_cylinder
+{
+	t_point3	center;
+	t_vec3		axis;
+	double		radius;
+	double		height;
+	t_color		color;
+}	t_cylinder;
+
+typedef struct s_obj
+{
+	t_obj_type	type;
+	void		*shape;
+}	t_obj;
+
+typedef struct s_hit
+{
+	double		t;
+	t_point3	point;
+	t_vec3		normal;
+	t_color		color;
+}	t_hit;
 
 typedef struct s_ray
 {
@@ -62,6 +120,9 @@ typedef struct s_scene
 	t_mlx_img	mlx_img;
 	bool		needs_redraw;
 	t_camera	camera;
+	t_obj		**objects;
+	t_light		light;
+	t_color		ambient;
 }	t_scene;
 
 #endif

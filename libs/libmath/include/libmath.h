@@ -6,7 +6,7 @@
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 16:40:16 by ludebion          #+#    #+#             */
-/*   Updated: 2025/12/19 01:20:51 by ludebion         ###   ########.fr       */
+/*   Updated: 2025/12/30 03:37:07 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ t_mat4	mat4_rotation_y(double angle);
 t_mat4	mat4_rotation_z(double angle);
 
 // Vector Creation
-t_tuple	create_tuple(double x, double y, double z, double w);
-t_tuple	create_point(double x, double y, double z);
-t_tuple	create_vector(double x, double y, double z);
+t_tuple	tuple_new(double x, double y, double z, double w);
+t_tuple	point3_new(double x, double y, double z);
+t_tuple	vec3_new(double x, double y, double z);
 
 // Vector Comparaisons
 bool	is_point(t_tuple t);
@@ -59,9 +59,9 @@ t_tuple	tuple_div_scalar(t_tuple t, double s);
 t_tuple	tuple_mul_comp(t_tuple t1, t_tuple t2);
 
 // Vector operations
-double	vector_magnitude(t_vec3 v);
-t_vec3	vector_normalize(t_vec3 v);
-double	vector_dot(t_vec3 v, t_vec3 w);
-t_vec3	vector_cross(t_vec3 v, t_vec3 w);
+double	vec3_magnitude(t_vec3 v);
+t_vec3	vec3_normalize(t_vec3 v);
+double	vec3_dot(t_vec3 v, t_vec3 w);
+t_vec3	vec3_cross(t_vec3 v, t_vec3 w);
 
 #endif
