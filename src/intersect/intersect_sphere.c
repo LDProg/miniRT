@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 14:16:16 by gaducurt          #+#    #+#             */
-/*   Updated: 2026/01/05 14:02:47 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/05 15:29:04 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,15 +108,15 @@ void	handle_ray(double t, t_ray *ray, t_obj *obj, t_obj *d_light, t_obj *a_light
 {
 	t_color	diffuse;
 	t_color	ambient;
+	t_color	test;
 
+	test.r = test.g = test.b = test.rgb = 0;
 	ray->t = t;
 	ray->pos_inter = scalar_mult(ray->direction, ray->t);
 	ray->pos_inter = add_vect_point(ray->pos_inter, ray->origin);
 	diffuse = diffuse_lt(ray, obj, d_light);
-	// ray->pix_color = diffuse_lt(ray, obj, d_light);
 	ambient = ambient_lt(obj, a_light);
-	ray->pix_color = compute_color(1, ambient, diffuse);
-	// ray->pix_color = diffuse;
+	ray->pix_color = add_colors(ambient, diffuse);
 }
 
 void	intersect_sphere(t_obj *sphere, t_ray *ray, t_obj *d_light, t_obj *a_light)
