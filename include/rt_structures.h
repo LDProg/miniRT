@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 10:19:11 by ludebion          #+#    #+#             */
-/*   Updated: 2025/12/16 11:27:26 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/05 13:12:41 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 # include <stdbool.h>
 # include "libmath.h"
+# include "structures.h"
 
 typedef enum s_keys
 {
@@ -48,7 +49,7 @@ typedef struct s_ray
 	t_point3	pos_inter;
 	double		t;
 	int			nb_inter;
-	int			pix_color;
+	t_color		pix_color;
 }	t_ray;
 
 typedef struct s_camera

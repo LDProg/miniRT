@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 12:12:16 by ludebion          #+#    #+#             */
-/*   Updated: 2025/12/19 14:47:13 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/05 13:14:41 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,13 +83,15 @@ static void	project_rays(t_camera camera, t_dynvec *tab_vec, t_mlx_img *mlx_img)
 	uint32_t	x;
 	uint32_t	y;
 	t_ray		ray;
-	t_obj		*light;
+	t_obj		*d_light;
+	t_obj		*a_light;
 	t_pixel		*pix_tab;
 	int			i;
 
 	y = 0;
 	i = 0;
-	light = get_light(tab_vec);
+	d_light = get_d_light(tab_vec);
+	a_light = get_a_light(tab_vec);
 	pix_tab = malloc((HEIGHT * WIDTH) * sizeof(t_pixel));
 	while (y < HEIGHT)
 	{
@@ -97,10 +99,10 @@ static void	project_rays(t_camera camera, t_dynvec *tab_vec, t_mlx_img *mlx_img)
 		while (x < WIDTH)
 		{
 			ray = get_ray(camera, x, y);
-			find_intersect(&ray, tab_vec, light);
+			find_intersect(&ray, tab_vec, d_light, a_light);
 			pix_tab[i].x = x;
 			pix_tab[i].y = y;
-			pix_tab[i].color = ray.pix_color;
+			pix_tab[i].color = ray.pix_color.rgb;
 			x++;
 			i++;
 		}

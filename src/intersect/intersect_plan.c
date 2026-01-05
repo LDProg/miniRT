@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 10:27:57 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/12/19 11:57:15 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/05 13:30:58 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,14 @@ void	intersect_plan(t_obj *plan, t_ray *ray)
 	{
 		if (ray->nb_inter == 0)
 		{
-			ray->pix_color = plan->color.rgb;
+			ray->pix_color = plan->color;
 			ray->t = t;
 			ray->pos_inter = scalar_mult(ray->direction, ray->t);
 			ray->pos_inter = add_vect_point(ray->pos_inter, ray->origin);
 		}
 		else if (ray->nb_inter > 0 && t < ray->t)
 		{
-			ray->pix_color = plan->color.rgb;
+			ray->pix_color = plan->color;
 			ray->t = t;
 			ray->pos_inter = scalar_mult(ray->direction, ray->t);
 			ray->pos_inter = add_vect_point(ray->pos_inter, ray->origin);
