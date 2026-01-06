@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 14:16:16 by gaducurt          #+#    #+#             */
-/*   Updated: 2026/01/06 13:25:05 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/06 16:12:49 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void	handle_ray(double t, t_ray *ray, t_obj *obj, t_obj *d_light, t_obj *a_light
 	t_rgb	ambient;
 	t_rgb	test;
 
-	test.r = test.g = test.b = test.rgb = 0;
+	// test.r = test.g = test.b = test.rgb = 0;
 	ray->t = t;
 	ray->pos_inter = scalar_mult(ray->direction, ray->t);
 	ray->pos_inter = add_vect_point(ray->pos_inter, ray->origin);
