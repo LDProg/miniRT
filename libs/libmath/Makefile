@@ -1,9 +1,9 @@
 .PHONY:	all clean fclean re
 
 #Files
-LST_SRC_MATRICE :=	matrice_init.c matrice_ops.c matrice_trsf.c
+LST_SRC_MAT4 :=	mat4_init.c mat4_ops.c mat4_trsf.c mat4_print.c
 
-LST_SRC_VECTOR :=	tuple_cmp.c tuple_init.c tuple_ops.c vector_ops.c
+LST_SRC_VEC3 :=	tuple_cmp.c tuple_init.c tuple_ops.c vec3_ops.c vec3_ops2.c vec3_print.c
 
 LST_SRC_MATRIX_G := all_rotate_matrix.c rotate_x.c rotate_y.c rotate_z.c scaling_matrix.c translate_matrix.c
 
@@ -23,11 +23,14 @@ D_VECTOR := vector/
 D_MATRIX_G := matrix_gaducurt/
 D_VECTOR_G := vector_gaducurt/
 
+D_MAT4 := mat4/
+D_VEC3 := vec3/
+
 #Files full path
-SRC :=	$(addprefix $(D_SRC)$(D_MATRICE), $(LST_SRC_MATRICE)) \
-		$(addprefix $(D_SRC)$(D_VECTOR), $(LST_SRC_VECTOR)) \
-		$(addprefix $(D_SRC)$(D_MATRIX_G), $(LST_SRC_MATRIX_G)) \
-		$(addprefix $(D_SRC)$(D_VECTOR_G), $(LST_SRC_VECTOR_G))
+SRC :=	$(addprefix $(D_SRC)$(D_MATRIX_G), $(LST_SRC_MATRIX_G)) \
+		$(addprefix $(D_SRC)$(D_VECTOR_G), $(LST_SRC_VECTOR_G)) \
+		$(addprefix $(D_SRC)$(D_MAT4), $(LST_SRC_MAT4)) \
+		$(addprefix $(D_SRC)$(D_VEC3), $(LST_SRC_VEC3)) 
 
 INC :=	$(addprefix $(D_INC), $(LST_INC))
 

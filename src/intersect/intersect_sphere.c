@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 14:16:16 by gaducurt          #+#    #+#             */
-/*   Updated: 2026/01/05 15:29:04 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/06 13:25:05 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,9 @@ double	get_angle(t_vec3 l, t_vec3 n)
 Ambient color = intensity *src_color * obj_color
 */
 
-t_color	ambient_lt(t_obj *obj, t_obj *a_light)
+t_rgb	ambient_lt(t_obj *obj, t_obj *a_light)
 {
-	t_color	color;
+	t_rgb	color;
 
 	color = compute_color(a_light->lt_ratio, a_light->color, obj->color);
 	return (color);
@@ -82,11 +82,11 @@ t_color	ambient_lt(t_obj *obj, t_obj *a_light)
 Diffuse color = ratio * max(l.n, 0) * src_color * obj_color
 */
 
-t_color	diffuse_lt(t_ray *ray, t_obj *obj, t_obj *d_light)
+t_rgb	diffuse_lt(t_ray *ray, t_obj *obj, t_obj *d_light)
 {
 	t_vec3	normal;
 	t_vec3	vec_light;
-	t_color	color;
+	t_rgb	color;
 	double	angle;
 
 	if (obj->type == SP)
@@ -106,9 +106,9 @@ t_color	diffuse_lt(t_ray *ray, t_obj *obj, t_obj *d_light)
 
 void	handle_ray(double t, t_ray *ray, t_obj *obj, t_obj *d_light, t_obj *a_light)
 {
-	t_color	diffuse;
-	t_color	ambient;
-	t_color	test;
+	t_rgb	diffuse;
+	t_rgb	ambient;
+	t_rgb	test;
 
 	test.r = test.g = test.b = test.rgb = 0;
 	ray->t = t;

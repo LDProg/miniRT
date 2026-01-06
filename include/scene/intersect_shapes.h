@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   scene_init.c                                       :+:      :+:    :+:   */
+/*   intersect_shapes.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/02 06:08:40 by ludebion          #+#    #+#             */
-/*   Updated: 2025/12/05 04:30:57 by ludebion         ###   ########.fr       */
+/*   Created: 2026/01/06 11:39:27 by ludebion          #+#    #+#             */
+/*   Updated: 2026/01/06 11:40:10 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt_structures.h"
-#include "scene/setup.h"
+#ifndef INTERSECT_SHAPES_H
+# define INTERSECT_SHAPES_H
 
-void	scene_init(t_scene *scene)
-{
-	mlx_full_init(scene);
-	scene->needs_redraw = true;
-}
+# include "rt_structures.h"
+
+bool	hit_cylinder(t_ray ray, t_cylinder *cy, t_hit *hit);
+bool	hit_plane(t_ray ray, t_plane *pl, t_hit *hit);
+bool	hit_sphere(t_ray ray, t_sphere *sp, t_hit *hit);
+
+#endif

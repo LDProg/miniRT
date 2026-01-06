@@ -1,40 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vector_ops.c                                       :+:      :+:    :+:   */
+/*   vec3_ops.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 14:15:22 by ludebion          #+#    #+#             */
-/*   Updated: 2025/12/05 06:40:44 by ludebion         ###   ########.fr       */
+/*   Updated: 2025/12/19 03:02:12 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libmath.h"
 #include <math.h>
 
-double	vector_magnitude(t_tuple v)
+double	vec3_magnitude(t_vec3 v)
 {
 	return (sqrt((v.x * v.x) + (v.y * v.y) + (v.z * v.z)));
 }
 
-double	vector_distance(t_tuple v1, t_tuple v2)
+double	vec3_distance(t_tuple v, t_tuple w)
 {
-	return (vector_magnitude(substract_tuple(v1, v2)));
+	return (vec3_magnitude(substract_tuple(v, w)));
 }
 
-t_tuple	vector_normalize(t_tuple v)
+t_vec3	vec3_normalize(t_vec3 v)
 {
-	return (tuple_div_scalar(v, vector_magnitude(v)));
+	return (tuple_div_scalar(v, vec3_magnitude(v)));
 }
 
-double	vector_dot(t_tuple v1, t_tuple v2)
+double	vec3_dot(t_vec3 v, t_vec3 w)
 {
-	return ((v1.x * v2.x) + (v1.y * v2.y) + (v1.z * v2.z));
+	return ((v.x * w.x) + (v.y * w.y) + (v.z * w.z));
 }
 
-t_tuple	vector_cross(t_tuple v1, t_tuple v2)
+t_tuple	vec3_cross(t_vec3 v, t_vec3 w)
 {
-	return (create_vector((v1.y * v2.z) - (v1.z * v2.y), (v1.z * v2.x) - (v1.x
-				* v2.z), (v1.x * v2.y) - (v1.y * v2.x)));
+	return (vec3_new((v.y * w.z) - (v.z * w.y), (v.z * w.x) - (v.x * w.z), (v.x
+				* w.y) - (v.y * w.x)));
 }

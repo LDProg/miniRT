@@ -5,18 +5,21 @@ LST_EXEC :=		minirt.c
 
 LST_TEST :=		test_functions.c
 
-LST_PARSING :=	check_object.c check_params.c fill_color.c fill_light.c fill_obj.c parsing.c
+LST_PARSING :=	check_object.c check_params.c fill_color.c fill_light.c fill_obj.c parsing.c create_obj.c
 
-LST_CAMERA:=	init_camera.c
 
 LST_INTER :=	intersect_sphere.c intersect_plan.c find_intersect.c compute_color.c
 
-LST_RENDER :=	mlx_hooks.c mlx_init.c mlx_utils.c scene_init.c
+LST_RENDER :=	camera.c raytrace.c
 
-LST_UTILS :=	close.c
+LST_INTERSECT_SHAPES := cylinder.c plane.c sphere.c
+
+LST_MLX_WINDOW :=	mlx_hooks.c mlx_init.c mlx_utils.c
+
+LST_UTILS :=	close.c color.c quadratic.c
 
 LST_INC :=	minirt.h rt_structures.h \
-			scene/camera.h scene/setup.h \
+			scene/mlx_window.h scene/render.h \
 			utils/rt_utils.h
 
 #Directories
@@ -30,18 +33,21 @@ D_TEST :=	tests/
 
 #Files full path
 D_CAMERA :=	camera/
+D_MLX_WINDOW :=	mlx_window/
 D_RENDER :=	render/
+D_INTERSECT_SHAPES := intersect_shapes/
 D_UTILS :=	utils/
 D_INTER := intersect/
 
 #Files full path
 SRC :=	$(addprefix $(D_SRC), $(LST_EXEC)) \
-		$(addprefix $(D_SRC)$(D_CAMERA), $(LST_CAMERA)) \
+		$(addprefix $(D_SRC)$(D_PARSING), $(LST_PARSING)) \
 		$(addprefix $(D_SRC)$(D_RENDER), $(LST_RENDER)) \
 		$(addprefix $(D_SRC)$(D_UTILS), $(LST_UTILS)) \
 		$(addprefix $(D_SRC)$(D_TEST), $(LST_TEST)) \
-		$(addprefix $(D_SRC)$(D_PARSING), $(LST_PARSING)) \
-		$(addprefix $(D_SRC)$(D_INTER), $(LST_INTER))
+		$(addprefix $(D_SRC)$(D_INTER), $(LST_INTER))\
+		$(addprefix $(D_SRC)$(D_RENDER)$(D_INTERSECT_SHAPES), $(LST_INTERSECT_SHAPES)) \
+		$(addprefix $(D_SRC)$(D_RENDER)$(D_MLX_WINDOW), $(LST_MLX_WINDOW)) \
 
 INC :=	$(addprefix $(D_INC), $(LST_INC))
 

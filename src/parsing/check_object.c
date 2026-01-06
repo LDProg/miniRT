@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 10:01:53 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/12/19 14:09:50 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/06 14:47:30 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "mylib.h"
 #include "parsing/parsing.h"
 #include "tests/tests.h"
+#include "structures.h"
 
 /*Read the line with gnl and convert it in char**.*/
 

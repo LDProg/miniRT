@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 16:48:45 by gaducurt          #+#    #+#             */
-/*   Updated: 2026/01/05 15:28:24 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/06 13:24:18 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 #include "libmath.h"
 #include <stdio.h>
 
-t_color	compute_color(double coef, t_color l_color, t_color o_color)
+t_rgb	compute_color(double coef, t_rgb l_color, t_rgb o_color)
 {
-	t_color	c;
+	t_rgb	c;
 
 	c.r = (int)(coef * (l_color.r / 255.0) * (o_color.r / 255.0) * 255.0);
 	c.g = (int)(coef * (l_color.g / 255.0) * (o_color.g / 255.0) * 255.0);
@@ -24,9 +24,9 @@ t_color	compute_color(double coef, t_color l_color, t_color o_color)
 	return (c);
 }
 
-t_color	add_colors(t_color diff, t_color amb)
+t_rgb	add_colors(t_rgb diff, t_rgb amb)
 {
-	t_color	c;
+	t_rgb	c;
 
 	c.r = diff.r + amb.r;
 	c.g = diff.g + amb.g;

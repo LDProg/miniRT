@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 05:15:38 by ludebion          #+#    #+#             */
-/*   Updated: 2025/12/06 14:14:57 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/06 12:59:32 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,9 @@
 #include <math.h>
 #include <stdlib.h>
 
-static inline int	get_color(t_scene *scene, int iterations)
+void	my_pixel_put(t_mlx_img *img, uint32_t x, uint32_t y, uint32_t color)
 {
-	double	frequency;
-	double	blue;
-	double	green;
-	double	red;
-
-	(void)scene;
-	frequency = 0.1;
-	blue = sin(frequency * iterations) * 127 + 128;
-	green = sin(frequency * iterations + 2.094) * 127 + 128;
-	red = sin(frequency * iterations + 4.188) * 127 + 128;
-	return (((int)red << 16) | ((int)green << 8) | (int)blue);
-}
-
-void	my_pixel_put(t_mlx_img *img, int x, int y, int color)
-{
-	*(unsigned int *)(img->pixels_ptr + (y * img->size_line) + (x * (img->bpp
+	*(uint32_t *)(img->pixels_ptr + (y * img->size_line) + (x * (img->bpp
 					/ 8))) = color;
 }
 

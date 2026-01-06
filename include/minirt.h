@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:33:55 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/06 08:44:27 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/06 13:57:12 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ int		find_intersect(t_ray *ray, t_dynvec *tab_vec, t_obj *d_light, t_obj *a_ligh
 t_obj	*get_d_light(t_dynvec *tab_vec);
 t_obj	*get_a_light(t_dynvec *tab_vec);
 t_obj	*get_cam(t_dynvec *tab_vec);
-t_color	compute_color(double coef, t_color l_color, t_color o_color);
+t_rgb	compute_color(double coef, t_rgb l_color, t_rgb o_color);
 // t_color	compute_rgb(t_color c);
-t_color	add_colors(t_color diff, t_color amb);
+t_rgb	add_colors(t_rgb diff, t_rgb amb);
 void	handle_ray(double t, t_ray *ray, t_obj *obj, t_obj *d_light, t_obj *a_light);
 
 /*----------TEST----------*/

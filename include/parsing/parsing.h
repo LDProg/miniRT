@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/27 06:44:37 by ludebion          #+#    #+#             */
-/*   Updated: 2025/12/11 11:05:43 by gaducurt         ###   ########.fr       */
+/*   Created: 2025/12/30 10:52:51 by ludebion          #+#    #+#             */
+/*   Updated: 2026/01/06 14:49:00 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "dynvect.h"
 # include "structures.h"
+# include "rt_structures.h"
 
 int		check_args(int ac, char **av);
 int		fill_tab(int fd, t_dynvec *vector);
@@ -29,5 +30,10 @@ void	fill_pl(t_obj *obj, char **db_tab);
 void	fill_sp(t_obj *obj, char **db_tab);
 void	fill_cy(t_obj *obj, char **db_tab);
 int		fill_color(char *r, char *g, char *b);
+
+t_obj_lu	*create_plane(t_point3 center, t_vec3 normal, uint32_t rgb);
+t_obj_lu	*create_sphere(t_point3 center, double radius, uint32_t rgb);
+t_obj_lu	*create_cylinder(t_point3 center, t_point3 vz, double radius,
+			double height, uint32_t rgb);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 10:19:11 by ludebion          #+#    #+#             */
-/*   Updated: 2025/12/05 07:38:13 by ludebion         ###   ########.fr       */
+/*   Updated: 2025/12/19 00:35:40 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,13 @@ typedef struct s_tuple
 
 typedef struct s_mat4
 {
-	double	m[4][4];
+	t_tuple	x;
+	t_tuple	y;
+	t_tuple	z;
+	t_tuple	t;
 }	t_mat4;
+
+typedef t_mat4	t_mat3;
 
 typedef t_tuple	t_vec3;
 
