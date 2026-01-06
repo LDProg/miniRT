@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 12:12:16 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/05 13:14:41 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/06 10:10:08 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,14 @@
 #include <stdio.h>
 
 static t_ray	pixels_coordinates_to_ray(t_camera camera, uint32_t x,
-		uint32_t y)
+		uint32_t y, int fov)
 {
 	t_ray	ray;
 	double	scale;
 	t_vec3	v;
 
-	scale = tan((FOV * 0.5) * (M_PI / 180.0));
+	// scale = tan((FOV * 0.5) * (M_PI / 180.0));
+	scale = tan((fov * 0.5) * (M_PI / 180.0));
 	v = create_vector(x - WIDTH / 2, HEIGHT / 2 - y, -(HEIGHT / 2) / scale);
 	ray.origin = camera.origin;
 	ray.direction = vector_normalize(v);
@@ -49,7 +50,7 @@ static t_ray	pixels_coordinates_to_ray(t_camera camera, uint32_t x,
 // 	vector_normalize(ray_direction);
 // }
 
-static t_ray	get_ray(t_camera camera, uint32_t x, uint32_t y)
+static t_ray	get_ray(t_camera camera, uint32_t x, uint32_t y, int fov)
 {
 	t_ray	ray;
 	double	cam_x;
@@ -57,7 +58,8 @@ static t_ray	get_ray(t_camera camera, uint32_t x, uint32_t y)
 	double	aspect_ratio;
 	double	scale;
 
-	scale = tan((FOV * 0.5) * (M_PI / 180.0));
+	// scale = tan((FOV * 0.5) * (M_PI / 180.0));
+	scale = tan((fov * 0.5) * (M_PI / 180.0));
 	aspect_ratio = (double)WIDTH / HEIGHT;
 	cam_x = (2 * ((x + 0.5) / WIDTH) - 1) * aspect_ratio * scale;
 	cam_y = (1 - 2 * ((y + 0.5) / HEIGHT)) * scale;
@@ -78,7 +80,7 @@ void	display_scene(t_pixel *pix_tab, t_mlx_img *mlx_img)
 	}
 }
 
-static void	project_rays(t_camera camera, t_dynvec *tab_vec, t_mlx_img *mlx_img)
+static void	project_rays(t_camera camera, t_dynvec *tab_vec, t_mlx_img *mlx_img,  int fov)
 {
 	uint32_t	x;
 	uint32_t	y;
@@ -98,7 +100,7 @@ static void	project_rays(t_camera camera, t_dynvec *tab_vec, t_mlx_img *mlx_img)
 		x = 0;
 		while (x < WIDTH)
 		{
-			ray = get_ray(camera, x, y);
+			ray = get_ray(camera, x, y, fov);
 			find_intersect(&ray, tab_vec, d_light, a_light);
 			pix_tab[i].x = x;
 			pix_tab[i].y = y;
@@ -112,13 +114,15 @@ static void	project_rays(t_camera camera, t_dynvec *tab_vec, t_mlx_img *mlx_img)
 	free(pix_tab);
 }
 
-t_camera	init_camera(t_scene *scene, t_point3 origin, t_vec3 direction, t_dynvec *tab_vec)
+t_camera	init_camera(t_scene *scene, t_dynvec *tab_vec, t_obj *cam) //t_point3 origin, t_vec3 direction, t_dynvec *tab_vec, int fov)
 {
 	t_camera camera;
 
-	camera.origin = origin;
-	camera.direction = vector_normalize(direction);
-	project_rays(camera, tab_vec, &scene->mlx_img);
+	// camera.origin = origin;
+	camera.origin = cam->pos;
+	// camera.direction = vector_normalize(cam->norm_v);
+	camera.direction = cam->norm_v;
+	project_rays(camera, tab_vec, &scene->mlx_img, cam->fov);
 	scene->needs_redraw = true;
 	return (camera);
 }

@@ -6,12 +6,28 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 10:09:52 by gaducurt          #+#    #+#             */
-/*   Updated: 2026/01/05 15:15:11 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/06 08:44:14 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 #include <stdio.h>
+
+t_obj	*get_cam(t_dynvec *tab_vec)
+{
+	t_obj	*obj;
+	size_t	i;
+
+	i = 0;
+	while (i <= tab_vec->len)
+	{
+		obj = (t_obj *)((unsigned char *)tab_vec->array + i * tab_vec->size_type);
+		if (obj->type == C)
+			break;
+		i++;
+	}
+	return (obj);
+}
 
 t_obj	*get_d_light(t_dynvec *tab_vec)
 {
