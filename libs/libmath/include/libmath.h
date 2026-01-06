@@ -6,7 +6,7 @@
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 16:40:16 by ludebion          #+#    #+#             */
-/*   Updated: 2025/12/30 03:37:07 by ludebion         ###   ########.fr       */
+/*   Updated: 2026/01/06 08:09:04 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 // Debug
 void	mat4_print(t_mat4 m, char *name);
 void	mat4_print_basis(t_mat4 m, char *name);
+void	vec3_print(t_vec3 v, const char *name);
 
 // Matrice Creation
 t_mat4	mat4_identity(void);
@@ -63,5 +64,6 @@ double	vec3_magnitude(t_vec3 v);
 t_vec3	vec3_normalize(t_vec3 v);
 double	vec3_dot(t_vec3 v, t_vec3 w);
 t_vec3	vec3_cross(t_vec3 v, t_vec3 w);
+t_vec3	vec3_negate(t_vec3 v);
 
 #endif

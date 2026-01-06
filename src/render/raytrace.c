@@ -6,37 +6,31 @@
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 02:32:43 by ludebion          #+#    #+#             */
-/*   Updated: 2025/12/30 13:18:32 by ludebion         ###   ########.fr       */
+/*   Updated: 2026/01/06 11:40:19 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt_structures.h"
+#include "scene/intersect_shapes.h"
 #include "scene/mlx_window.h"
-#include "scene/render.h"
+#include "utils/rt_utils.h"
 #include <math.h>
-
-static uint32_t	graduate_background(double y)
-{
-	double	a;
-	double	r;
-	double	g;
-	double	b;
-
-	a = 0.5 * y + 1;
-	if (a < 0)
-		a = 0;
-	if (a > 1)
-		a = 1;
-	r = (1 - a) * 255.0 + a * 127.995;
-	g = (1 - a) * 255.0 + a * 179.1993;
-	b = (1 - a) * 255.0 + a * 255.999;
-	return (get_color(r, g, b));
-}
 
 // static uint32_t	shading(t_hit *hit)
 // {
 // 	return (0);
 // }
+
+static bool	hit_object(t_ray ray, t_obj *obj, t_hit *hit)
+{
+	if (obj->type == T_SPHERE)
+		return (hit_sphere(ray, (t_sphere *)obj->shape, hit));
+	if (obj->type == T_PLANE)
+		return (hit_plane(ray, (t_plane *)obj->shape, hit));
+	if (obj->type == T_CYLINDER)
+		return (hit_cylinder(ray, (t_cylinder *)obj->shape, hit));
+	return (false);
+}
 
 static bool	intersect_scene_objects(t_obj **objs, t_ray ray, t_hit *hit)
 {
@@ -48,10 +42,10 @@ static bool	intersect_scene_objects(t_obj **objs, t_ray ray, t_hit *hit)
 	has_hit = false;
 	while (objs[i])
 	{
-		if (hit_object(ray, objs[i], hit))
+		if (hit_object(ray, objs[i], &tmp_hit))
 		{
-			if (!has_hit || hit->t > tmp_hit.t)
-				hit->t = tmp_hit.t;
+			if (!has_hit || tmp_hit.t < hit->t)
+				*hit = tmp_hit;
 			has_hit = true;
 		}
 		i++;

@@ -6,7 +6,7 @@
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 10:19:11 by ludebion          #+#    #+#             */
-/*   Updated: 2025/12/30 05:14:48 by ludebion         ###   ########.fr       */
+/*   Updated: 2026/01/06 07:22:51 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ typedef struct s_sphere
 
 typedef struct s_plane
 {
-	t_point3	point;
+	t_point3	center;
 	t_vec3		normal;
 	t_color		color;
 }	t_plane;
@@ -79,6 +79,8 @@ typedef struct s_plane
 typedef struct s_cylinder
 {
 	t_point3	center;
+	t_point3	c_top;
+	t_point3	c_bottom;
 	t_vec3		axis;
 	double		radius;
 	double		height;

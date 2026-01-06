@@ -1,9 +1,9 @@
 .PHONY:	all clean fclean re
 
 #Files
-LST_SRC_MATRICE :=	mat4_init.c mat4_ops.c mat4_trsf.c print_mat.c
+LST_SRC_MATRICE :=	mat4_init.c mat4_ops.c mat4_trsf.c mat4_print.c
 
-LST_SRC_VEC3 :=	tuple_cmp.c tuple_init.c tuple_ops.c vec3_ops.c
+LST_SRC_VEC3 :=	tuple_cmp.c tuple_init.c tuple_ops.c vec3_ops.c vec3_ops2.c vec3_print.c
 
 LST_INC :=	libmath.h libmath_structures.h
 

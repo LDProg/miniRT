@@ -3,13 +3,16 @@
 #Files
 LST_EXEC :=	minirt.c
 
+
+LST_PARSING :=	create_obj.c
+
+LST_RENDER :=	camera.c raytrace.c
+
+LST_INTERSECT_SHAPES := cylinder.c plane.c sphere.c
+
 LST_MLX_WINDOW :=	mlx_hooks.c mlx_init.c mlx_utils.c
 
-LST_PARSING:=	create_obj.c
-
-LST_RENDER:=	camera.c intersect.c raytrace.c
-
-LST_UTILS :=	close.c
+LST_UTILS :=	close.c color.c quadratic.c
 
 LST_INC :=	minirt.h rt_structures.h \
 			parsing/parsing.h \
@@ -25,13 +28,15 @@ D_OBJ :=	.obj/
 D_MLX_WINDOW :=	mlx_window/
 D_PARSING :=	parsing/
 D_RENDER :=	render/
+D_INTERSECT_SHAPES := intersect_shapes/
 D_UTILS :=	utils/
 
 #Files full path
 SRC :=	$(addprefix $(D_SRC), $(LST_EXEC)) \
-		$(addprefix $(D_SRC)$(D_MLX_WINDOW), $(LST_MLX_WINDOW)) \
 		$(addprefix $(D_SRC)$(D_PARSING), $(LST_PARSING)) \
 		$(addprefix $(D_SRC)$(D_RENDER), $(LST_RENDER)) \
+		$(addprefix $(D_SRC)$(D_RENDER)$(D_INTERSECT_SHAPES), $(LST_INTERSECT_SHAPES)) \
+		$(addprefix $(D_SRC)$(D_RENDER)$(D_MLX_WINDOW), $(LST_MLX_WINDOW)) \
 		$(addprefix $(D_SRC)$(D_UTILS), $(LST_UTILS))
 
 INC :=	$(addprefix $(D_INC), $(LST_INC))
