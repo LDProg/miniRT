@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 12:12:16 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/06 10:10:08 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/06 10:31:48 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,25 @@ static t_ray	pixels_coordinates_to_ray(t_camera camera, uint32_t x,
 // 	vector_normalize(ray_direction);
 // }
 
+// static t_ray	get_ray(t_camera camera, uint32_t x, uint32_t y, int fov)
+// {
+// 	t_ray	ray;
+// 	double	cam_x;
+// 	double	cam_y;
+// 	double	aspect_ratio;
+// 	double	scale;
+
+// 	// scale = tan((FOV * 0.5) * (M_PI / 180.0));
+// 	scale = tan((fov * 0.5) * (M_PI / 180.0));
+// 	aspect_ratio = (double)WIDTH / HEIGHT;
+// 	cam_x = (2 * ((x + 0.5) / WIDTH) - 1) * aspect_ratio * scale;
+// 	cam_y = (1 - 2 * ((y + 0.5) / HEIGHT)) * scale;
+// 	ray.origin = camera.origin;
+// 	ray.direction = vector_normalize(create_vector(cam_x, cam_y, -1));
+// 	// ray.direction = vector_normalize(create_vector(cam_x, cam_y, 1));
+// 	return (ray);
+// }
+
 static t_ray	get_ray(t_camera camera, uint32_t x, uint32_t y, int fov)
 {
 	t_ray	ray;
@@ -58,13 +77,13 @@ static t_ray	get_ray(t_camera camera, uint32_t x, uint32_t y, int fov)
 	double	aspect_ratio;
 	double	scale;
 
-	// scale = tan((FOV * 0.5) * (M_PI / 180.0));
 	scale = tan((fov * 0.5) * (M_PI / 180.0));
-	aspect_ratio = (double)WIDTH / HEIGHT;
-	cam_x = (2 * ((x + 0.5) / WIDTH) - 1) * aspect_ratio * scale;
-	cam_y = (1 - 2 * ((y + 0.5) / HEIGHT)) * scale;
+	aspect_ratio = (double)WIDTH / (double)HEIGHT;
+	cam_x = (2 * ((x + 0.5) / (double)WIDTH) - 1) * aspect_ratio * scale;
+	cam_y = (1 - 2 * ((y + 0.5) / (double)HEIGHT)) * scale;
 	ray.origin = camera.origin;
 	ray.direction = vector_normalize(create_vector(cam_x, cam_y, -1));
+	// ray.direction = vector_normalize(create_vector(cam_x, cam_y, 1));
 	return (ray);
 }
 
