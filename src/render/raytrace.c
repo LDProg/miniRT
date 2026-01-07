@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 02:32:43 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/06 13:51:32 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/07 13:03:53 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "scene/mlx_window.h"
 #include "utils/rt_utils.h"
 #include <math.h>
+#include "minirt.h"
 
 // static uint32_t	shading(t_hit *hit)
 // {
@@ -74,7 +75,8 @@ static t_ray	generate_ray(t_camera camera, uint32_t x, uint32_t y, int fov)
 	return (ray);
 }
 
-void	raytrace(t_camera camera, t_obj_lu **objs, t_mlx_img *img, t_obj *cam)
+// void	raytrace(t_camera camera, t_obj_lu **objs, t_mlx_img *img, t_obj *cam)
+void	raytrace(t_camera camera, t_dynvec *tab_vec, t_mlx_img *img, t_obj *cam)
 {
 	uint32_t	x;
 	uint32_t	y;
@@ -89,11 +91,13 @@ void	raytrace(t_camera camera, t_obj_lu **objs, t_mlx_img *img, t_obj *cam)
 		while (x < WIDTH)
 		{
 			ray = generate_ray(camera, x, y, cam->fov);
-			if (intersect_scene_objects(objs, ray, &hit))
-			{
-				// color = shading(&hit);
+			// if (intersect_scene_objects(objs, ray, &hit))
+			// {
+			// 	// color = shading(&hit);
+			// 	color = hit.color.rgb;
+			// }
+			if (find_intersect(&ray, tab_vec, get_d_light(tab_vec), get_a_light(tab_vec)))
 				color = hit.color.rgb;
-			}
 			else
 				color = graduate_background(ray.direction.y);
 			my_pixel_put(img, x, y, color);

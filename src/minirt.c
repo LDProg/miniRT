@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:34:18 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/06 14:13:55 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/07 11:21:37 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,6 @@ int	main(int ac, char **av)
 	// scene_init(&scene);
 	// init_camera(&scene, create_point(0, 0, 15), create_vector(0, 0, -1), tab_vec);
 	// init_camera(&scene, tab_vec, p);
-	camera_init(p->pos, p->norm_v);
 	// init_camera(&scene, p->pos, p->norm_v, tab_vec, p->fov);
 
 	init_scene(&scene);

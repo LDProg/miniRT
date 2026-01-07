@@ -8,7 +8,7 @@ LST_TEST :=		test_functions.c
 LST_PARSING :=	check_object.c check_params.c fill_color.c fill_light.c fill_obj.c parsing.c create_obj.c
 
 
-LST_INTER :=	intersect_sphere.c intersect_plan.c find_intersect.c compute_color.c
+LST_INTER :=	intersect_sphere.c intersect_plan.c find_intersect.c compute_color.c handle_light.c
 
 LST_RENDER :=	camera.c raytrace.c
 

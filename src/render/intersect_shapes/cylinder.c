@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 10:57:37 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/06 11:43:26 by ludebion         ###   ########.fr       */
+/*   Updated: 2026/01/07 16:04:12 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,38 +15,41 @@
 #include "utils/rt_utils.h"
 #include <math.h>
 
-static bool	hit_disk(t_ray ray, t_plane *pl, t_hit *hit, double radius)
+static bool	hit_disk(t_ray *ray, t_obj *pl, t_obj *d_light, t_obj *a_light)
 {
 	t_vec3	v_cy_center_to_p;
 	double	d2;
 
-	if (hit_plane(ray, pl, hit))
+	if (hit_plane(ray, pl, d_light, a_light))
 	{
 		v_cy_center_to_p = substract_tuple(hit->point, pl->center);
 		d2 = vec3_dot(v_cy_center_to_p, v_cy_center_to_p);
-		if (d2 <= radius * radius)
+		if (d2 <= pl->radius * pl->radius)
 			return (true);
 	}
 	return (false);
 }
 
-static bool	hit_caps(t_ray ray, t_cylinder *cy, t_hit *hit)
+static bool	hit_caps(t_ray *ray, t_cylinder *cy, t_obj *d_light, t_obj *a_light)
 {
 	t_plane	cap;
 	t_hit	tmp;
 
-	hit->t = INFINITY;
+	ray->hit.t = INFINITY;
 	cap.center = cy->c_top;
 	cap.normal = cy->axis;
 	cap.color = cy->color;
-	if (hit_disk(ray, &cap, &tmp, cy->radius) && tmp.t < hit->t)
-		*hit = tmp;
+	cap.radius = cy->cy_diam / 2;
+	// if (hit_disk(ray, &cap, d_light, a_light) && tmp.t < hit->t)
+	// 	*hit = tmp;
+	hit_disk(ray, &cap, d_light, a_light);
 	cap.center = cy->c_bottom;
 	cap.normal = vec3_negate(cy->axis);
 	cap.color = cy->color;
-	if (hit_disk(ray, &cap, &tmp, cy->radius) && tmp.t < hit->t)
-		*hit = tmp;
-	return (hit->t < INFINITY);
+	// if (hit_disk(ray, &cap, d_light, a_light) && tmp.t < hit->t)
+	// 	*hit = tmp;
+	hit_disk(ray, &cap, d_light, a_light)
+	return (ray->hit.t < INFINITY);
 }
 
 static bool	check_cylinder_height(t_cylinder *cy, t_hit *hit)
@@ -64,7 +67,7 @@ static bool	check_cylinder_height(t_cylinder *cy, t_hit *hit)
 	return (true);
 }
 
-static bool	hit_cylinder_side(t_ray ray, t_cylinder *cy, t_hit *hit)
+static bool	hit_cylinder_side(t_ray *ray, t_cylinder *cy, t_hit *hit)
 {
 	t_point3	oc;
 	double		a;
@@ -72,24 +75,25 @@ static bool	hit_cylinder_side(t_ray ray, t_cylinder *cy, t_hit *hit)
 	double		c;
 	double		t0;
 
-	oc = substract_tuple(ray.origin, cy->c_bottom);
-	a = vec3_dot(ray.direction, ray.direction) - vec3_dot(ray.direction,
-			cy->axis) * vec3_dot(ray.direction, cy->axis);
-	b = 2 * (vec3_dot(ray.direction, oc) - vec3_dot(ray.direction, cy->axis)
+	oc = substract_tuple(ray->origin, cy->c_bottom);
+	a = vec3_dot(ray->direction, ray->direction) - vec3_dot(ray->direction,
+			cy->axis) * vec3_dot(ray->direction, cy->axis);
+	b = 2 * (vec3_dot(ray->direction, oc) - vec3_dot(ray->direction, cy->axis)
 			* vec3_dot(oc, cy->axis));
 	c = vec3_dot(oc, oc) - vec3_dot(oc, cy->axis) * vec3_dot(oc, cy->axis)
 		- cy->radius * cy->radius;
 	if (solve_quadatric(a, b, c, &t0))
 	{
 		hit->t = t0;
-		hit->point = adding_tuple(ray.origin, tuple_mul_scalar(ray.direction,
+		hit->point = adding_tuple(ray->origin, tuple_mul_scalar(ray->direction,
 					t0));
 		return (check_cylinder_height(cy, hit));
 	}
 	return (false);
 }
 
-bool	hit_cylinder(t_ray ray, t_cylinder *cy, t_hit *hit)
+// bool	hit_cylinder(t_ray ray, t_cylinder *cy, t_hit *hit)
+bool	hit_cylinder(t_ray *ray, t_obj *cy, t_obj *d_light, t_obj *a_light)
 {
 	t_hit	t_lat;
 	t_hit	t_cap;
@@ -98,16 +102,17 @@ bool	hit_cylinder(t_ray ray, t_cylinder *cy, t_hit *hit)
 	has_hit = false;
 	if (hit_cylinder_side(ray, cy, &t_lat))
 	{
-		*hit = t_lat;
+		ray->hit = t_lat;
 		has_hit = true;
 	}
 	if (hit_caps(ray, cy, &t_cap))
 	{
 		if (!has_hit || t_cap.t < hit->t)
 		{
-			*hit = t_cap;
+			// ray->hit = t_cap;
 			has_hit = true;
 		}
 	}
+	handle_ray(ray, cy, d_light, a_light);
 	return (has_hit);
 }

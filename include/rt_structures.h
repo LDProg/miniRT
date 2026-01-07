@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 10:19:11 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/06 13:58:10 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/07 15:54:44 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,11 @@ typedef enum e_obj_type
 	T_CYLINDER
 }	t_obj_type;
 
-typedef struct s_color
-{
-	double		ratio;
-	uint32_t	rgb;
-}	t_color;
+// typedef struct s_color
+// {
+// 	double		ratio;
+// 	uint32_t	rgb;
+// }	t_color;
 
 typedef struct s_mlx_img
 {
@@ -75,6 +75,7 @@ typedef struct s_plane
 	t_point3	center;
 	t_vec3		normal;
 	t_color		color;
+	double		radius;
 }	t_plane;
 
 typedef struct s_cylinder
@@ -97,6 +98,7 @@ typedef struct s_obj_lu
 typedef struct s_hit
 {
 	double		t;
+	int			nb_inter;
 	t_point3	point;
 	t_vec3		normal;
 	t_color		color;
@@ -106,10 +108,12 @@ typedef struct s_ray
 {
 	t_point3	origin;
 	t_vec3		direction;
-	t_point3	pos_inter;
-	double		t;
-	int			nb_inter;
-	t_rgb		pix_color;
+	t_hit		hit;
+	// t_point3	pos_inter;
+	// t_vec3		normal;
+	// double		t;
+	// int			nb_inter;
+	// t_color		pix_color;
 }	t_ray;
 
 typedef struct s_camera
@@ -127,17 +131,17 @@ typedef struct s_scene
 	t_mlx_img	mlx_img;
 	bool		needs_redraw;
 	t_camera	camera;
-	t_obj_lu		**objects;
+	t_obj_lu	**objects;
 	t_light		light;
 	t_color		ambient;
 }	t_scene;
 
-typedef struct	s_pixel
-{
-	int	x;
-	int	y;
-	int	color;
-}				t_pixel;
+// typedef struct	s_pixel
+// {
+// 	int	x;
+// 	int	y;
+// 	int	color;
+// }				t_pixel;
 
 
 #endif

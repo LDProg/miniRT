@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 14:16:16 by gaducurt          #+#    #+#             */
-/*   Updated: 2026/01/06 16:12:49 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/07 14:47:03 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,70 +56,7 @@ double	find_t(double a, double b, double delta)
 	return (t2);
 }
 
-double	get_angle(t_vec3 l, t_vec3 n)
-{
-	double	angle;
-
-	angle = dot_product(l, n);
-	if (angle < 0)
-		return (0);
-	return (angle);
-}
-
-/*
-Ambient color = intensity *src_color * obj_color
-*/
-
-t_rgb	ambient_lt(t_obj *obj, t_obj *a_light)
-{
-	t_rgb	color;
-
-	color = compute_color(a_light->lt_ratio, a_light->color, obj->color);
-	return (color);
-}
-
-/*
-Diffuse color = ratio * max(l.n, 0) * src_color * obj_color
-*/
-
-t_rgb	diffuse_lt(t_ray *ray, t_obj *obj, t_obj *d_light)
-{
-	t_vec3	normal;
-	t_vec3	vec_light;
-	t_rgb	color;
-	double	angle;
-
-	if (obj->type == SP)
-	{
-		normal = sub_two_points(ray->pos_inter, obj->pos);
-		normal = normalize_vect(normal);
-	}
-	if (obj->type == PL)
-		normal = obj->norm_v;
-	vec_light = sub_two_points(d_light->pos, ray->pos_inter);
-	vec_light = normalize_vect(vec_light);
-	angle = get_angle(vec_light, normal);
-	color = compute_color(d_light->lt_ratio * angle, d_light->color,
-			obj->color);
-	return (color);
-}
-
-void	handle_ray(double t, t_ray *ray, t_obj *obj, t_obj *d_light, t_obj *a_light)
-{
-	t_rgb	diffuse;
-	t_rgb	ambient;
-	t_rgb	test;
-
-	// test.r = test.g = test.b = test.rgb = 0;
-	ray->t = t;
-	ray->pos_inter = scalar_mult(ray->direction, ray->t);
-	ray->pos_inter = add_vect_point(ray->pos_inter, ray->origin);
-	diffuse = diffuse_lt(ray, obj, d_light);
-	ambient = ambient_lt(obj, a_light);
-	ray->pix_color = add_colors(ambient, diffuse);
-}
-
-void	intersect_sphere(t_obj *sphere, t_ray *ray, t_obj *d_light, t_obj *a_light)
+void	intersect_sphere(t_ray *ray, t_obj *sp, t_obj *d_light, t_obj *a_light)
 {
 	double		a;
 	double		b;
@@ -128,21 +65,25 @@ void	intersect_sphere(t_obj *sphere, t_ray *ray, t_obj *d_light, t_obj *a_light)
 	double		delta;
 
 	a = dot_product(ray->direction, ray->direction);
-	b = 2 * (ray->direction.x * (ray->origin.x - sphere->pos.x)
-			+ ray->direction.y * (ray->origin.y - sphere->pos.y)
-			+ ray->direction.z * (ray->origin.z - sphere->pos.z));
-	c = (pow(ray->origin.x - sphere->pos.x, 2)
-			+ pow(ray->origin.y - sphere->pos.y, 2)
-			+ pow(ray->origin.z - sphere->pos.z, 2))
-		- pow(sphere->sp_diam / 2, 2);
+	b = 2 * (ray->direction.x * (ray->origin.x - sp->pos.x)
+			+ ray->direction.y * (ray->origin.y - sp->pos.y)
+			+ ray->direction.z * (ray->origin.z - sp->pos.z));
+	c = (pow(ray->origin.x - sp->pos.x, 2)
+			+ pow(ray->origin.y - sp->pos.y, 2)
+			+ pow(ray->origin.z - sp->pos.z, 2))
+		- pow(sp->sp_diam / 2, 2);
 	delta = pow(b, 2) - (4 * a * c);
 	if (delta >= 0)
 	{
-		t = find_t(a, b, delta);
-		if (ray->nb_inter == 0)
-			handle_ray(t, ray, sphere, d_light, a_light);
-		else if (ray->nb_inter > 0 && t < ray->t)
-			handle_ray(t, ray, sphere, d_light, a_light);
-		ray->nb_inter++;
+		// t = find_t(a, b, delta);
+		if (ray->hit.nb_inter == 0 || (ray->hit.nb_inter > 0 && find_t(a, b, delta) < ray->hit.t))
+			ray->hit.t = find_t(a, b, delta);
+		ray->hit.normal = sub_two_points(ray->hit.point, sp->pos);
+		ray->hit.normal = normalize_vect(ray->hit.normal);
+		// if (ray->hit.nb_inter == 0)
+		// 	handle_ray(ray, sp, d_light, a_light);
+		// else if (ray->hit.nb_inter > 0 && t < ray->hit.t)
+		// 	handle_ray(ray, sp, d_light, a_light);
+		ray->hit.nb_inter++;
 	}
 }

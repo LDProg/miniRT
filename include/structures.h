@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 10:20:18 by gaducurt          #+#    #+#             */
-/*   Updated: 2026/01/06 13:23:34 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/07 11:33:10 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ enum	e_type
 	CY,
 };
 
-typedef struct	s_rgb
+typedef struct	s_color
 {
 	int		rgb;
 	double	r;
 	double	g;
 	double	b;
-}				t_rgb;
+}				t_color;
 
 typedef struct s_obj
 {
@@ -40,7 +40,7 @@ typedef struct s_obj
 	int			type;
 	int			fov;
 	// int			color;
-	t_rgb		color;
+	t_color		color;
 	double		lt_ratio;
 	double		sp_diam;
 	double		cy_diam;
