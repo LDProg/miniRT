@@ -15,17 +15,14 @@ SRC = 	ft_init_vector.c	\
 
 OBJ = $(patsubst %.c, $(OBJDIR)/%.o, $(SRC))
 
-all: .print_header $(NAME)
+all: $(NAME)
 
 $(NAME): $(OBJ) $(LIB)
 	ar rcs $(NAME) $(LIB) $?
 
-$(OBJDIR)/%.o: %.c | $(OBJDIR)
+$(OBJDIR)/%.o: %.c
 	mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
-
-$(OBJDIR):
-	mkdir -p $(OBJDIR)
 
 %.o : %.c Makefile $(INC) $(LIB)
 	$(CC) $(CFLAGS) -o $@ -c $<

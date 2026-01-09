@@ -1,0 +1,46 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   vec3_ops2.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/06 08:08:15 by ludebion          #+#    #+#             */
+/*   Updated: 2026/01/09 05:14:58 by ludebion         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libmath.h"
+#include <math.h>
+
+t_vec3	vec3_negate(t_vec3 v)
+{
+	t_vec3	res;
+
+	res.x = -v.x;
+	res.y = -v.y;
+	res.z = -v.z;
+	res.w = v.w;
+	return (res);
+}
+
+double	vec3_magnitude(t_vec3 v)
+{
+	return (sqrt((v.x * v.x) + (v.y * v.y) + (v.z * v.z)));
+}
+
+double	vec3_distance(t_tuple v, t_tuple w)
+{
+	return (vec3_magnitude(substract_tuple(v, w)));
+}
+
+t_vec3	vec3_normalize(t_vec3 v)
+{
+	return (tuple_div_scalar(v, vec3_magnitude(v)));
+}
+
+bool	is_normalized_vec(t_vec3 vec)
+{
+	return (vec.x >= -1.0 && vec.x <= 1.0 && vec.y >= -1.0 && vec.y <= 1.0
+		&& vec.z >= -1.0 && vec.z <= 1.0);
+}
