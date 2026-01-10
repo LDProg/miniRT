@@ -6,15 +6,16 @@
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 10:19:11 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/10 05:53:18 by ludebion         ###   ########.fr       */
+/*   Updated: 2026/01/10 10:55:30 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RT_STRUCTURES_H
 # define RT_STRUCTURES_H
 
-# define WIDTH 850
-# define HEIGHT 400
+# define WIDTH 1480
+# define HEIGHT 850
+# define AA_SAMPLES 4
 
 # include "dynvect.h"
 # include "libmath.h"
@@ -128,8 +129,8 @@ typedef struct s_ray
 
 typedef struct s_camera
 {
-	t_point3	origin;
 	int32_t		fov;
+	t_point3	origin;
 	t_vec3		right;
 	t_vec3		up;
 	t_vec3		forward;

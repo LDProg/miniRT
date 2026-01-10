@@ -6,7 +6,7 @@
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 11:16:49 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/10 05:14:25 by ludebion         ###   ########.fr       */
+/*   Updated: 2026/01/10 10:30:48 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,13 @@
 uint32_t	get_color(double red, double green, double blue)
 {
 	return (((uint32_t)red << 16) | ((uint32_t)green << 8) | (uint32_t)blue);
+}
+
+void	extract_rgb(uint32_t rgb, t_color *color)
+{
+	color->r = (rgb >> 16) & 0xFF;
+	color->g = (rgb >> 8) & 0xFF;
+	color->b = rgb & 0xFF;
 }
 
 bool	is_valid_color(int r, int g, int b)
@@ -52,6 +59,29 @@ uint32_t	normal_color(t_vec3 p, t_point3 center)
 	g = 0.5 * (255.999 * (normal.y + 1));
 	b = 0.5 * (255.999 * (normal.z + 1));
 	return (get_color(r, g, b));
+}
+
+uint32_t	average_pixel_color(uint32_t *pixel_colors, uint32_t samples)
+{
+	uint32_t	i;
+	uint32_t	total_r;
+	uint32_t	total_g;
+	uint32_t	total_b;
+	t_color		color;
+
+	i = 0;
+	total_r = 0;
+	total_g = 0;
+	total_b = 0;
+	while (i < samples)
+	{
+		extract_rgb(pixel_colors[i], &color);
+		total_r += color.r;
+		total_g += color.g;
+		total_b += color.b;
+		i++;
+	}
+	return (get_color(total_r / samples, total_g / samples, total_b / samples));
 }
 
 t_color	compute_color(double coef, t_color l_color, t_color o_color)

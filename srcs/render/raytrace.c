@@ -6,50 +6,30 @@
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 02:32:43 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/10 06:47:39 by ludebion         ###   ########.fr       */
+/*   Updated: 2026/01/10 11:06:36 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt_structures.h"
+#include "libft.h"
 #include "scene/intersect_shapes.h"
 #include "scene/light.h"
 #include "scene/mlx_window.h"
 #include "utils/rt_utils.h"
 #include <math.h>
 
-static bool	hit_object(t_ray ray, t_object *obj, t_hit *hit)
+static uint32_t	trace_single_ray(t_scene scene, t_ray ray)
 {
-	if (obj->type == T_SPHERE)
-		return (intersect_sphere(ray, obj->shape.sphere, hit));
-	if (obj->type == T_PLANE)
-		return (hit_plane(ray, obj->shape.plane, hit));
-	if (obj->type == T_CYLINDER)
-		return (hit_cylinder(ray, obj->shape.cylinder, hit));
-	return (false);
+	t_hit		hit;
+	uint32_t	color;
+
+	if (intersect_scene_objects(scene.objs, ray, &hit))
+		color = compute_hit_color(hit, scene.ambient, scene.light);
+	else
+		color = graduate_background(ray.direction.y);
+	return (color);
 }
 
-static bool	intersect_scene_objects(t_dynvec *objs, t_ray ray, t_hit *hit)
-{
-	size_t	i;
-	bool	has_hit;
-	t_hit	tmp_hit;
-
-	i = 0;
-	has_hit = false;
-	while (i < objs->len)
-	{
-		if (hit_object(ray, &((t_object *)objs->array)[i], &tmp_hit))
-		{
-			if (!has_hit || tmp_hit.t < hit->t)
-				*hit = tmp_hit;
-			has_hit = true;
-		}
-		i++;
-	}
-	return (has_hit);
-}
-
-static t_ray	generate_ray(t_camera camera, uint32_t x, uint32_t y)
+static t_ray	generate_ray(t_camera camera, double pixel_x, double pixel_y)
 {
 	t_ray	ray;
 	double	cam_x;
@@ -59,8 +39,8 @@ static t_ray	generate_ray(t_camera camera, uint32_t x, uint32_t y)
 
 	scale = tan((camera.fov / 2) * (M_PI / 180.0));
 	aspect_ratio = (double)WIDTH / HEIGHT;
-	cam_x = (2 * ((x + 0.5) / WIDTH) - 1) * scale * aspect_ratio;
-	cam_y = (1 - 2 * ((y + 0.5) / HEIGHT)) * scale;
+	cam_x = (2 * (pixel_x / WIDTH) - 1) * scale * aspect_ratio;
+	cam_y = (1 - 2 * (pixel_y / HEIGHT)) * scale;
 	ray.origin = camera.origin;
 	ray.direction = tuple_mul_scalar(camera.right, cam_x);
 	ray.direction = adding_tuple(ray.direction, tuple_mul_scalar(camera.up,
@@ -70,13 +50,37 @@ static t_ray	generate_ray(t_camera camera, uint32_t x, uint32_t y)
 	return (ray);
 }
 
+static uint32_t	compute_pixel_aa(t_scene scene, uint32_t x, uint32_t y)
+{
+	uint32_t	i;
+	uint32_t	j;
+	uint32_t	colors[AA_SAMPLES * AA_SAMPLES];
+	uint32_t	samples;
+	t_ray		ray;
+
+	samples = 0;
+	i = 0;
+	while (i < AA_SAMPLES)
+	{
+		j = 0;
+		while (j < AA_SAMPLES)
+		{
+			ray = generate_ray(scene.camera, x + (double)i / AA_SAMPLES + 0.5
+					/ AA_SAMPLES, y + (double)j / AA_SAMPLES + 0.5
+					/ AA_SAMPLES);
+			colors[samples++] = trace_single_ray(scene, ray);
+			j++;
+		}
+		i++;
+	}
+	return (average_pixel_color(colors, samples));
+}
+
 void	raytrace(t_scene scene)
 {
 	uint32_t	x;
 	uint32_t	y;
-	t_hit		hit;
 	uint32_t	color;
-	t_ray		ray;
 
 	y = 0;
 	while (y < HEIGHT)
@@ -84,14 +88,15 @@ void	raytrace(t_scene scene)
 		x = 0;
 		while (x < WIDTH)
 		{
-			ray = generate_ray(scene.camera, x, y);
-			if (intersect_scene_objects(scene.objs, ray, &hit))
-				color = compute_hit_color(hit, scene.ambient, scene.light);
-			else
-				color = graduate_background(ray.direction.y);
+			color = compute_pixel_aa(scene, x, y);
 			my_pixel_put(&scene.mlx_img, x, y, color);
 			x++;
 		}
 		y++;
+		if (y % 10 == 0)
+		{
+			ft_putnbr_fd((y * 100) / HEIGHT, STDOUT_FILENO);
+			ft_putstr_fd("%\r", STDOUT_FILENO);
+		}
 	}
 }

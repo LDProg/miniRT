@@ -6,7 +6,7 @@
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 10:57:37 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/10 06:44:41 by ludebion         ###   ########.fr       */
+/*   Updated: 2026/01/10 09:53:19 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ static bool	hit_caps(t_ray ray, t_cylinder cy, t_hit *hit)
 	cap.center = cy.c_top;
 	cap.normal = cy.axis;
 	cap.color = cy.color;
+	cap.radius = cy.radius;
 	if (hit_disk(ray, cap, &tmp) && tmp.t < hit->t)
 		*hit = tmp;
 	cap.center = cy.c_bottom;
