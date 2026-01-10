@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tests.h                                            :+:      :+:    :+:   */
+/*   light.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/27 07:07:24 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/08 16:16:11 by ludebion         ###   ########.fr       */
+/*   Created: 2026/01/10 04:43:37 by ludebion          #+#    #+#             */
+/*   Updated: 2026/01/10 05:10:19 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TESTS_H
-# define TESTS_H
+#ifndef LIGHT_H
+# define LIGHT_H
 
-# include "gaducurt.h"
-# include "libmath.h"
+# include "rt_structures.h"
 
-void	print_double_tab(char **double_tab);
-void	print_struct(t_obj *obj);
-void	print_vector(t_dynvec *vector);
+uint32_t	compute_hit_color(t_hit hit, t_color a_light, t_light d_light);
 
 #endif

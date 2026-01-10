@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   parse_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 15:15:53 by gaducurt          #+#    #+#             */
-/*   Updated: 2026/01/09 05:04:52 by ludebion         ###   ########.fr       */
+/*   Updated: 2026/01/10 06:48:19 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "dynvect.h"
 #include "get_next_line_bonus.h"
 #include "libft.h"
 #include "parsing/parsing.h"
-#include "rt_structures.h"
 
 static t_error	parse_and_add_object(t_dynvec *objs, char **trim_line)
 {

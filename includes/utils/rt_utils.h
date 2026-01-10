@@ -6,7 +6,7 @@
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 05:29:36 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/09 05:18:59 by ludebion         ###   ########.fr       */
+/*   Updated: 2026/01/10 05:14:37 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ bool		is_valid_color(int r, int g, int b);
 uint32_t	get_color(double red, double green, double blue);
 uint32_t	graduate_background(double y);
 uint32_t	normal_color(t_vec3 p, t_point3 center);
+t_color		compute_color(double coef, t_color l_color, t_color o_color);
+uint32_t	add_colors(t_color diff, t_color amb);
 
 void		print_scene(t_scene *scene, t_dynvec *objs);
 

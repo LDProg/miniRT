@@ -6,15 +6,13 @@
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 08:42:20 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/09 04:56:38 by ludebion         ###   ########.fr       */
+/*   Updated: 2026/01/10 06:45:31 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <math.h>
 #include <stdbool.h>
-#include <stdio.h>
-#include <stdlib.h>
 
 static double	handle_integer_part(const char *str, size_t *i, int sign)
 {

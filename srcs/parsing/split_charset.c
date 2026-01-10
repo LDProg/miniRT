@@ -6,13 +6,12 @@
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 22:33:36 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/08 17:08:53 by ludebion         ###   ########.fr       */
+/*   Updated: 2026/01/10 06:50:25 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../libs/libft/libft.h"
+#include "libft.h"
 #include <stdbool.h>
-#include <stdio.h>
 #include <stdlib.h>
 
 void	free_strs(char **strs)

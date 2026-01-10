@@ -6,11 +6,10 @@
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 14:05:32 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/08 15:59:21 by ludebion         ###   ########.fr       */
+/*   Updated: 2026/01/10 06:42:05 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "dynvect.h"
 #include "rt_structures.h"
 #include <stdio.h>
 

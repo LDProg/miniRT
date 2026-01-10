@@ -6,7 +6,7 @@
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 10:57:37 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/08 15:59:41 by ludebion         ###   ########.fr       */
+/*   Updated: 2026/01/10 06:44:41 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "utils/rt_utils.h"
 #include <math.h>
 
-static bool	hit_disk(t_ray ray, t_plane pl, t_hit *hit, double radius)
+static bool	hit_disk(t_ray ray, t_plane pl, t_hit *hit)
 {
 	t_vec3	v_cy_center_to_p;
 	double	d2;
@@ -24,7 +24,7 @@ static bool	hit_disk(t_ray ray, t_plane pl, t_hit *hit, double radius)
 	{
 		v_cy_center_to_p = substract_tuple(hit->point, pl.center);
 		d2 = vec3_dot(v_cy_center_to_p, v_cy_center_to_p);
-		if (d2 <= radius * radius)
+		if (d2 <= pl.radius * pl.radius)
 			return (true);
 	}
 	return (false);
@@ -39,12 +39,13 @@ static bool	hit_caps(t_ray ray, t_cylinder cy, t_hit *hit)
 	cap.center = cy.c_top;
 	cap.normal = cy.axis;
 	cap.color = cy.color;
-	if (hit_disk(ray, cap, &tmp, cy.radius) && tmp.t < hit->t)
+	if (hit_disk(ray, cap, &tmp) && tmp.t < hit->t)
 		*hit = tmp;
 	cap.center = cy.c_bottom;
 	cap.normal = vec3_negate(cy.axis);
 	cap.color = cy.color;
-	if (hit_disk(ray, cap, &tmp, cy.radius) && tmp.t < hit->t)
+	cap.radius = cy.radius;
+	if (hit_disk(ray, cap, &tmp) && tmp.t < hit->t)
 		*hit = tmp;
 	return (hit->t < INFINITY);
 }
@@ -59,8 +60,7 @@ static bool	check_cylinder_height(t_cylinder cy, t_hit *hit)
 		return (false);
 	p_proj = adding_tuple(cy.c_bottom, tuple_mul_scalar(cy.axis, m));
 	hit->normal = vec3_normalize(substract_tuple(hit->point, p_proj));
-	hit->color.rgb = normal_color(hit->point, p_proj);
-	// hit->color = cy.color;
+	hit->shape_color = cy.color;
 	return (true);
 }
 

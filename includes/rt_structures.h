@@ -6,7 +6,7 @@
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 10:19:11 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/09 05:18:15 by ludebion         ###   ########.fr       */
+/*   Updated: 2026/01/10 05:53:18 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,15 +67,6 @@ typedef struct s_color
 	uint32_t	b;
 }	t_color;
 
-typedef struct s_mlx_img
-{
-	void	*img_ptr;
-	char	*pixels_ptr;
-	int		bpp;
-	int		endian;
-	int		size_line;
-}	t_mlx_img;
-
 typedef struct s_light
 {
 	t_point3	position;
@@ -94,6 +85,7 @@ typedef struct s_plane
 	t_point3	center;
 	t_vec3		normal;
 	t_color		color;
+	double		radius;
 }	t_plane;
 
 typedef struct s_cylinder
@@ -125,7 +117,7 @@ typedef struct s_hit
 	double		t;
 	t_point3	point;
 	t_vec3		normal;
-	t_color		color;
+	t_color		shape_color;
 }	t_hit;
 
 typedef struct s_ray
@@ -142,6 +134,15 @@ typedef struct s_camera
 	t_vec3		up;
 	t_vec3		forward;
 }	t_camera;
+
+typedef struct s_mlx_img
+{
+	void	*img_ptr;
+	char	*pixels_ptr;
+	int		bpp;
+	int		endian;
+	int		size_line;
+}	t_mlx_img;
 
 typedef struct s_scene
 {

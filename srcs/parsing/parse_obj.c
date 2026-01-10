@@ -6,11 +6,10 @@
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 17:10:27 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/09 02:15:23 by ludebion         ###   ########.fr       */
+/*   Updated: 2026/01/10 06:48:29 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
 #include "parsing/parsing.h"
 #include <math.h>
 

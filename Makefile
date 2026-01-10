@@ -4,11 +4,13 @@
 LST_EXEC :=		minirt.c
 
 LST_PARSING :=	check_args.c parse_file.c parse_obj.c parse_scene.c parse_utils.c \
-				split_charset.c ft_atoi_safe.c ft_atof_safe.c
+				ft_atoi_safe.c ft_atof_safe.c split_charset.c
 
 LST_RENDER :=	camera.c raytrace.c
 
-LST_INTERSECT_SHAPES := cylinder.c plane.c sphere.c
+LST_INTERSECT_SHAPES := cylinder.c plane.c sphere.c intersect_sphere.c
+
+LST_LIGHT := light.c
 
 LST_MLX_WINDOW :=	mlx_hooks.c mlx_init.c mlx_utils.c
 
@@ -16,12 +18,7 @@ LST_UTILS :=	close.c color.c print.c quadratic.c
 
 LST_TEST :=		test_functions.c
 
-LST_INTER :=	intersect_sphere.c intersect_plan.c find_intersect.c compute_color.c
-
-
-LST_INC :=	minirt.h rt_structures.h \
-			scene/mlx_window.h scene/render.h \
-			utils/rt_utils.h
+LST_INC :=	minirt.h rt_structures.h
 
 #Directories
 D_SRCS :=	srcs/
@@ -29,32 +26,27 @@ D_INC :=	includes/
 D_LIB :=	libs/
 D_OBJS :=	.objs/
 
-D_PARSING := parsing/
-D_TEST :=	tests/
 
 #Files full path
-D_CAMERA :=	camera/
-D_MLX_WINDOW :=	mlx_window/
+D_PARSING := parsing/
 D_RENDER :=	render/
 D_INTERSECT_SHAPES := intersect_shapes/
+D_LIGHT := light/
+D_MLX_WINDOW :=	mlx_window/
 D_UTILS :=	utils/
-D_INTER := intersect/
 
 #Files full path
 SRCS :=	$(addprefix $(D_SRCS), $(LST_EXEC)) \
 		$(addprefix $(D_SRCS)$(D_PARSING), $(LST_PARSING)) \
 		$(addprefix $(D_SRCS)$(D_RENDER), $(LST_RENDER)) \
 		$(addprefix $(D_SRCS)$(D_RENDER)$(D_INTERSECT_SHAPES), $(LST_INTERSECT_SHAPES)) \
+		$(addprefix $(D_SRCS)$(D_RENDER)$(D_LIGHT), $(LST_LIGHT)) \
 		$(addprefix $(D_SRCS)$(D_RENDER)$(D_MLX_WINDOW), $(LST_MLX_WINDOW)) \
-		$(addprefix $(D_SRCS)$(D_UTILS), $(LST_UTILS)) \
-		$(addprefix $(D_SRCS)$(D_TEST), $(LST_TEST)) \
-		$(addprefix $(D_SRCS)$(D_INTER), $(LST_INTER))\
-
-INC :=	$(addprefix $(D_INC), $(LST_INC))
+		$(addprefix $(D_SRCS)$(D_UTILS), $(LST_UTILS))
 
 OBJS :=	$(subst $(D_SRCS), $(D_OBJS), $(SRCS:.c=.o))
 
-DEPSFILES :=	$(subst $(D_SRCS), $(D_OBJS), $(SRCS:.o=.d))
+DEPSFILES := $(OBJS:.o=.d)
 
 #Libraries
 D_LIBFT :=	$(D_LIB)libft/
@@ -73,25 +65,26 @@ DVECT := $(D_DVECT)dynvect.a
 NAME := miniRT
 CC := cc
 CFLAGS := -Wall -Wextra -Werror -O3 -g3
-IFLAGS := -I$(D_INC) -I$(D_LIBFT) -I$(D_LIBFT)/gnl -I$(D_LIBFT)/mylib -I$(D_DVECT) -I$(D_LIBMLX) -I$(D_LIBMATH)includes/
+IFLAGS := -I$(D_INC) -I$(D_LIBFT) -I$(D_LIBFT)/gnl -I$(D_LIBFT)/mylib -I$(D_DVECT) -I$(D_LIBMLX) -I$(D_LIBMATH)$(D_INC)
 DEBUG_VALGRIND = valgrind --leak-check=full --show-leak-kinds=all
 
 RM := rm -rf
 MAKE_CMD := @$(MAKE) --no-print-directory
 
 #Compilation
--include $(DEPSFILES)
 
 all:
 	@echo "\n🚀 Building $(NAME) :"
 	$(MAKE_CMD) deps show_compiling_msg $(NAME)
+
+-include $(DEPSFILES)
 
 $(NAME): $(OBJS) $(LIBFT) $(DVECT) $(MVECT) $(MLX) $(LIBMATH)
 	@echo "✅ Compilation done.\n\n🔗 Linking $(NAME)..."
 	@$(CC) $(OBJS) $(LIBFT) $(DVECT) $(MVECT) $(MLX) $(LIBMATH) -L/opt/X11/lib -lXext -lX11 -lm -o $@
 	@echo "✅ Linking done.\n\n🎉 ./$(NAME) ready to run!\n"
 
-$(D_OBJS)%.o: $(D_SRCS)%.c $(INC) Makefile
+$(D_OBJS)%.o: $(D_SRCS)%.c Makefile
 	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) $(IFLAGS) -MMD -MP -c $< -o $@
 

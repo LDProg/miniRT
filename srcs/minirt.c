@@ -6,7 +6,7 @@
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:34:18 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/09 05:08:34 by ludebion         ###   ########.fr       */
+/*   Updated: 2026/01/10 06:41:06 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,11 @@
 #include "scene/mlx_window.h"
 #include "scene/render.h"
 #include "utils/rt_utils.h"
-#include <fcntl.h>
 #include <stdio.h>
 
 static void	render_scene(t_scene scene)
 {
-	raytrace(scene.camera, scene.objs, &scene.mlx_img);
+	raytrace(scene);
 	mlx_put_image_to_window(scene.mlx_ptr, scene.window_ptr,
 		scene.mlx_img.img_ptr, 0, 0);
 }

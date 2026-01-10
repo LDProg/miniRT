@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/02 12:17:19 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/08 16:21:42 by ludebion         ###   ########.fr       */
+/*   Created: 2025/11/07 10:20:18 by gaducurt          #+#    #+#             */
+/*   Updated: 2026/01/10 05:52:15 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,6 @@
 
 void	camera_init(t_camera *camera);
 
-void	raytrace(t_camera camera, t_dynvec *objs, t_mlx_img *img);
+void	raytrace(t_scene scene);
 
 #endif

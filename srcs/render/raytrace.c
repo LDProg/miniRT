@@ -6,27 +6,21 @@
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 02:32:43 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/08 15:59:55 by ludebion         ###   ########.fr       */
+/*   Updated: 2026/01/10 06:47:39 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "dynvect.h"
 #include "rt_structures.h"
 #include "scene/intersect_shapes.h"
+#include "scene/light.h"
 #include "scene/mlx_window.h"
 #include "utils/rt_utils.h"
 #include <math.h>
-#include <stdio.h>
-
-// static uint32_t	shading(t_hit *hit)
-// {
-// 	return (0);
-// }
 
 static bool	hit_object(t_ray ray, t_object *obj, t_hit *hit)
 {
 	if (obj->type == T_SPHERE)
-		return (hit_sphere(ray, obj->shape.sphere, hit));
+		return (intersect_sphere(ray, obj->shape.sphere, hit));
 	if (obj->type == T_PLANE)
 		return (hit_plane(ray, obj->shape.plane, hit));
 	if (obj->type == T_CYLINDER)
@@ -76,7 +70,7 @@ static t_ray	generate_ray(t_camera camera, uint32_t x, uint32_t y)
 	return (ray);
 }
 
-void	raytrace(t_camera camera, t_dynvec *objs, t_mlx_img *img)
+void	raytrace(t_scene scene)
 {
 	uint32_t	x;
 	uint32_t	y;
@@ -90,15 +84,12 @@ void	raytrace(t_camera camera, t_dynvec *objs, t_mlx_img *img)
 		x = 0;
 		while (x < WIDTH)
 		{
-			ray = generate_ray(camera, x, y);
-			if (intersect_scene_objects(objs, ray, &hit))
-			{
-				// color = shading(&hit);
-				color = hit.color.rgb;
-			}
+			ray = generate_ray(scene.camera, x, y);
+			if (intersect_scene_objects(scene.objs, ray, &hit))
+				color = compute_hit_color(hit, scene.ambient, scene.light);
 			else
 				color = graduate_background(ray.direction.y);
-			my_pixel_put(img, x, y, color);
+			my_pixel_put(&scene.mlx_img, x, y, color);
 			x++;
 		}
 		y++;
