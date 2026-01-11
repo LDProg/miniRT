@@ -14,7 +14,7 @@ LST_LIGHT := light.c
 
 LST_MLX_WINDOW :=	mlx_hooks.c mlx_init.c mlx_utils.c
 
-LST_UTILS :=	close.c color.c print.c quadratic.c
+LST_UTILS :=	close.c color.c color_bis.c print.c quadratic.c
 
 LST_TEST :=		test_functions.c
 

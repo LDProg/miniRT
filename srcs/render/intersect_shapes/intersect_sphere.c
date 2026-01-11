@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersect_sphere.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 14:16:16 by gaducurt          #+#    #+#             */
-/*   Updated: 2026/01/10 06:31:58 by ludebion         ###   ########.fr       */
+/*   Updated: 2026/01/11 16:11:38 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,16 @@ static double	find_t(double a, double b, double c, double delta)
 	return (NAN);
 }
 
+static void	comput_hit(double t, t_ray ray, t_hit *hit, t_sphere sp)
+{
+	hit->t = t;
+	hit->point = adding_tuple(ray.origin,
+			tuple_mul_scalar(ray.direction, t));
+	hit->normal = tuple_div_scalar(substract_tuple(hit->point,
+				sp.center), sp.radius);
+	hit->shape_color = sp.color;
+}
+
 bool	intersect_sphere(t_ray ray, t_sphere sp, t_hit *hit)
 {
 	double	a;
@@ -96,12 +106,7 @@ bool	intersect_sphere(t_ray ray, t_sphere sp, t_hit *hit)
 		t = find_t(a, b, c, delta);
 		if (!isnan(t))
 		{
-			hit->t = t;
-			hit->point = adding_tuple(ray.origin,
-					tuple_mul_scalar(ray.direction, t));
-			hit->normal = tuple_div_scalar(substract_tuple(hit->point,
-						sp.center), sp.radius);
-			hit->shape_color = sp.color;
+			comput_hit(t, ray, hit, sp);
 			return (true);
 		}
 	}
