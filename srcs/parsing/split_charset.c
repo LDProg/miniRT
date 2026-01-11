@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   split_charset.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 22:33:36 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/10 06:50:25 by ludebion         ###   ########.fr       */
+/*   Updated: 2026/01/11 14:54:36 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,26 +111,3 @@ char	**split_charset(char *s, char *charset)
 	}
 	return (res);
 }
-
-// int	main(int ac, char **av)
-// {
-// 	size_t	i;
-// 	char	**split;
-
-// 	(void)ac;
-// 	i = 0;
-// 	split = split_charset("L	0,50,0			0.6				255,255,255",
-// 														",\t ");
-// 	if (!split)
-// 	{
-// 		printf("\tError in split\n");
-// 		return (EXIT_FAILURE);
-// 	}
-// 	while (split[i])
-// 	{
-// 		printf("Split n°%zu :\n\t [%s]\n", i, split[i]);
-// 		i++;
-// 	}
-// 	free_strs(split);
-// 	return (EXIT_SUCCESS);
-// }
