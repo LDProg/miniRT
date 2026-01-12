@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 14:32:34 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/12/08 10:52:47 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/12 13:18:29 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 t_tuple	scaling_matrix(t_tuple t, double sx, double sy, double sz)
 {
-	t_tuple res;
+	t_tuple	res;
 
-    init_tuple(&res);
-    res.x = t.x * sx;
-    res.y = t.y * sy;
-    res.z = t.z * sz;
-    res.w = t.w;
-    return (res);
+	init_tuple(&res);
+	res.x = t.x * sx;
+	res.y = t.y * sy;
+	res.z = t.z * sz;
+	res.w = t.w;
+	return (res);
 }

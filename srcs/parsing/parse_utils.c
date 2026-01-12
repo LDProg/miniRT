@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 09:00:39 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/10 06:50:02 by ludebion         ###   ########.fr       */
+/*   Updated: 2026/01/12 11:31:31 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,9 @@ t_error	parse_vec3(t_vec3 *vec, char *str_vec3)
 	vec->y = ft_atof_safe(coords[1]);
 	vec->z = ft_atof_safe(coords[2]);
 	free_strs(coords);
-	if (!check_tuple(vec->x, vec->y, vec->z) || !is_normalized_vec(*vec))
+	if (!check_tuple(vec->x, vec->y, vec->z))
 		return (ERR_TUPLE);
+	if (!is_normalized_vec(*vec))
+		return (ERR_NORMAL);
 	return (ERR_NONE);
 }

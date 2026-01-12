@@ -6,13 +6,13 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 13:50:21 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/12/08 11:00:42 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/12 13:20:47 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mathvect.h"
 
-t_tuple scalar_div(t_tuple v, double factor)
+t_tuple	scalar_div(t_tuple v, double factor)
 {
 	t_tuple	res;
 
