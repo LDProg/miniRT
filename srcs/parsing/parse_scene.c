@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   parse_scene.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 09:23:20 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/10 06:49:25 by ludebion         ###   ########.fr       */
+/*   Updated: 2026/01/13 19:58:22 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing/parsing.h"
+#include "libft.h"
 
 t_error	parse_ambient_light(t_scene *scene, char **trim_line)
 {
@@ -59,4 +60,27 @@ t_error	parse_diffuse_light(t_scene *scene, char **trim_line)
 		return (err);
 	scene->has_diffuse_light = true;
 	return (ERR_NONE);
+}
+
+bool	alpha_str(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (ft_isalpha(str[i]))
+			return (true);
+		i++;
+	}
+	return (false);
+}
+
+bool	check_rgb(char *r, char *g, char *b)
+{
+	if (ft_strlen(r) > 3 || ft_strlen(g) > 3 || ft_strlen(b) > 3)
+		return (false);
+	if (alpha_str(r) || alpha_str(g) || alpha_str(b))
+		return (false);
+	return (true);
 }
