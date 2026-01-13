@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 09:23:20 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/13 19:58:22 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/13 20:11:40 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,25 +62,23 @@ t_error	parse_diffuse_light(t_scene *scene, char **trim_line)
 	return (ERR_NONE);
 }
 
-bool	alpha_str(char *str)
+bool	digit_str(char *str)
 {
 	int	i;
 
 	i = 0;
 	while (str[i])
 	{
-		if (ft_isalpha(str[i]))
-			return (true);
+		if (!ft_isdigit(str[i]))
+			return (false);
 		i++;
 	}
-	return (false);
+	return (true);
 }
 
 bool	check_rgb(char *r, char *g, char *b)
 {
-	if (ft_strlen(r) > 3 || ft_strlen(g) > 3 || ft_strlen(b) > 3)
-		return (false);
-	if (alpha_str(r) || alpha_str(g) || alpha_str(b))
+	if (!digit_str(r) || !digit_str(g) || !digit_str(b))
 		return (false);
 	return (true);
 }
