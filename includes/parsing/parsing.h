@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 10:52:51 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/14 15:45:19 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/14 19:10:35 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int			ft_atoi_safe(const char *nptr);
 double		ft_atof_safe(const char *str);
 bool		check_atof(double a);
 bool		check_tuple(double a, double b, double c);
-bool	    digit_str(char *str);
-bool    	check_rgb(char *r, char *g, char *b);
+bool		digit_str(char *str);
+bool		check_rgb(char *r, char *g, char *b);
 
 #endif
