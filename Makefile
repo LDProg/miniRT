@@ -4,7 +4,7 @@
 LST_EXEC :=		minirt.c
 
 LST_PARSING :=	check_args.c parse_file.c parse_obj.c parse_scene.c parse_utils.c \
-				ft_atoi_safe.c ft_atof_safe.c split_charset.c
+				ft_atoi_safe.c ft_atof_safe.c
 
 LST_RENDER :=	camera.c raytrace.c
 

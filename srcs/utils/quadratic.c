@@ -3,24 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   quadratic.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 10:38:33 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/10 06:42:11 by ludebion         ###   ########.fr       */
+/*   Updated: 2026/01/14 15:54:23 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt_structures.h"
+#include "mylib.h"
 #include <math.h>
-
-static void	ft_swap(double *a, double *b)
-{
-	double	tmp;
-
-	tmp = *a;
-	*a = *b;
-	*b = tmp;
-}
 
 static bool	check_quadratic_roots(double *t0, double *t1)
 {

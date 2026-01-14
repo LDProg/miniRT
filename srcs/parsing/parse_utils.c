@@ -6,11 +6,12 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 09:00:39 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/14 11:05:05 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/14 15:42:34 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "mylib.h"
 #include "parsing/parsing.h"
 #include "utils/rt_utils.h"
 

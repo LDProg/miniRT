@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 10:52:51 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/14 11:11:01 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/14 15:45:19 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ t_error		parse_color(t_color *color, char *ratio, char *str_rgb);
 t_error		parse_point3(t_point3 *point, char *str_point3);
 t_error		parse_vec3(t_vec3 *vec, char *str_vec3);
 
-void		free_strs(char **strs);
-char		**split_charset(char *s, char *charset);
 int			ft_atoi_safe(const char *nptr);
 double		ft_atof_safe(const char *str);
 bool		check_atof(double a);

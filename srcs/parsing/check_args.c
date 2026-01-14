@@ -3,25 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   check_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 09:11:56 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/08 17:26:01 by ludebion         ###   ########.fr       */
+/*   Updated: 2026/01/14 15:36:38 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "mylib.h"
 #include <stdbool.h>
-
-static int	ft_strcmp(const char *s1, const char *s2)
-{
-	size_t	i;
-
-	i = 0;
-	while (s1[i] && s1[i] == s2[i])
-		i++;
-	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-}
 
 bool	check_suffix(char *s)
 {
@@ -30,7 +21,7 @@ bool	check_suffix(char *s)
 	len = ft_strlen(s);
 	if (len <= 3)
 		return (false);
-	if (ft_strcmp(s + len - 3, ".rt"))
+	if (!ft_strcmp(s + len - 3, ".rt"))
 		return (false);
 	return (true);
 }
