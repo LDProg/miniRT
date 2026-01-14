@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 10:19:11 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/12 11:44:11 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/14 11:28:42 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # define WIDTH 1480
 # define HEIGHT 850
-# define AA_SAMPLES 4
+# define AA_SAMPLES 1
 
 # include "dynvect.h"
 # include "libmath.h"
@@ -72,6 +72,7 @@ typedef struct s_light
 {
 	t_point3	position;
 	t_color		color;
+
 }	t_light;
 
 typedef struct s_sphere

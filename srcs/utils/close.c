@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   close.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 05:28:12 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/09 05:26:15 by ludebion         ###   ########.fr       */
+/*   Updated: 2026/01/14 13:12:08 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ static char	*get_error_message(t_error error)
 	if (error == ERR_MALLOC)
 		return ("Malloc error.\n");
 	else if (error == ERR_IDENTIFIER)
-		return ("Identifier error.\n\tAvailable A C L sp pl cy.\n");
+		return ("Identifier error.\n\tAvailable A C L and sp pl cy.\n");
 	else if (error == ERR_MISSING_OBJ)
 		return ("Missing necessary objects.\n");
 	else if (error == ERR_CAMERA)
-		return ("Camera parameters error.\n");
+		return ("Camera error:\n\tInvalid parameters or multiple cameras.\n");
 	else if (error == ERR_LIGHT)
-		return ("Light parameters error.\n");
+		return ("Light error:\n\tInvalid parameters or multiple lights.\n");
 	else if (error == ERR_FORMAT)
 		return ("Object parameters format error.\n");
 	else if (error == ERR_COLOR)

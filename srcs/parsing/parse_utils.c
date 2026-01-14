@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 09:00:39 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/13 19:57:41 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/14 11:05:05 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ bool	is_double_in_range(double val, double min, double max)
 {
 	return (val >= min && val <= max);
 }
-
 
 t_error	parse_color(t_color *color, char *ratio, char *str_rgb)
 {
