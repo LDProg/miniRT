@@ -69,13 +69,15 @@ IFLAGS := -I$(D_INC) -I$(D_LIBFT) -I$(D_LIBFT)/gnl -I$(D_LIBFT)/mylib -I$(D_DVEC
 DEBUG_VALGRIND = valgrind --leak-check=full --show-leak-kinds=all
 
 RM := rm -rf
-MAKE_CMD := @$(MAKE) --no-print-directory
+MAKE_CMD := @$(MAKE) -j$(nproc) --no-print-directory
 
 #Compilation
 
 all:
 	@echo "\n🚀 Building $(NAME) :"
-	$(MAKE_CMD) deps show_compiling_msg $(NAME)
+	$(MAKE_CMD) deps
+	$(MAKE_CMD) show_compiling_msg
+	$(MAKE_CMD) $(NAME)
 
 -include $(DEPSFILES)
 

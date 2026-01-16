@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 09:00:39 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/14 15:42:34 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/16 15:19:13 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,26 @@
 #include "mylib.h"
 #include "parsing/parsing.h"
 #include "utils/rt_utils.h"
+#include <stdio.h>
+
+bool	check_comma(char *s)
+{
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	while (s[i])
+	{
+		j = 0;
+		while (ft_isdigit((s[i + j])) || s[i + j] == '-' || s[i + j] == '.')
+			j++;
+		if (s[i + j] == ',')
+			if (s[i + j + 1] == ',')
+				return (false);
+		i++;
+	}
+	return (true);
+}
 
 bool	is_double_in_range(double val, double min, double max)
 {
@@ -28,6 +48,8 @@ t_error	parse_color(t_color *color, char *ratio, char *str_rgb)
 	if (!check_atof(color->ratio) || !is_double_in_range(color->ratio, 0.0,
 			1.0))
 		return (ERR_RANGE);
+	if (!check_comma(str_rgb))
+		return (ERR_COLOR);
 	rgb = ft_split(str_rgb, ',');
 	if (!rgb || !rgb[0] || !rgb[1] || !rgb[2] || rgb[3])
 	{
@@ -50,6 +72,8 @@ t_error	parse_point3(t_point3 *point, char *str_point3)
 {
 	char	**coords;
 
+	if (!check_comma(str_point3))
+		return (ERR_TUPLE);
 	coords = ft_split(str_point3, ',');
 	if (!coords || !coords[0] || !coords[1] || !coords[2] || coords[3])
 	{
@@ -69,6 +93,8 @@ t_error	parse_vec3(t_vec3 *vec, char *str_vec3)
 	char	**coords;
 
 	coords = ft_split(str_vec3, ',');
+	if (!check_comma(str_vec3))
+		return (ERR_NORMAL);
 	if (!coords || !coords[0] || !coords[1] || !coords[2] || coords[3])
 	{
 		free_strs(coords);

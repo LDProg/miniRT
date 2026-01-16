@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vec3_ops2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 08:08:15 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/12 11:27:36 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/16 12:13:59 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,8 @@ t_vec3	vec3_normalize(t_vec3 v)
 	return (tuple_div_scalar(v, vec3_magnitude(v)));
 }
 
-// bool	is_normalized_vec(t_vec3 vec)
-// {
-// 	return (vec.x >= -1.0 && vec.x <= 1.0 && vec.y >= -1.0 && vec.y <= 1.0
-// 		&& vec.z >= -1.0 && vec.z <= 1.0);
-// }
-
-bool	is_normalized_vec(t_vec3 vec)
+bool	is_normalized_vec(t_vec3 v)
 {
-	return (vec.x >= -1.0 && vec.x <= 1.0 && vec.y >= -1.0 && vec.y <= 1.0
-		&& vec.z >= -1.0 && vec.z <= 1.0
-		&& sqrtf(pow(vec.x, 2) + pow(vec.y, 2) + pow(vec.z, 2)) <= 1
-		&& sqrtf(pow(vec.x, 2) + pow(vec.y, 2) + pow(vec.z, 2)) > 0.99);
+	return (v.x >= -1.0 && v.x <= 1.0 && v.y >= -1.0 && v.y <= 1.0 && v.z >=
+		-1.0 && v.z <= 1.0);
 }
