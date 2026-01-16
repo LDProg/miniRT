@@ -10,7 +10,7 @@ LST_RENDER :=	camera.c raytrace.c
 
 LST_INTERSECT_SHAPES := intersect.c cylinder.c plane.c sphere.c intersect_sphere.c
 
-LST_LIGHT := light.c
+LST_LIGHT := light.c shadow.c
 
 LST_MLX_WINDOW :=	mlx_hooks.c mlx_init.c mlx_utils.c
 

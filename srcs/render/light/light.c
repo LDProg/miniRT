@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 04:43:12 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/16 16:42:55 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/16 17:24:49 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,12 @@ static t_color	diffuse_lt(t_hit hit, t_light d_light)
 	return (color);
 }
 
-uint32_t	compute_hit_color(t_hit hit, t_color a_light, t_light d_light)
+uint32_t	compute_hit_color(t_hit hit, t_color a_light, t_light d_light, t_scene scene)
 {
 	t_color	diffuse;
 	t_color	ambient;
 
+	(void)scene;
 	diffuse = diffuse_lt(hit, d_light);
 	ambient = compute_color(a_light.ratio, a_light, hit.shape_color);
 	return (add_colors(ambient, diffuse));
