@@ -6,11 +6,12 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 17:10:27 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/11 14:53:24 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/16 16:39:57 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing/parsing.h"
+#include "libmath.h"
 #include <math.h>
 
 t_error	parse_sphere(t_object *obj, char **trim_line)
@@ -33,9 +34,10 @@ t_error	parse_sphere(t_object *obj, char **trim_line)
 	return (ERR_NONE);
 }
 
-t_error	parse_plane(t_object *obj, char **trim_line)
+t_error	parse_plane(t_object *obj, char **trim_line, t_camera camera)
 {
 	t_error	err;
+	t_vec3	vec;
 
 	err = ERR_NONE;
 	if (!trim_line[1] || !trim_line[2] || !trim_line[3] || trim_line[4])
@@ -51,6 +53,9 @@ t_error	parse_plane(t_object *obj, char **trim_line)
 	err = parse_color(&obj->shape.plane.color, "1", trim_line[3]);
 	if (err != ERR_NONE)
 		return (ERR_COLOR);
+	vec = substract_tuple(obj->shape.plane.center, camera.origin);
+	if (get_angle(vec, obj->shape.plane.normal) > 0)
+		obj->shape.plane.normal = vec3_negate(obj->shape.plane.normal);
 	return (ERR_NONE);
 }
 

@@ -6,12 +6,13 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 09:23:20 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/14 13:14:36 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/16 14:52:38 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing/parsing.h"
 #include "libft.h"
+#include <stdio.h>
 
 t_error	parse_ambient_light(t_scene *scene, char **trim_line)
 {
