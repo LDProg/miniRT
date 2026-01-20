@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raytrace.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 02:32:43 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/10 11:06:36 by ludebion         ###   ########.fr       */
+/*   Updated: 2026/01/20 13:38:48 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static uint32_t	trace_single_ray(t_scene scene, t_ray ray)
 	uint32_t	color;
 
 	if (intersect_scene_objects(scene.objs, ray, &hit))
-		color = compute_hit_color(hit, scene.ambient, scene.light);
+		color = compute_hit_color(hit, scene.ambient, scene.light, scene);
 	else
 		color = graduate_background(ray.direction.y);
 	return (color);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_structures.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 10:19:11 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/20 10:55:36 by ludebion         ###   ########.fr       */
+/*   Updated: 2026/01/20 18:00:24 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,7 @@ typedef struct s_hit
 	t_point3	point;
 	t_vec3		normal;
 	t_color		shape_color;
+	bool		shadow;
 }	t_hit;
 
 typedef struct s_ray
