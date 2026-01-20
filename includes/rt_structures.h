@@ -6,7 +6,7 @@
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 10:19:11 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/20 10:40:05 by ludebion         ###   ########.fr       */
+/*   Updated: 2026/01/20 10:55:36 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,9 @@ typedef struct s_color
 {
 	double		ratio;
 	uint32_t	rgb;
-	uint32_t	r;
-	uint32_t	g;
-	uint32_t	b;
+	int			r;
+	int			g;
+	int			b;
 }	t_color;
 
 typedef struct s_light
