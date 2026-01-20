@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 10:57:33 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/20 18:00:38 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/20 19:08:35 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ bool	hit_plane(t_ray ray, t_plane pl, t_hit *hit)
 	oc = substract_tuple(pl.center, ray.origin);
 	t = vec3_dot(oc, pl.normal) / denom;
 	hit->t = t;
+	if (t < EPSILON)
+		return (false);
 	hit->point = adding_tuple(ray.origin, tuple_mul_scalar(ray.direction, t));
 	hit->normal = pl.normal;
 	hit->shape_color = pl.color;
