@@ -27,5 +27,5 @@ jobs:
 
       - name: Memory leaks
         run: |
-          valgrind --leak-check=full ./miniRT scenes/simple.rt 2>&1 | tee valgrind.txt
+          valgrind --leak-check=full ./miniRT scenes/complex.rt 2>&1 | tee valgrind.txt
           ! grep -q "definitely lost" valgrind.txt
