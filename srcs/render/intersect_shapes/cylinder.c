@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 10:57:37 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/20 14:24:15 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/20 15:06:02 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ static bool	hit_cylinder_side(t_ray ray, t_cylinder cy, t_hit *hit)
 		- cy.radius * cy.radius;
 	if (solve_quadatric(a, b, c, &t0))
 	{
-		hit->t = t0 - __FLT_EPSILON__;
+		hit->t = t0;
 		hit->point = adding_tuple(ray.origin, tuple_mul_scalar(ray.direction,
 					t0));
 		return (check_cylinder_height(cy, hit));

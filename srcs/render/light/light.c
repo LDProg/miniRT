@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 04:43:12 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/20 14:08:48 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/20 15:40:09 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,9 @@
 
 static t_color	diffuse_lt(t_hit hit, t_light d_light, t_vec3 vec_light)
 {
-	// t_vec3	vec_light;
 	t_color	color;
 	double	angle;
 
-	// vec_light = vec3_normalize(substract_tuple(d_light.position, hit.point));
 	angle = get_angle(vec_light, hit.normal);
 	color = compute_color(d_light.color.ratio * angle, d_light.color,
 			hit.shape_color);
@@ -40,13 +38,18 @@ uint32_t	compute_hit_color(t_hit hit, t_color a_light, t_light d_light, t_scene 
 	t_ray	ray_light;
 	t_hit	hit_light;
 
-	(void)scene;
-	ray_light.direction = vec3_normalize(substract_tuple(d_light.position, hit.point));
-	ray_light.origin = hit.point;
-	if (!intersect_scene_objects(scene.objs, ray_light, &hit_light))
-		diffuse = diffuse_lt(hit, d_light, ray_light.direction);
+	// (void)scene;
+	ray_light.origin = adding_tuple(hit.point,
+			tuple_mul_scalar(hit.normal, __FLT_EPSILON__));
+	ray_light.direction = vec3_normalize(substract_tuple(d_light.position,
+			ray_light.origin));
+	if (intersect_scene_objects(scene.objs, ray_light, &hit_light))
+	{
+		diffuse.rgb = 0;
+		extract_rgb(diffuse.rgb, &diffuse);
+	}
 	else
-		extract_rgb(0, &diffuse);
+		diffuse = diffuse_lt(hit, d_light, ray_light.direction);
 	ambient = compute_color(a_light.ratio, a_light, hit.shape_color);
 	return (add_colors(ambient, diffuse));
 }

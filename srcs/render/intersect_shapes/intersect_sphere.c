@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 14:16:16 by gaducurt          #+#    #+#             */
-/*   Updated: 2026/01/20 14:22:04 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/20 15:05:48 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static double	find_t(double a, double b, double c)
 
 static void	comput_hit(double t, t_ray ray, t_hit *hit, t_sphere sp)
 {
-	hit->t = t - __FLT_EPSILON__;
+	hit->t = t;
 	hit->point = adding_tuple(ray.origin,
 			tuple_mul_scalar(ray.direction, t));
 	hit->normal = tuple_div_scalar(substract_tuple(hit->point,
