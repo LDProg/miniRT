@@ -6,7 +6,7 @@
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 09:00:39 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/16 15:19:13 by ludebion         ###   ########.fr       */
+/*   Updated: 2026/01/20 10:38:44 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,20 @@
 bool	check_comma(char *s)
 {
 	size_t	i;
-	size_t	j;
 
 	i = 0;
 	while (s[i])
 	{
-		j = 0;
-		while (ft_isdigit((s[i + j])) || s[i + j] == '-' || s[i + j] == '.')
-			j++;
-		if (s[i + j] == ',')
-			if (s[i + j + 1] == ',')
+		while (ft_isdigit(s[i]) || s[i] == '-' || s[i] == '.')
+			i++;
+		if (s[i] == ',')
+			if (!(ft_isdigit(s[++i]) || s[i] == '-' || s[i] == '.'))
 				return (false);
 		i++;
 	}
-	return (true);
+	if (!s[i])
+		return (true);
+	return (false);
 }
 
 bool	is_double_in_range(double val, double min, double max)

@@ -6,7 +6,7 @@
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 10:19:11 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/16 12:18:08 by ludebion         ###   ########.fr       */
+/*   Updated: 2026/01/20 10:40:05 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # define WIDTH 1480
 # define HEIGHT 850
-# define AA_SAMPLES 1
+# define AA_SAMPLES 3
 
 # include "dynvect.h"
 # include "libmath.h"
