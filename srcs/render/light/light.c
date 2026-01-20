@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 04:43:12 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/20 17:25:11 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/20 17:35:21 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 #include "scene/intersect_shapes.h"
 #include "libmath.h"
 #include <stdio.h>
-
-
 
 // Diffuse color = ratio * max(l.n, 0) * src_color * obj_color
 
@@ -31,7 +29,8 @@ static t_color	diffuse_lt(t_hit hit, t_light d_light, t_vec3 vec_light)
 	return (color);
 }
 
-uint32_t	compute_hit_color(t_hit hit, t_color a_light, t_light d_light, t_scene scene)
+uint32_t	compute_hit_color(t_hit hit, t_color a_light, t_light d_light,
+	t_scene scene)
 {
 	t_color	diffuse;
 	t_color	ambient;
@@ -42,9 +41,10 @@ uint32_t	compute_hit_color(t_hit hit, t_color a_light, t_light d_light, t_scene 
 	ray_light.origin = adding_tuple(hit.point,
 			tuple_mul_scalar(hit.normal, __FLT_EPSILON__));
 	ray_light.direction = vec3_normalize(substract_tuple(d_light.position,
-			ray_light.origin));
+				ray_light.origin));
 	distance_light = vec3_distance(d_light.position, hit.point);
-	if (intersect_scene_objects(scene.objs, ray_light, &hit_light) && hit_light.t < distance_light)
+	if (intersect_scene_objects(scene.objs, ray_light, &hit_light)
+		&& hit_light.t < distance_light)
 	{
 		diffuse.rgb = 0;
 		extract_rgb(diffuse.rgb, &diffuse);
