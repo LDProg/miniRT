@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 10:19:11 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/20 15:35:46 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/20 17:27:06 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # define WIDTH 1480
 # define HEIGHT 850
-# define AA_SAMPLES 1
+# define AA_SAMPLES 4
 
 # include "dynvect.h"
 # include "libmath.h"
