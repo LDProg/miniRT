@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 09:00:39 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/22 11:44:14 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/22 14:47:36 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ bool	check_comma(char *s)
 		if (s[i] == ',')
 			if (!(ft_isdigit(s[++i]) || s[i] == '-' || s[i] == '.'))
 				return (false);
+		i++;
 	}
 	if (!s[i])
 		return (true);

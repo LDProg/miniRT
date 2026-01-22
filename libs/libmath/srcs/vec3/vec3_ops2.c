@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 08:08:15 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/20 19:12:29 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/22 14:00:35 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,6 @@ t_vec3	vec3_normalize(t_vec3 v)
 bool	is_normalized_vec(t_vec3 v)
 {
 	return (v.x >= -1.0 && v.x <= 1.0 && v.y >= -1.0 && v.y <= 1.0
-		&& v.z >= -1.0 && v.z <= 1.0);
+		&& v.z >= -1.0 && v.z <= 1.0 && vec3_magnitude(v) < 1.01
+		&& vec3_magnitude(v) > 0.99);
 }
