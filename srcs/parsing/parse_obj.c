@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 17:10:27 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/22 11:43:32 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/22 15:29:10 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ t_error	parse_sphere(t_object *obj, char **trim_line)
 	t_error	err;
 
 	err = ERR_NONE;
-	if (!trim_line[1] || !trim_line[2] || !trim_line[3] || trim_line[4])
+	if (!trim_line[1] || !trim_line[2] || !trim_line[3] || trim_line[4]
+		|| !check_format(trim_line))
 		return (ERR_FORMAT);
 	obj->type = T_SPHERE;
 	err = parse_point3(&obj->shape.sphere.center, trim_line[1]);
@@ -38,7 +39,8 @@ t_error	parse_plane(t_object *obj, char **trim_line)
 	t_error	err;
 
 	err = ERR_NONE;
-	if (!trim_line[1] || !trim_line[2] || !trim_line[3] || trim_line[4])
+	if (!trim_line[1] || !trim_line[2] || !trim_line[3] || trim_line[4]
+		|| !check_format(trim_line))
 		return (ERR_FORMAT);
 	obj->type = T_PLANE;
 	err = parse_point3(&obj->shape.plane.center, trim_line[1]);
@@ -60,7 +62,7 @@ t_error	parse_cylinder(t_object *obj, char **trim_line)
 
 	err = ERR_NONE;
 	if (!trim_line[1] || !trim_line[2] || !trim_line[3] || !trim_line[4]
-		|| !trim_line[5] || trim_line[6])
+		|| !trim_line[5] || trim_line[6] || !check_format(trim_line))
 		return (ERR_FORMAT);
 	obj->type = T_CYLINDER;
 	err = parse_point3(&obj->shape.cylinder.center, trim_line[1]);

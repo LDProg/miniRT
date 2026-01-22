@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 09:00:39 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/22 14:47:36 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/22 15:04:22 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include "mylib.h"
 #include "parsing/parsing.h"
 #include "utils/rt_utils.h"
+
+#include <stdio.h>
 
 bool	check_comma(char *s)
 {

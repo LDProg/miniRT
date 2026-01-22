@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 10:57:06 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/22 13:31:27 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/22 15:31:45 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ bool	is_vector(t_tuple t)
 
 bool	is_vector_null(t_tuple v)
 {
-	return (fabs(v.x) < __LDBL_EPSILON__ && fabs(v.y) < __LDBL_EPSILON__ && fabs(v.z) < __LDBL_EPSILON__);
+	return (fabs(v.x) < __LDBL_EPSILON__ && fabs(v.y) < __LDBL_EPSILON__
+		&& fabs(v.z) < __LDBL_EPSILON__);
 }
 
 bool	is_floats_equals(double x, double y)
@@ -36,6 +37,8 @@ bool	is_floats_equals(double x, double y)
 
 bool	is_tuples_equals(t_tuple t1, t_tuple t2)
 {
-	return (fabs(t1.x - t2.x) < __LDBL_EPSILON__ && fabs(t1.y - t2.y) < __LDBL_EPSILON__
-		&& fabs(t1.z - t2.z) < __LDBL_EPSILON__ && t1.w == t2.w);
+	return (fabs(t1.x - t2.x) < __LDBL_EPSILON__
+		&& fabs(t1.y - t2.y) < __LDBL_EPSILON__
+		
+	if (!trim_line[1] || !trim_line[2] || !trim_line[3] || trim_line[4] && fabs(t1.z - t2.z) < __LDBL_EPSILON__ && t1.w == t2.w);
 }
