@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 02:32:43 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/22 11:50:07 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/22 13:29:00 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ static t_ray	generate_ray(t_camera camera, double pixel_x, double pixel_y)
 	double	scale;
 
 	scale = tan((camera.fov / 2) * (M_PI / 180.0));
-	aspect_ratio = (double)WIDTH / HEIGHT;
-	cam_x = (2 * (pixel_x / WIDTH) - 1) * scale * aspect_ratio;
-	cam_y = (1 - 2 * (pixel_y / HEIGHT)) * scale;
+	aspect_ratio = (double)HEIGHT / WIDTH;
+	cam_x = (2 * (pixel_x / WIDTH) - 1) * scale;
+	cam_y = (1 - 2 * (pixel_y / HEIGHT)) * scale * aspect_ratio;
 	ray.origin = camera.origin;
 	ray.direction = tuple_mul_scalar(camera.right, cam_x);
 	ray.direction = adding_tuple(ray.direction, tuple_mul_scalar(camera.up,
