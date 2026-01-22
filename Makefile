@@ -18,7 +18,7 @@ LST_UTILS :=	close.c color.c color_bis.c quadratic.c
 
 LST_TEST :=		test_functions.c
 
-LST_INC :=	minirt.h rt_structures.h
+LST_INC :=	rt_structures.h
 
 #Directories
 D_SRCS :=	srcs/

@@ -6,11 +6,10 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 16:15:31 by gaducurt          #+#    #+#             */
-/*   Updated: 2026/01/20 16:41:53 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/22 11:50:45 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt_structures.h"
 #include "utils/rt_utils.h"
 
 uint32_t	average_pixel_color(uint32_t *pixel_colors, uint32_t samples)

@@ -6,15 +6,12 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 04:43:12 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/20 17:35:21 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/22 11:47:51 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt_structures.h"
 #include "utils/rt_utils.h"
 #include "scene/intersect_shapes.h"
-#include "libmath.h"
-#include <stdio.h>
 
 // Diffuse color = ratio * max(l.n, 0) * src_color * obj_color
 
@@ -23,7 +20,7 @@ static t_color	diffuse_lt(t_hit hit, t_light d_light, t_vec3 vec_light)
 	t_color	color;
 	double	angle;
 
-	angle = get_angle(vec_light, hit.normal);
+	angle = vec3_dot(vec_light, hit.normal);
 	color = compute_color(d_light.color.ratio * angle, d_light.color,
 			hit.shape_color);
 	return (color);

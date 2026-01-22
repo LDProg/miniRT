@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 11:39:27 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/16 14:05:03 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/21 15:29:04 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@ bool	hit_cylinder(t_ray ray, t_cylinder cy, t_hit *hit);
 bool	hit_plane(t_ray ray, t_plane pl, t_hit *hit);
 bool	hit_sphere(t_ray ray, t_sphere sp, t_hit *hit);
 bool	intersect_sphere(t_ray ray, t_sphere sp, t_hit *hit);
+// bool	intersect_plan(t_ray ray, t_plane pl, t_hit *hit);
 
 #endif

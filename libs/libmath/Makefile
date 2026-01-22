@@ -3,7 +3,7 @@
 #Files
 LST_SRCS_MAT4 :=	mat4_init.c mat4_ops.c mat4_trsf.c mat4_print.c
 
-LST_SRCS_VEC3 :=	tuple_cmp.c tuple_init.c tuple_ops.c vec3_ops.c vec3_ops2.c vec3_print.c get_angle.c
+LST_SRCS_VEC3 :=	tuple_cmp.c tuple_init.c tuple_ops.c vec3_ops.c vec3_ops2.c vec3_print.c
 
 LST_INC :=	libmath.h libmath_structures.h
 
