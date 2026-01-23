@@ -3,7 +3,8 @@
 *This project has been created as part
 of the 42 curriculum by ludebion & gaducurt.*
 
-## Project's into
+## Description
+
 The aim of this project is to creat a 3d rendering model using the raytracing technology. The principle is to simulate the reverse path of the light in reality.
 
 ### Parsing
@@ -15,12 +16,37 @@ The aim of this project is to creat a 3d rendering model using the raytracing te
 
 ### Raytraycing
 
-- If AA_SAMPLE = 1, one ray is launched per pixel.
+- One ray is launched per pixel.
 - We search the intersection, for each ray.
 - The equation of a ray is :
-    O + dir * t
-    O = Origin
-    dir = direction
-    t = ditance traveled by the ray (unknown)
-- Once we have found t, we can compute the color with the norm and the light.
-- If AA_SAMPLE = 4, we launch four rays per pixel (the pixel is split in four parts), calculate the color for each part and an average is obtained.
+	ray = O + dir * t
+	O = Origin
+	dir = direction
+	t = ditance traveled by the ray (unknown)
+- Whene a ray hits an object, a new ray is cast from the intersection to the light to check if there is an other object blocking it.
+- Once we have found t, we can compute the color with the norm, the ambient light, the diffuse light and the object color.
+
+## Instructions
+
+### Prerequisites
+
+- A Unix-based operating system (Linux or macOS)
+- MinilibX graphics library
+
+### Compilation
+
+Clone the repository and compile the project :
+
+git clone [your-repository-url]
+cd miniRT
+make
+
+This will generate a miniRT executable.
+
+### Execution
+
+Run the program with a scene file as an argument :
+
+./miniRT scenes/exemple.rt
+
+
