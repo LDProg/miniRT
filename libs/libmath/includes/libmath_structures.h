@@ -6,14 +6,12 @@
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 10:19:11 by ludebion          #+#    #+#             */
-/*   Updated: 2025/12/19 00:35:40 by ludebion         ###   ########.fr       */
+/*   Updated: 2026/01/23 01:25:42 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBMATH_STRUCTURES_H
 # define LIBMATH_STRUCTURES_H
-
-# define EPSILON 0.0001
 
 typedef struct s_tuple
 {

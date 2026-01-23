@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   rt_structures.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 10:19:11 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/20 19:15:20 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/23 01:24:48 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RT_STRUCTURES_H
 # define RT_STRUCTURES_H
 
-# define WIDTH 1480
-# define HEIGHT 850
-# define AA_SAMPLES 3
+# define WIDTH 480
+# define HEIGHT 210
+# define AA_SAMPLES 1
 
 # include "dynvect.h"
 # include "libmath.h"
