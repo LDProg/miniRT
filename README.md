@@ -3,14 +3,17 @@
 *This project has been created as part
 of the 42 curriculum by ludebion & gaducurt.*
 
-## Parsing
+## Project's into
+The aim of this project is to creat a 3d rendering model using the raytracing technology. The principle is to simulate the reverse path of the light in reality.
+
+### Parsing
 
 - Each line of file.rt is read by get_next_line and convert in an array char\*\* with a multi_split().
 - The datas of the arrays are stocked in a struct t_objs.
 - We do an a array of struct with a struct vector.
 - The vector is a struct for manage array automaticaly. It allocates the size of any type. When the vector->len is bigger than vector->capacity, it reallocates automaticaly vector->capacity \* 2.
 
-## Raytraycing
+### Raytraycing
 
 - If AA_SAMPLE = 1, one ray is launched per pixel.
 - We search the intersection, for each ray.
