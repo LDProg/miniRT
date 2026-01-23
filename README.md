@@ -42,7 +42,7 @@ git clone git@github.com:LDProg/miniRT.git
 cd miniRT
 make
 ```
-
+This will generate a <span style="background-color: #FFFF00">surlignage jaune</span>
 This will generate a **miniRT** executable.
 
 ### Execution
