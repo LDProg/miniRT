@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 14:16:16 by gaducurt          #+#    #+#             */
-/*   Updated: 2026/01/14 15:49:15 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/22 13:17:01 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,17 @@
 #include <math.h>
 
 /*
-Equation du ray : O + dir * t
+Equation of ray : O + dir * t
 - O		: point de départ
 - dir	: direction
 - t		: distance parcourue par le ray
 
-Equation de la sphere : (X - Xc)² + (Y - Yc)² + (Z - Zc)² = r²
-- X, Y, Z		: inconues
-- Xc, Yc, Zc	: cente de la sphere
-- r				: rayon de la sphere
+Equation of the sphere : (X - Xc)² + (Y - Yc)² + (Z - Zc)² = r²
+- X, Y, Z		: unknown
+- Xc, Yc, Zc	: center of the sphere
+- r				: radius of the sphere
 
-Après simplification on tombe sur une equation du second degré dont la seule
-inconue est t.
+After simplification we have a quadratic equation whose the only unknown is t.
 a = dir.x² + dir.y² + dir.z²
 b = 2 * (dir.x * (O.x - Xc) + dir.y * (O.y - Yc) + dir.z * (O.z - Zc))
 c = ((O.x - Xc)² + (O.y - Yc)² + (O.z - Zc)²) - r²
@@ -35,7 +34,7 @@ Dleta = b² - 4ac
 t1 = (-b + sqrt(delta)) / 2a
 t2 = (-b - sqrt(delta)) / 2a
 
-On prend l'intersection la plus proche.
+We take the nearby intersection.
 */
 
 static bool	check_quadratic_roots(double *t0, double *t1)

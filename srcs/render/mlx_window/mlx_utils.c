@@ -3,17 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 05:15:38 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/08 15:59:51 by ludebion         ###   ########.fr       */
+/*   Updated: 2026/01/22 11:49:03 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx.h"
 #include "rt_structures.h"
-#include <math.h>
-#include <stdlib.h>
 
 void	my_pixel_put(t_mlx_img *img, uint32_t x, uint32_t y, uint32_t color)
 {

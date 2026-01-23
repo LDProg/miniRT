@@ -6,13 +6,14 @@
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 08:42:20 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/10 06:45:31 by ludebion         ###   ########.fr       */
+/*   Updated: 2026/01/23 12:21:29 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <math.h>
 #include <stdbool.h>
+#include <stdio.h>
 
 static double	handle_integer_part(const char *str, size_t *i, int sign)
 {
@@ -20,7 +21,10 @@ static double	handle_integer_part(const char *str, size_t *i, int sign)
 
 	res = 0;
 	if (!(str[*i] >= '0' && str[*i] <= '9'))
+	{
+		printf("nan atof\n");
 		return (NAN);
+	}
 	while (str[*i] >= '0' && str[*i] <= '9')
 	{
 		if (isinf(res * 10 + (str[*i] - '0')))
@@ -93,8 +97,8 @@ bool	check_atof(double a)
 	return (!isinf(a) && !isnan(a));
 }
 
-bool	check_tuple(double a, double b, double c)
+bool	check_tuple(double x, double y, double z)
 {
-	return (!isinf(a) && !isinf(b) && !isinf(c) && !isnan(a) && !isnan(b)
-		&& !isnan(c));
+	return (!isinf(x) && !isinf(y) && !isinf(z) && !isnan(x) && !isnan(y)
+		&& !isnan(z));
 }
