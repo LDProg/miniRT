@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 09:00:39 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/22 15:04:22 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/23 12:35:19 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,32 @@
 #include "mylib.h"
 #include "parsing/parsing.h"
 #include "utils/rt_utils.h"
-
 #include <stdio.h>
 
 bool	check_comma(char *s)
 {
 	size_t	i;
+	int		comma_count;
 
+	if (!s || !s[0] || s[0] == ',' || s[ft_strlen(s) - 1] == ',')
+		return (false);
 	i = 0;
+	comma_count = 0;
 	while (s[i])
 	{
-		while (ft_isdigit(s[i]) || s[i] == '-' || s[i] == '.')
+		while (s[i] && (ft_isdigit(s[i]) || s[i] == '-' || s[i] == '.'))
 			i++;
 		if (s[i] == ',')
-			if (!(ft_isdigit(s[++i]) || s[i] == '-' || s[i] == '.'))
+		{
+			comma_count++;
+			i++;
+			if (!s[i] || s[i] == ',')
 				return (false);
-		i++;
+		}
+		else if (s[i])
+			return (false);
 	}
-	if (!s[i])
-		return (true);
-	return (false);
+	return (comma_count == 2);
 }
 
 bool	is_double_in_range(double val, double min, double max)
@@ -57,8 +63,6 @@ t_error	parse_color(t_color *color, char *ratio, char *str_rgb)
 		free_strs(rgb);
 		return (ERR_COLOR);
 	}
-	if (!check_rgb(rgb[0], rgb[1], rgb[2]))
-		return (ERR_COLOR);
 	color->r = ft_atoi(rgb[0]);
 	color->g = ft_atoi(rgb[1]);
 	color->b = ft_atoi(rgb[2]);
@@ -93,20 +97,20 @@ t_error	parse_vec3(t_vec3 *vec, char *str_vec3)
 {
 	char	**coords;
 
-	coords = ft_split(str_vec3, ',');
 	if (!check_comma(str_vec3))
 		return (ERR_NORMAL);
+	coords = ft_split(str_vec3, ',');
 	if (!coords || !coords[0] || !coords[1] || !coords[2] || coords[3])
 	{
 		free_strs(coords);
-		return (ERR_TUPLE);
+		return (ERR_NORMAL);
 	}
 	vec->x = ft_atof_safe(coords[0]);
 	vec->y = ft_atof_safe(coords[1]);
 	vec->z = ft_atof_safe(coords[2]);
 	free_strs(coords);
 	if (!check_tuple(vec->x, vec->y, vec->z))
-		return (ERR_TUPLE);
+		return (ERR_NORMAL);
 	if (!is_normalized_vec(*vec))
 		return (ERR_NORMAL);
 	return (ERR_NONE);

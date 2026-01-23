@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 10:52:51 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/22 15:29:44 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/23 12:24:45 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,6 @@ int			ft_atoi_safe(const char *nptr);
 double		ft_atof_safe(const char *str);
 bool		check_atof(double a);
 bool		check_tuple(double a, double b, double c);
-bool		digit_str(char *str);
-bool		check_rgb(char *r, char *g, char *b);
 bool		check_format(char **trim_line);
 
 #endif

@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   libmath_structures.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 10:19:11 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/23 11:30:06 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/23 12:22:58 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBMATH_STRUCTURES_H
 # define LIBMATH_STRUCTURES_H
+
+# define EPSILON 0.0001
 
 typedef struct s_tuple
 {

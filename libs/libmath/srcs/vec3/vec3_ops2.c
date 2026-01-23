@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   vec3_ops2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 08:08:15 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/22 14:00:35 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/23 12:23:38 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libmath.h"
 #include <math.h>
+#include <stdio.h>
 
 t_vec3	vec3_negate(t_vec3 v)
 {
@@ -41,7 +42,11 @@ t_vec3	vec3_normalize(t_vec3 v)
 
 bool	is_normalized_vec(t_vec3 v)
 {
-	return (v.x >= -1.0 && v.x <= 1.0 && v.y >= -1.0 && v.y <= 1.0
-		&& v.z >= -1.0 && v.z <= 1.0 && vec3_magnitude(v) < 1.01
-		&& vec3_magnitude(v) > 0.99);
+	double	length;
+
+	if (v.x < -1.0 || v.x > 1.0 || v.y < -1.0 || v.y > 1.0 || v.z < -1.0
+		|| v.z > 1.0)
+		return (false);
+	length = sqrt(v.x * v.x + v.y * v.y + v.z * v.z);
+	return (fabs(length - 1.0) < EPSILON);
 }

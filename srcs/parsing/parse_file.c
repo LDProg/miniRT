@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 15:15:53 by gaducurt          #+#    #+#             */
-/*   Updated: 2026/01/22 11:42:56 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/23 15:47:58 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
-#include "mylib.h"
 #include "libft.h"
+#include "mylib.h"
 #include "parsing/parsing.h"
 
 static t_error	parse_and_add_object(t_dynvec *objs, char **trim_line)
@@ -41,8 +41,10 @@ static t_error	parse_line(t_scene *scene, char *line)
 	trim_line = split_charset(line, " \t\n");
 	if (!trim_line || !trim_line[0])
 	{
+		if (ft_strncmp(line, "\n", 1) == 0)
+			return (ERR_NONE);
 		free_strs(trim_line);
-		return (ERR_NONE);
+		return (ERR_MALLOC);
 	}
 	err = ERR_NONE;
 	if (ft_strncmp(trim_line[0], "A", 2) == 0)
