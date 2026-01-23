@@ -18,11 +18,10 @@ The aim of this project is to creat a 3d rendering model using the raytracing te
 
 - One ray is launched per pixel.
 - We search the intersection, for each ray.
-- The equation of a ray is :
-	**ray = O + dir * t**
-	**O** = Origin
-	**dir** = direction
-	**t** = ditance traveled by the ray (unknown)
+- The equation of a ray is : **ray = O + dir * t**
+	- **O** = Origin
+	- **dir** = direction
+	- **t** = ditance traveled by the ray (unknown)
 - Whene a ray hits an object, a new ray is cast from the intersection to the light to check if there is an other object blocking it.
 - Once we have found t, we can compute the color with the norm, the ambient light, the diffuse light and the object color.
 
@@ -42,7 +41,6 @@ git clone git@github.com:LDProg/miniRT.git
 cd miniRT
 make
 ```
-This will generate a <span style="background-color: #FFFF00">surlignage jaune</span>
 This will generate a **miniRT** executable.
 
 ### Execution
