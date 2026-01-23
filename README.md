@@ -37,7 +37,7 @@ The aim of this project is to creat a 3d rendering model using the raytracing te
 
 Clone the repository and compile the project :
 
-'''[bash]
+'''console
 git clone [your-repository-url]
 cd miniRT
 make
