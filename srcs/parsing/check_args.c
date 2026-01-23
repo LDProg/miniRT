@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 09:11:56 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/14 15:36:38 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/22 15:28:50 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,20 @@ bool	check_args(int ac, char **av)
 	{
 		ft_putstr_fd("The file need to be a '.rt' format.", STDERR_FILENO);
 		return (false);
+	}
+	return (true);
+}
+
+bool	check_format(char **trim_line)
+{
+	int	i;
+
+	i = 1;
+	while (trim_line[i])
+	{
+		if (!ft_isdigit(trim_line[i][0]) && trim_line[i][0] != '-')
+			return (false);
+		i++;
 	}
 	return (true);
 }

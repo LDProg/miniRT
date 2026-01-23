@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 15:15:53 by gaducurt          #+#    #+#             */
-/*   Updated: 2026/01/16 16:43:05 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/22 11:42:56 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 #include "libft.h"
 #include "parsing/parsing.h"
 
-static t_error	parse_and_add_object(t_dynvec *objs, char **trim_line,
-	t_camera camera)
+static t_error	parse_and_add_object(t_dynvec *objs, char **trim_line)
 {
 	t_object	obj;
 	t_error		err;
@@ -24,7 +23,7 @@ static t_error	parse_and_add_object(t_dynvec *objs, char **trim_line,
 	if (ft_strncmp(trim_line[0], "sp", 3) == 0)
 		err = parse_sphere(&obj, trim_line);
 	else if (ft_strncmp(trim_line[0], "pl", 3) == 0)
-		err = parse_plane(&obj, trim_line, camera);
+		err = parse_plane(&obj, trim_line);
 	else
 		err = parse_cylinder(&obj, trim_line);
 	if (err != ERR_NONE)
@@ -54,7 +53,7 @@ static t_error	parse_line(t_scene *scene, char *line)
 		err = parse_diffuse_light(scene, trim_line);
 	else if (ft_strncmp(trim_line[0], "sp", 3) == 0 || ft_strncmp(trim_line[0],
 			"pl", 3) == 0 || ft_strncmp(trim_line[0], "cy", 3) == 0)
-		err = parse_and_add_object(scene->objs, trim_line, scene->camera);
+		err = parse_and_add_object(scene->objs, trim_line);
 	else
 		err = ERR_IDENTIFIER;
 	free_strs(trim_line);

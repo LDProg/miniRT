@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_structures.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 10:19:11 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/23 01:24:48 by ludebion         ###   ########.fr       */
+/*   Updated: 2026/01/23 11:29:51 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 
 # include "dynvect.h"
 # include "libmath.h"
-# include <stdbool.h>
 # include <stdint.h>
 
 typedef enum e_error

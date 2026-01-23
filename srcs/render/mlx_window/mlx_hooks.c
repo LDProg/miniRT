@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_hooks.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 05:13:59 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/10 06:43:50 by ludebion         ###   ########.fr       */
+/*   Updated: 2026/01/22 11:48:15 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx.h"
-#include "rt_structures.h"
 #include "utils/rt_utils.h"
 
 int	handle_close_hook(t_scene *scene)

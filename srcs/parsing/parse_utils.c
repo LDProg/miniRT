@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 09:00:39 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/20 11:00:20 by ludebion         ###   ########.fr       */
+/*   Updated: 2026/01/22 15:04:22 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "mylib.h"
 #include "parsing/parsing.h"
 #include "utils/rt_utils.h"
+
 #include <stdio.h>
 
 bool	check_comma(char *s)
@@ -28,6 +29,7 @@ bool	check_comma(char *s)
 		if (s[i] == ',')
 			if (!(ft_isdigit(s[++i]) || s[i] == '-' || s[i] == '.'))
 				return (false);
+		i++;
 	}
 	if (!s[i])
 		return (true);

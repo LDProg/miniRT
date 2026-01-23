@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 16:40:16 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/16 16:44:24 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/21 17:01:13 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,5 @@ double		vec3_magnitude(t_vec3 v);
 double		vec3_distance(t_tuple v, t_tuple w);
 t_vec3		vec3_normalize(t_vec3 v);
 bool		is_normalized_vec(t_vec3 vec);
-double		get_angle(t_vec3 l, t_vec3 n);
 
 #endif

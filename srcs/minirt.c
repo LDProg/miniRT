@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:34:18 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/10 06:41:06 by ludebion         ###   ########.fr       */
+/*   Updated: 2026/01/22 11:52:05 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "mlx.h"
 #include "parsing/parsing.h"
-#include "rt_structures.h"
 #include "scene/mlx_window.h"
 #include "scene/render.h"
 #include "utils/rt_utils.h"

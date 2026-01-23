@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   plane.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 10:57:33 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/23 01:25:55 by ludebion         ###   ########.fr       */
+/*   Updated: 2026/01/23 11:33:24 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,10 @@ bool	hit_plane(t_ray ray, t_plane pl, t_hit *hit)
 	if (t < __LDBL_EPSILON__)
 		return (false);
 	hit->point = adding_tuple(ray.origin, tuple_mul_scalar(ray.direction, t));
-	hit->normal = pl.normal;
+	if (vec3_dot(ray.direction, pl.normal) > 0)
+		hit->normal = vec3_negate(pl.normal);
+	else
+		hit->normal = pl.normal;
 	hit->shape_color = pl.color;
 	return (true);
 }

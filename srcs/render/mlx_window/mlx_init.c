@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 05:13:46 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/08 19:31:58 by ludebion         ###   ########.fr       */
+/*   Updated: 2026/01/22 11:48:38 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx.h"
-#include "rt_structures.h"
 #include "scene/mlx_window.h"
 #include "utils/rt_utils.h"
 

@@ -6,12 +6,11 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 05:28:12 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/14 13:12:08 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/22 11:50:30 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "rt_structures.h"
 #include "scene/mlx_window.h"
 
 static char	*get_error_message(t_error error)

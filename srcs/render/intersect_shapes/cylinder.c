@@ -6,11 +6,10 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 10:57:37 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/20 15:06:02 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/22 11:44:58 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt_structures.h"
 #include "scene/intersect_shapes.h"
 #include "utils/rt_utils.h"
 #include <math.h>
