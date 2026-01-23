@@ -19,10 +19,10 @@ The aim of this project is to creat a 3d rendering model using the raytracing te
 - One ray is launched per pixel.
 - We search the intersection, for each ray.
 - The equation of a ray is :
-	ray = O + dir * t
-	O = Origin
-	dir = direction
-	t = ditance traveled by the ray (unknown)
+	**ray = O + dir * t**
+	**O** = Origin
+	**dir** = direction
+	**t** = ditance traveled by the ray (unknown)
 - Whene a ray hits an object, a new ray is cast from the intersection to the light to check if there is an other object blocking it.
 - Once we have found t, we can compute the color with the norm, the ambient light, the diffuse light and the object color.
 
@@ -31,24 +31,45 @@ The aim of this project is to creat a 3d rendering model using the raytracing te
 ### Prerequisites
 
 - A Unix-based operating system (Linux or macOS)
-- MinilibX graphics library
+- **MinilibX** graphics library
 
 ### Compilation
 
 Clone the repository and compile the project :
 
 ```bash
-git clone [your-repository-url]
+git clone git@github.com:LDProg/miniRT.git
 cd miniRT
 make
 ```
 
-This will generate a miniRT executable.
+This will generate a **miniRT** executable.
 
 ### Execution
 
-Run the program with a scene file as an argument :
+Run the program with a scene file **.rt** as an argument :
 
 ```bash
 ./miniRT scenes/exemple.rt
 ```
+
+### Controls
+
+**ESC** or close window : Exit the program
+
+## Resources
+
+### Reading
+
+- Ray Tracer Challenge
+- https://www.pbr-book.org/4ed/contents
+- https://www.scratchapixel.com/index.html
+- https://raytracing.github.io/
+- https://www.alrj.org/docs/3D/raytracer/raytracertutchap1.htm
+- https://www.doc.ic.ac.uk/~dfg/graphics/graphics2008/GraphicsLecture09.pdf
+- https://en.wikipedia.org/wiki/Phong_reflection_model
+
+### Videos
+
+- https://www.youtube.com/@MathGame-Exo7
+- https://www.youtube.com/@YMONKA
