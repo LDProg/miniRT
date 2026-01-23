@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   light.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 04:43:12 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/23 01:26:00 by ludebion         ###   ########.fr       */
+/*   Updated: 2026/01/23 11:14:36 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ uint32_t	compute_hit_color(t_hit hit, t_color a_light, t_light d_light,
 	double	distance_light;
 
 	ray_light.origin = adding_tuple(hit.point, tuple_mul_scalar(hit.normal,
-				__LDBL_EPSILON__));
+				__FLT_EPSILON__));
 	ray_light.direction = vec3_normalize(substract_tuple(d_light.position,
 				ray_light.origin));
 	distance_light = vec3_distance(d_light.position, hit.point);
