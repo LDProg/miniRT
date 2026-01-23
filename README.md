@@ -1,5 +1,8 @@
 # miniRT
 
+This project has been created as part
+of the 42 curriculum by <ludebion>, <gaducurt>
+
 ## Parsing
 
 - Each line of file.rt is read by get_next_line and convert in an array char\*\* with a multi_split().
