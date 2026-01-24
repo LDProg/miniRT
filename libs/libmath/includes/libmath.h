@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libmath.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 16:40:16 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/21 17:01:13 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/23 16:15:15 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 void		mat4_print(t_mat4 m, char *name);
 void		mat4_print_basis(t_mat4 m, char *name);
 void		vec3_print(t_vec3 v, const char *name);
+void		print_normalized_vector(t_vec3 v);
 
 // Matrice Creation
 t_mat4		mat4_identity(void);

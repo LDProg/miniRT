@@ -6,7 +6,7 @@
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 15:15:53 by gaducurt          #+#    #+#             */
-/*   Updated: 2026/01/23 15:47:58 by ludebion         ###   ########.fr       */
+/*   Updated: 2026/01/23 15:50:03 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ static t_error	parse_and_add_object(t_dynvec *objs, char **trim_line)
 	t_object	obj;
 	t_error		err;
 
-	if (ft_strncmp(trim_line[0], "sp", 3) == 0)
+	if (ft_strcmp(trim_line[0], "sp") == 0)
 		err = parse_sphere(&obj, trim_line);
-	else if (ft_strncmp(trim_line[0], "pl", 3) == 0)
+	else if (ft_strcmp(trim_line[0], "pl") == 0)
 		err = parse_plane(&obj, trim_line);
 	else
 		err = parse_cylinder(&obj, trim_line);
@@ -41,20 +41,20 @@ static t_error	parse_line(t_scene *scene, char *line)
 	trim_line = split_charset(line, " \t\n");
 	if (!trim_line || !trim_line[0])
 	{
-		if (ft_strncmp(line, "\n", 1) == 0)
+		if (ft_strcmp(line, "\n") == 0)
 			return (ERR_NONE);
 		free_strs(trim_line);
 		return (ERR_MALLOC);
 	}
 	err = ERR_NONE;
-	if (ft_strncmp(trim_line[0], "A", 2) == 0)
+	if (ft_strcmp(trim_line[0], "A") == 0)
 		err = parse_ambient_light(scene, trim_line);
-	else if (ft_strncmp(trim_line[0], "C", 2) == 0)
+	else if (ft_strcmp(trim_line[0], "C") == 0)
 		err = parse_camera(scene, trim_line);
-	else if (ft_strncmp(trim_line[0], "L", 2) == 0)
+	else if (ft_strcmp(trim_line[0], "L") == 0)
 		err = parse_diffuse_light(scene, trim_line);
-	else if (ft_strncmp(trim_line[0], "sp", 3) == 0 || ft_strncmp(trim_line[0],
-			"pl", 3) == 0 || ft_strncmp(trim_line[0], "cy", 3) == 0)
+	else if (ft_strcmp(trim_line[0], "sp") == 0 || ft_strcmp(trim_line[0],
+			"pl") == 0 || ft_strcmp(trim_line[0], "cy") == 0)
 		err = parse_and_add_object(scene->objs, trim_line);
 	else
 		err = ERR_IDENTIFIER;

@@ -6,7 +6,7 @@
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 09:00:39 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/23 12:35:19 by ludebion         ###   ########.fr       */
+/*   Updated: 2026/01/24 18:28:31 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "mylib.h"
 #include "parsing/parsing.h"
 #include "utils/rt_utils.h"
-#include <stdio.h>
 
 bool	check_comma(char *s)
 {
@@ -27,7 +26,8 @@ bool	check_comma(char *s)
 	comma_count = 0;
 	while (s[i])
 	{
-		while (s[i] && (ft_isdigit(s[i]) || s[i] == '-' || s[i] == '.'))
+		while (s[i] && (ft_isdigit(s[i]) || s[i] == '-' || s[i] == '+'
+				|| s[i] == '.'))
 			i++;
 		if (s[i] == ',')
 		{
@@ -112,6 +112,9 @@ t_error	parse_vec3(t_vec3 *vec, char *str_vec3)
 	if (!check_tuple(vec->x, vec->y, vec->z))
 		return (ERR_NORMAL);
 	if (!is_normalized_vec(*vec))
+	{
+		print_normalized_vector(*vec);
 		return (ERR_NORMAL);
+	}
 	return (ERR_NONE);
 }

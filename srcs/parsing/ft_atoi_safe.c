@@ -6,52 +6,54 @@
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 14:17:02 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/23 02:19:25 by ludebion         ###   ########.fr       */
+/*   Updated: 2026/01/24 18:38:46 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include <limits.h>
+#include <stdbool.h>
 
-static int	check_int_overflow(int n, int digit, int sign)
+static bool	check_int_overflow(int n, int digit, int sign)
 {
 	if (sign > 0)
 	{
 		if (n > (INT_MAX - digit) / 10)
-			return (0);
+			return (false);
 	}
 	else
 	{
 		if (n > (-(INT_MIN + digit)) / 10)
-			return (0);
+			return (false);
 	}
-	return (1);
+	return (true);
 }
 
-int	ft_atoi_safe(const char *nptr)
+bool	ft_atoi_safe(const char *nptr, int32_t *out)
 {
 	int	i;
 	int	n;
 	int	sign;
-	int	digit;
 
+	if (!nptr || !out)
+		return (false);
 	i = 0;
 	n = 0;
 	sign = 1;
-	while (nptr[i] == 32 || (nptr[i] >= 9 && nptr[i] <= 13))
-		++i;
 	if (nptr[i] == '-' || nptr[i] == '+')
 	{
 		if (nptr[i] == '-')
-			sign *= -1;
-		++i;
+			sign = -1;
+		i++;
 	}
+	if (!ft_isdigit(nptr[i]))
+		return (false);
 	while (nptr[i] >= '0' && nptr[i] <= '9')
 	{
-		digit = nptr[i] - '0';
-		if (!check_int_overflow(n, digit, sign))
-			return (-1);
-		n = n * 10 + digit;
-		++i;
+		if (!check_int_overflow(n, nptr[i] - '0', sign))
+			return (false);
+		n = n * 10 + (nptr[i++] - '0');
 	}
-	return (sign * n);
+	*out = sign * n;
+	return (nptr[i] == '\0');
 }
