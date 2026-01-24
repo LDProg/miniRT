@@ -6,16 +6,16 @@
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 10:19:11 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/24 07:25:21 by ludebion         ###   ########.fr       */
+/*   Updated: 2026/01/24 19:28:49 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RT_STRUCTURES_H
 # define RT_STRUCTURES_H
 
-# define WIDTH 480
-# define HEIGHT 210
-# define AA_SAMPLES 1
+# define DEFAULT_WIN_WIDTH 1280
+# define DEFAULT_WIN_HEIGHT 720
+# define AA_SAMPLES 3
 
 # include "dynvect.h"
 # include "libmath.h"
@@ -155,6 +155,8 @@ typedef struct s_scene
 	bool		has_diffuse_light;
 	t_dynvec	*objs;
 	void		*mlx_ptr;
+	int32_t		screen_width;
+	int32_t		screen_height;
 	void		*window_ptr;
 	t_mlx_img	mlx_img;
 	bool		needs_redraw;
