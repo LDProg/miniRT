@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:34:18 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/22 11:52:05 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/24 19:49:51 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ static void	render_scene(t_scene scene)
 static void	init_scene(t_scene *scene, char *filename)
 {
 	t_error	err;
+	char	*scene_name;
 
 	ft_memset(scene, 0, sizeof(t_scene));
 	scene->objs = malloc(sizeof(t_dynvec));
@@ -41,7 +42,12 @@ static void	init_scene(t_scene *scene, char *filename)
 			perror(filename);
 		close_program(scene, err);
 	}
-	mlx_full_init(scene);
+	scene_name = ft_strchr(filename, '/');
+	if (scene_name)
+		scene_name++;
+	else
+		scene_name = filename;
+	mlx_full_init(scene, scene_name);
 	camera_init(&scene->camera);
 }
 
