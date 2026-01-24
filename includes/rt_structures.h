@@ -6,7 +6,7 @@
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 10:19:11 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/24 19:28:49 by ludebion         ###   ########.fr       */
+/*   Updated: 2026/01/24 20:17:32 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,9 @@ typedef struct s_color
 {
 	double		ratio;
 	uint32_t	rgb;
-	int			r;
-	int			g;
-	int			b;
+	int32_t		r;
+	int32_t		g;
+	int32_t		b;
 }	t_color;
 
 typedef struct s_light
@@ -140,9 +140,9 @@ typedef struct s_mlx_img
 {
 	void	*img_ptr;
 	char	*pixels_ptr;
-	int		bpp;
-	int		endian;
-	int		size_line;
+	int32_t	bpp;
+	int32_t	endian;
+	int32_t	size_line;
 }	t_mlx_img;
 
 typedef struct s_scene

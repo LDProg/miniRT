@@ -6,7 +6,7 @@
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 10:52:51 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/24 18:01:01 by ludebion         ###   ########.fr       */
+/*   Updated: 2026/01/24 20:10:01 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_error		parse_color(t_color *color, char *ratio, char *str_rgb);
 t_error		parse_point3(t_point3 *point, char *str_point3);
 t_error		parse_vec3(t_vec3 *vec, char *str_vec3);
 
-int			ft_atoi_safe(const char *nptr, int32_t *out);
+bool		ft_atoi_safe(const char *nptr, int32_t *out);
 double		ft_atof_safe(const char *str);
 bool		check_atof(double a);
 bool		check_tuple(double a, double b, double c);

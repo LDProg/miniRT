@@ -6,7 +6,7 @@
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 09:00:39 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/24 18:28:31 by ludebion         ###   ########.fr       */
+/*   Updated: 2026/01/24 20:16:53 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "mylib.h"
 #include "parsing/parsing.h"
 #include "utils/rt_utils.h"
+#include <stdio.h>
 
 bool	check_comma(char *s)
 {
@@ -50,6 +51,7 @@ bool	is_double_in_range(double val, double min, double max)
 t_error	parse_color(t_color *color, char *ratio, char *str_rgb)
 {
 	char	**rgb;
+	t_error	err;
 
 	color->ratio = ft_atof_safe(ratio);
 	if (!check_atof(color->ratio) || !is_double_in_range(color->ratio, 0.0,
@@ -63,14 +65,15 @@ t_error	parse_color(t_color *color, char *ratio, char *str_rgb)
 		free_strs(rgb);
 		return (ERR_COLOR);
 	}
-	color->r = ft_atoi(rgb[0]);
-	color->g = ft_atoi(rgb[1]);
-	color->b = ft_atoi(rgb[2]);
+	err = ERR_NONE;
+	if (!ft_atoi_safe(rgb[0], &color->r) || !ft_atoi_safe(rgb[1], &color->g)
+		|| !ft_atoi_safe(rgb[2], &color->b) || !is_valid_color(color->r,
+			color->g, color->b))
+		err = ERR_COLOR;
+	if (err == ERR_NONE)
+		color->rgb = get_color(color->r, color->g, color->b);
 	free_strs(rgb);
-	if (!is_valid_color(color->r, color->g, color->b))
-		return (ERR_COLOR);
-	color->rgb = get_color(color->r, color->g, color->b);
-	return (ERR_NONE);
+	return (err);
 }
 
 t_error	parse_point3(t_point3 *point, char *str_point3)
