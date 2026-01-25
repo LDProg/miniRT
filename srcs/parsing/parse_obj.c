@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_obj.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 17:10:27 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/23 17:41:15 by ludebion         ###   ########.fr       */
+/*   Updated: 2026/01/25 19:23:14 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_error	parse_sphere(t_object *obj, char **trim_line)
 	if (err != ERR_NONE)
 		return (ERR_TUPLE);
 	obj->shape.sphere.radius = ft_atof_safe(trim_line[2]) / 2.0;
-	if (obj->shape.sphere.radius <= 0 || obj->shape.sphere.radius == INFINITY)
+	if (obj->shape.sphere.radius <= 0 || !check_atof(obj->shape.sphere.radius))
 		return (ERR_DIAMETER);
 	err = parse_color(&obj->shape.sphere.color, "1", trim_line[3]);
 	if (err != ERR_NONE)
