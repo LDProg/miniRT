@@ -6,7 +6,7 @@
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 05:20:02 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/08 16:21:28 by ludebion         ###   ########.fr       */
+/*   Updated: 2026/01/24 19:36:54 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "rt_structures.h"
 
-void	mlx_full_init(t_scene *scene);
+void	mlx_full_init(t_scene *scene, char *filename);
 
 int		handle_mouse_hook(int button, int x, int y, t_scene *scene);
 int		handle_keypress_hook(int keycode, t_scene *scene);

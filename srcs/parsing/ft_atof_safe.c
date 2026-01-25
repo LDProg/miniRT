@@ -6,7 +6,7 @@
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 08:42:20 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/23 12:21:29 by ludebion         ###   ########.fr       */
+/*   Updated: 2026/01/24 18:11:29 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,7 @@ static double	handle_integer_part(const char *str, size_t *i, int sign)
 
 	res = 0;
 	if (!(str[*i] >= '0' && str[*i] <= '9'))
-	{
-		printf("nan atof\n");
 		return (NAN);
-	}
 	while (str[*i] >= '0' && str[*i] <= '9')
 	{
 		if (isinf(res * 10 + (str[*i] - '0')))
@@ -82,11 +79,11 @@ double	ft_atof_safe(const char *str)
 		i++;
 	}
 	res = handle_integer_part(str, &i, sign);
-	if (isinf(res))
+	if (isinf(res) || isnan(res))
 		return (res);
 	res = handle_decimal_part(str, &i, res, sign);
 	if (isinf(res) || isnan(res))
-		return (NAN);
+		return (res);
 	if (str[i] != '\0')
 		return (NAN);
 	return (res * sign);

@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   rt_structures.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 10:19:11 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/23 11:29:51 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/24 20:17:32 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RT_STRUCTURES_H
 # define RT_STRUCTURES_H
 
-# define WIDTH 480
-# define HEIGHT 210
-# define AA_SAMPLES 1
+# define DEFAULT_WIN_WIDTH 1280
+# define DEFAULT_WIN_HEIGHT 720
+# define AA_SAMPLES 3
 
 # include "dynvect.h"
 # include "libmath.h"
@@ -62,9 +62,9 @@ typedef struct s_color
 {
 	double		ratio;
 	uint32_t	rgb;
-	int			r;
-	int			g;
-	int			b;
+	int32_t		r;
+	int32_t		g;
+	int32_t		b;
 }	t_color;
 
 typedef struct s_light
@@ -140,9 +140,9 @@ typedef struct s_mlx_img
 {
 	void	*img_ptr;
 	char	*pixels_ptr;
-	int		bpp;
-	int		endian;
-	int		size_line;
+	int32_t	bpp;
+	int32_t	endian;
+	int32_t	size_line;
 }	t_mlx_img;
 
 typedef struct s_scene
@@ -155,6 +155,8 @@ typedef struct s_scene
 	bool		has_diffuse_light;
 	t_dynvec	*objs;
 	void		*mlx_ptr;
+	int32_t		screen_width;
+	int32_t		screen_height;
 	void		*window_ptr;
 	t_mlx_img	mlx_img;
 	bool		needs_redraw;

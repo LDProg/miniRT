@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 05:13:46 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/22 11:48:38 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/24 19:36:35 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,24 @@ static void	events_init(t_scene *scene)
 	mlx_loop_hook(scene->mlx_ptr, loop_hook, scene);
 }
 
-void	mlx_full_init(t_scene *scene)
+void	mlx_full_init(t_scene *scene, char *filename)
 {
 	scene->mlx_ptr = mlx_init();
 	if (!scene->mlx_ptr)
 		close_program(scene, ERR_MLX);
-	scene->window_ptr = mlx_new_window(scene->mlx_ptr, WIDTH, HEIGHT,
-			"Ray tracing scene");
+	mlx_get_screen_size(scene->mlx_ptr, &scene->screen_width,
+		&scene->screen_height);
+	if (scene->screen_width <= 0 || scene->screen_height <= 0)
+	{
+		scene->screen_width = DEFAULT_WIN_WIDTH;
+		scene->screen_height = DEFAULT_WIN_HEIGHT;
+	}
+	scene->window_ptr = mlx_new_window(scene->mlx_ptr, scene->screen_width,
+			scene->screen_height, filename);
 	if (!scene->window_ptr)
 		close_program(scene, ERR_MLX);
-	scene->mlx_img.img_ptr = mlx_new_image(scene->mlx_ptr, WIDTH, HEIGHT);
+	scene->mlx_img.img_ptr = mlx_new_image(scene->mlx_ptr, scene->screen_width,
+			scene->screen_height);
 	if (!scene->mlx_img.img_ptr)
 		close_program(scene, ERR_MLX);
 	scene->mlx_img.pixels_ptr = mlx_get_data_addr(scene->mlx_img.img_ptr,

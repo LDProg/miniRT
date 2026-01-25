@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raytrace.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 02:32:43 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/23 11:33:18 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/24 18:57:32 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static uint32_t	trace_single_ray(t_scene scene, t_ray ray)
 	return (color);
 }
 
-static t_ray	generate_ray(t_camera camera, double pixel_x, double pixel_y)
+static t_ray	generate_ray(t_scene scene, double pixel_x, double pixel_y)
 {
 	t_ray	ray;
 	double	cam_x;
@@ -37,15 +37,15 @@ static t_ray	generate_ray(t_camera camera, double pixel_x, double pixel_y)
 	double	aspect_ratio;
 	double	scale;
 
-	scale = tan((camera.fov / 2) * (M_PI / 180.0));
-	aspect_ratio = (double)HEIGHT / WIDTH;
-	cam_x = (2 * (pixel_x / WIDTH) - 1) * scale;
-	cam_y = (1 - 2 * (pixel_y / HEIGHT)) * scale * aspect_ratio;
-	ray.origin = camera.origin;
-	ray.direction = tuple_mul_scalar(camera.right, cam_x);
-	ray.direction = adding_tuple(ray.direction, tuple_mul_scalar(camera.up,
-				cam_y));
-	ray.direction = adding_tuple(ray.direction, camera.forward);
+	scale = tan((scene.camera.fov / 2) * (M_PI / 180.0));
+	aspect_ratio = (double)scene.screen_height / scene.screen_width;
+	cam_x = (2 * (pixel_x / scene.screen_width) - 1) * scale;
+	cam_y = (1 - 2 * (pixel_y / scene.screen_height)) * scale * aspect_ratio;
+	ray.origin = scene.camera.origin;
+	ray.direction = tuple_mul_scalar(scene.camera.right, cam_x);
+	ray.direction = adding_tuple(ray.direction,
+			tuple_mul_scalar(scene.camera.up, cam_y));
+	ray.direction = adding_tuple(ray.direction, scene.camera.forward);
 	ray.direction = vec3_normalize(ray.direction);
 	return (ray);
 }
@@ -65,7 +65,7 @@ static uint32_t	compute_pixel_aa(t_scene scene, uint32_t x, uint32_t y)
 		j = 0;
 		while (j < AA_SAMPLES)
 		{
-			ray = generate_ray(scene.camera, x + (double)i / AA_SAMPLES + 0.5
+			ray = generate_ray(scene, x + (double)i / AA_SAMPLES + 0.5
 					/ AA_SAMPLES, y + (double)j / AA_SAMPLES + 0.5
 					/ AA_SAMPLES);
 			colors[samples++] = trace_single_ray(scene, ray);
@@ -83,10 +83,10 @@ void	raytrace(t_scene scene)
 	uint32_t	color;
 
 	y = 0;
-	while (y < HEIGHT)
+	while (y < (uint32_t)scene.screen_height)
 	{
 		x = 0;
-		while (x < WIDTH)
+		while (x < (uint32_t)scene.screen_width)
 		{
 			color = compute_pixel_aa(scene, x, y);
 			my_pixel_put(&scene.mlx_img, x, y, color);
@@ -95,7 +95,7 @@ void	raytrace(t_scene scene)
 		y++;
 		if (y % 10 == 0)
 		{
-			ft_putnbr_fd((y * 100) / HEIGHT, STDOUT_FILENO);
+			ft_putnbr_fd((y * 100) / scene.screen_height, STDOUT_FILENO);
 			ft_putstr_fd("%\r", STDOUT_FILENO);
 		}
 	}

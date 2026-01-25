@@ -6,7 +6,7 @@
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 08:08:15 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/23 12:23:38 by ludebion         ###   ########.fr       */
+/*   Updated: 2026/01/23 16:14:41 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,5 @@ bool	is_normalized_vec(t_vec3 v)
 		|| v.z > 1.0)
 		return (false);
 	length = sqrt(v.x * v.x + v.y * v.y + v.z * v.z);
-	return (fabs(length - 1.0) < EPSILON);
+	return (fabs(length - 1.0) < 0.001);
 }

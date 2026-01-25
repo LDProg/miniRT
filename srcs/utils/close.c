@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   close.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 05:28:12 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/22 11:50:30 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/23 16:12:52 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	close_program(t_scene *scene, t_error error)
 	mlx_clear(scene);
 	if (error != ERR_NONE)
 	{
+		ft_putstr_fd("Error\n", STDOUT_FILENO);
 		ft_putstr_fd(get_error_message(error), STDERR_FILENO);
 		exit(EXIT_FAILURE);
 	}
