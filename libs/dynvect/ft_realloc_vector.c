@@ -6,7 +6,7 @@
 /*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 15:37:34 by gaducurt          #+#    #+#             */
-/*   Updated: 2025/12/08 13:16:40 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/01/26 10:46:38 by gaducurt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,7 @@ int	ft_realloc_vector(t_dynvec *vector)
 		vector->capacity *= 2;
 	new_tab = malloc(vector->capacity * vector->size_type);
 	if (!new_tab)
-	{
-		ft_free_vector(vector);
 		return (0);
-	}
 	ft_memcpy(new_tab, vector->array, vector->size_type * vector->len);
 	if (vector->array)
 		free(vector->array);
