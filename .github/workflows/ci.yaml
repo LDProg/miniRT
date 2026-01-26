@@ -36,7 +36,12 @@ jobs:
         run: make
 
       - name: Norminette
-        run: norminette
+        run: |
+          norminette srcs/
+          norminette includes/
+          norminette libs/libft
+          norminette libs/libmath
+          norminette libs/dynvect
 
       - name: Memory leaks
         run: |
