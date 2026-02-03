@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_utils.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 05:29:36 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/22 11:54:11 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/02/02 02:09:19 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ uint32_t	graduate_background(double y);
 uint32_t	normal_color(t_vec3 p, t_point3 center);
 uint32_t	average_pixel_color(uint32_t *pixel_colors, uint32_t samples);
 t_color		compute_color(double coef, t_color l_color, t_color o_color);
+t_color		add_color_raw(t_color a, t_color b);
 uint32_t	add_colors(t_color diff, t_color amb);
 
 void		print_scene(t_scene *scene, t_dynvec *objs);

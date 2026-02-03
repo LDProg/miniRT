@@ -8,7 +8,7 @@ LST_PARSING :=	check_args.c parse_file.c parse_obj.c parse_scene.c parse_utils.c
 
 LST_RENDER :=	camera.c raytrace.c
 
-LST_INTERSECT_SHAPES := intersect.c cylinder.c plane.c sphere.c intersect_sphere.c
+LST_INTERSECT_SHAPES := intersect.c cone.c cylinder.c disk.c plane.c sphere.c intersect_sphere.c
 
 LST_LIGHT := light.c
 

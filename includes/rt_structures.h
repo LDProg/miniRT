@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_structures.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 10:19:11 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/26 10:48:11 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/02/03 03:37:27 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # define DEFAULT_WIN_WIDTH 1280
 # define DEFAULT_WIN_HEIGHT 720
-# define AA_SAMPLES 3
+# define AA_SAMPLES 1
 
 # include "dynvect.h"
 # include "libmath.h"
@@ -55,7 +55,8 @@ typedef enum e_obj_type
 {
 	T_SPHERE,
 	T_PLANE,
-	T_CYLINDER
+	T_CYLINDER,
+	T_CONE
 }	t_obj_type;
 
 typedef struct s_color
@@ -100,11 +101,21 @@ typedef struct s_cylinder
 	t_color		color;
 }	t_cylinder;
 
+typedef struct s_cone
+{
+	t_point3	center;
+	t_vec3		axis;
+	double		angle;
+	double		height;
+	t_color		color;
+}	t_cone;
+
 typedef union u_shape
 {
 	t_sphere	sphere;
 	t_plane		plane;
 	t_cylinder	cylinder;
+	t_cone		cone;
 }	t_shape;
 
 typedef struct s_object
@@ -147,12 +158,12 @@ typedef struct s_mlx_img
 
 typedef struct s_scene
 {
-	t_light		light;
+	t_dynvec	*lights;
 	t_color		ambient;
 	t_camera	camera;
+	bool		has_diffuse_light;
 	bool		has_ambient;
 	bool		has_camera;
-	bool		has_diffuse_light;
 	t_dynvec	*objs;
 	void		*mlx_ptr;
 	int32_t		screen_width;

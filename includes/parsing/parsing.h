@@ -6,7 +6,7 @@
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 10:52:51 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/24 20:10:01 by ludebion         ###   ########.fr       */
+/*   Updated: 2026/02/02 02:33:18 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,13 @@ int			check_args(int ac, char **av);
 t_error		parse_file(t_scene *scene, char *filename);
 
 t_error		parse_ambient_light(t_scene *scene, char **trim_line);
+t_error		parse_and_add_diffuse_light(bool *has_diffuse_light,
+				t_dynvec *lights, char **trim_line);
 t_error		parse_camera(t_scene *scene, char **trim_line);
-t_error		parse_diffuse_light(t_scene *scene, char **trim_line);
-
 t_error		parse_sphere(t_object *obj, char **trim_line);
 t_error		parse_plane(t_object *obj, char **trim_line);
 t_error		parse_cylinder(t_object *obj, char **trim_line);
+t_error		parse_cone(t_object *obj, char **trim_line);
 
 bool		is_double_in_range(double val, double min, double max);
 t_error		parse_color(t_color *color, char *ratio, char *str_rgb);

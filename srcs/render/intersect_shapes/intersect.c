@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersect.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 10:18:11 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/22 11:46:49 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/02/01 08:36:59 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,12 @@ static bool	hit_object(t_ray ray, t_object *obj, t_hit *hit)
 {
 	if (obj->type == T_SPHERE)
 		return (hit_sphere(ray, obj->shape.sphere, hit));
-	if (obj->type == T_PLANE)
+	else if (obj->type == T_PLANE)
 		return (hit_plane(ray, obj->shape.plane, hit));
-	if (obj->type == T_CYLINDER)
+	else if (obj->type == T_CYLINDER)
 		return (hit_cylinder(ray, obj->shape.cylinder, hit));
+	else if (obj->type == T_CONE)
+		return (hit_cone(ray, obj->shape.cone, hit));
 	return (false);
 }
 

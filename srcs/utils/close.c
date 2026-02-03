@@ -6,7 +6,7 @@
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 05:28:12 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/23 16:12:52 by ludebion         ###   ########.fr       */
+/*   Updated: 2026/02/02 02:35:32 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ static char	*get_error_message(t_error error)
 
 void	close_program(t_scene *scene, t_error error)
 {
+	ft_free_vector(scene->lights);
 	ft_free_vector(scene->objs);
 	mlx_clear(scene);
 	if (error != ERR_NONE)

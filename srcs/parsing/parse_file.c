@@ -6,7 +6,7 @@
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 15:15:53 by gaducurt          #+#    #+#             */
-/*   Updated: 2026/01/23 15:50:03 by ludebion         ###   ########.fr       */
+/*   Updated: 2026/02/02 02:40:31 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,10 @@ static t_error	parse_and_add_object(t_dynvec *objs, char **trim_line)
 		err = parse_sphere(&obj, trim_line);
 	else if (ft_strcmp(trim_line[0], "pl") == 0)
 		err = parse_plane(&obj, trim_line);
-	else
+	else if (ft_strcmp(trim_line[0], "cy") == 0)
 		err = parse_cylinder(&obj, trim_line);
+	else
+		err = parse_cone(&obj, trim_line);
 	if (err != ERR_NONE)
 		return (err);
 	if (!ft_vector_addone(objs, &obj))
@@ -46,15 +48,15 @@ static t_error	parse_line(t_scene *scene, char *line)
 		free_strs(trim_line);
 		return (ERR_MALLOC);
 	}
-	err = ERR_NONE;
 	if (ft_strcmp(trim_line[0], "A") == 0)
 		err = parse_ambient_light(scene, trim_line);
 	else if (ft_strcmp(trim_line[0], "C") == 0)
 		err = parse_camera(scene, trim_line);
 	else if (ft_strcmp(trim_line[0], "L") == 0)
-		err = parse_diffuse_light(scene, trim_line);
-	else if (ft_strcmp(trim_line[0], "sp") == 0 || ft_strcmp(trim_line[0],
-			"pl") == 0 || ft_strcmp(trim_line[0], "cy") == 0)
+		err = parse_and_add_diffuse_light(&scene->has_diffuse_light,
+				scene->lights, trim_line);
+	else if (!ft_strcmp(trim_line[0], "sp") || !ft_strcmp(trim_line[0], "pl")
+		|| !ft_strcmp(trim_line[0], "cy") || !ft_strcmp(trim_line[0], "co"))
 		err = parse_and_add_object(scene->objs, trim_line);
 	else
 		err = ERR_IDENTIFIER;

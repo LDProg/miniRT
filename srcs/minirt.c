@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:34:18 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/26 10:47:25 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/02/03 03:37:34 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,12 @@ static void	init_scene(t_scene *scene, char *filename)
 	char	*scene_name;
 
 	ft_memset(scene, 0, sizeof(t_scene));
+	scene->lights = malloc(sizeof(t_dynvec));
 	scene->objs = malloc(sizeof(t_dynvec));
-	if (!scene->objs)
+	if (!scene->lights || !scene->objs)
 		close_program(scene, ERR_MALLOC);
 	ft_init_vector(scene->objs, sizeof(t_object));
+	ft_init_vector(scene->lights, sizeof(t_light));
 	err = parse_file(scene, filename);
 	if (err != ERR_NONE)
 	{

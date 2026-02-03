@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color_bis.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 16:15:31 by gaducurt          #+#    #+#             */
-/*   Updated: 2026/01/22 11:50:45 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/02/02 02:08:58 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,16 @@ t_color	compute_color(double coef, t_color l_color, t_color o_color)
 	c.r = (int)(coef * (l_color.r / 255.0) * (o_color.r / 255.0) * 255.0);
 	c.g = (int)(coef * (l_color.g / 255.0) * (o_color.g / 255.0) * 255.0);
 	c.b = (int)(coef * (l_color.b / 255.0) * (o_color.b / 255.0) * 255.0);
+	return (c);
+}
+
+t_color	add_color_raw(t_color a, t_color b)
+{
+	t_color	c;
+
+	c.r = a.r + b.r;
+	c.g = a.g + b.g;
+	c.b = a.b + b.b;
 	return (c);
 }
 

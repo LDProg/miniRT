@@ -3,31 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gaducurt <gaducurt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 10:57:37 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/22 11:44:58 by gaducurt         ###   ########.fr       */
+/*   Updated: 2026/02/01 08:55:24 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "scene/intersect_shapes.h"
 #include "utils/rt_utils.h"
 #include <math.h>
-
-static bool	hit_disk(t_ray ray, t_plane pl, t_hit *hit)
-{
-	t_vec3	v_cy_center_to_p;
-	double	d2;
-
-	if (hit_plane(ray, pl, hit))
-	{
-		v_cy_center_to_p = substract_tuple(hit->point, pl.center);
-		d2 = vec3_dot(v_cy_center_to_p, v_cy_center_to_p);
-		if (d2 <= pl.radius * pl.radius)
-			return (true);
-	}
-	return (false);
-}
 
 static bool	hit_caps(t_ray ray, t_cylinder cy, t_hit *hit)
 {

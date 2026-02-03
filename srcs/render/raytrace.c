@@ -6,7 +6,7 @@
 /*   By: ludebion <ludebion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 02:32:43 by ludebion          #+#    #+#             */
-/*   Updated: 2026/01/24 18:57:32 by ludebion         ###   ########.fr       */
+/*   Updated: 2026/02/03 03:26:33 by ludebion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static uint32_t	trace_single_ray(t_scene scene, t_ray ray)
 	uint32_t	color;
 
 	if (intersect_scene_objects(scene.objs, ray, &hit))
-		color = compute_hit_color(hit, scene.ambient, scene.light, scene);
+		color = compute_hit_color(scene, hit);
 	else
 		color = graduate_background(ray.direction.y);
 	return (color);
